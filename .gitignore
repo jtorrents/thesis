@@ -1,0 +1,13 @@
+# Latex build logs
+*.log
+
+# Python stuff
+*.pyc
+__pycache__
+*~
+
+# IPython Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Vim's swap files
+*.sw[op]

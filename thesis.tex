@@ -1,0 +1,101 @@
+\documentclass[a4paper,12pt]{memoir}
+\usepackage{times}
+\usepackage[utf8x]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[colorlinks, linkcolor=black, citecolor=black, urlcolor=black, filecolor=black]{hyperref}  
+\usepackage{memhfixc} % sembla que per versions noves de hyperref ja no cal
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{lscape}
+
+\usepackage{multirow}
+\usepackage{rotating}
+
+% Mida aconsellada pel manual de memoir per mida A4
+\settrimmedsize{297mm}{210mm}{*}
+\setlength{\trimtop}{0pt}
+\setlength{\trimedge}{\stockwidth}
+\addtolength{\trimedge}{-\paperwidth}
+\settypeblocksize{634pt}{448.13pt}{*}
+\setulmargins{4cm}{*}{*}
+\setlrmargins{*}{*}{1.5}
+\setmarginnotes{17pt}{51pt}{\onelineskip}
+\setheadfoot{\onelineskip}{2\onelineskip}
+\setheaderspaces{*}{2\onelineskip}{*}
+\checkandfixthelayout
+
+% Capçaleres i peus de pàgina
+%\pagestyle{headings}
+\pagestyle{ruled}
+% Tipus de títols per als capítols
+\chapterstyle{ell}
+
+\hypersetup{
+  pdftitle={The Structural Dimension of Cooperation},%
+  pdfauthor={Jordi Torrents},%
+  pdfcreator={Jordi Torrents},%
+  pdfproducer=LaTeX,%
+  pdfsubject={},%
+  pdfkeywords={}%
+}
+
+\title{\Huge {The Structural Dimension of Cooperation}\\ \Large{Dynamic hierarchies and their role in Socialization}}
+\author{Jordi Torrents Vivó \\jordi.t21@gmail.com}
+\date{\today}
+
+
+\begin{document}
+
+\begin{titlingpage}
+\begin{center}
+{\Huge \textsc{\textbf{The Structural Dimension of Cooperation}}}\\[1cm]
+{\Huge Nice subtitle}\\[2cm]
+{\Large Jordi Torrents Vivó} \\
+{\large jtorrents@milnou.net}\\[1cm]
+{\Large November 2016}\\[7cm]
+{\large Director:  \Large Joaquim Sempere Carreras} \\[1.5cm]
+{\LARGE PhD Thesis}\\[0.5cm]
+{\LARGE Doctorat de Sociologia}\\[1cm]
+{\Large Departament de Teoria Sociològica, Filosofia del Dret i Metodologia de les Ciències Socials} \\[0.5cm]
+{\LARGE Universitat de Barcelona}\\
+\end{center}
+\end{titlingpage}
+\cleardoublepage
+
+%\maketitle
+\pagenumbering{roman}
+\setcounter{tocdepth}{3}
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\listoftables
+\newpage
+%\cleardoublepage
+%\thispagestyle{empty}
+
+\pagenumbering{arabic}
+
+\input chapters/chapter1.tex % Introduction
+
+\input chapters/chapter2.tex % Theory {Groups and communities}
+
+\input chapters/chapter3.tex % Empirical case: The Debian project
+
+\input chapters/chapter4.tex % Empirical case: The CPython project
+
+\input chapters/chapter5.tex % Conclusion
+
+% Bibliografia
+%\nocite{*}
+\bibliographystyle{chicago}
+%\bibliographystyle{ajs}
+\bibliography{thesis}
+
+\appendix
+
+\input appendices/appendix1.tex
+
+\end{document}

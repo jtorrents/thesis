@@ -3,15 +3,34 @@
 \usepackage[utf8x]{inputenc}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
-\usepackage[colorlinks, linkcolor=black, citecolor=black, urlcolor=black, filecolor=black]{hyperref}  
-\usepackage{memhfixc} % sembla que per versions noves de hyperref ja no cal
+\usepackage[colorlinks, linkcolor=black, citecolor=black, urlcolor=blue, filecolor=black]{hyperref}  
 \usepackage{natbib}
 \usepackage{graphicx}
 \usepackage{subfig}
 \usepackage{lscape}
 
+\usepackage{float}
+
 \usepackage{multirow}
 \usepackage{rotating}
+
+\usepackage{fancyvrb}
+\usepackage{color}
+%\usepackage{colortbl}
+\usepackage{listings}
+%\usepackage{listings,bera}
+\definecolor{keywords}{RGB}{128,148,182}
+%\definecolor{comments}{RGB}{60,179,113}
+\definecolor{comments}{RGB}{0,0,139}
+\lstset{language=Python,
+        numbers=left,
+        showstringspaces=false,
+        numberstyle=\tiny,
+        %frame=leftline,
+        numbersep=4.5pt,
+  keywordstyle=\color{keywords}\bfseries,
+  commentstyle=\color{comments}\emph
+}
 
 % Mida aconsellada pel manual de memoir per mida A4
 \settrimmedsize{297mm}{210mm}{*}
@@ -78,15 +97,25 @@
 
 \pagenumbering{arabic}
 
+\part{Introduction}
+
 \input chapters/chapter1.tex % Introduction
 
-\input chapters/chapter2.tex % Theory {Groups and communities}
+\part{Theory and Methodology}
 
-\input chapters/chapter3.tex % Empirical case: The Debian project
+\input chapters/chapter2.tex % Theory and Methodology: Cohesive Groups
 
-\input chapters/chapter4.tex % Empirical case: The CPython project
+\input chapters/chapter3.tex % Theory: Collaborative Communities
 
-\input chapters/chapter5.tex % Conclusion
+\part{Empirical analysis}
+
+\input chapters/chapter4.tex % Empirical case: The Debian project
+
+\input chapters/chapter5.tex % Empirical case: The CPython project
+
+\part{Conclusion and Future Work}
+
+\input chapters/chapter6.tex % Conclusion
 
 % Bibliografia
 %\nocite{*}
@@ -95,6 +124,7 @@
 \bibliography{thesis}
 
 \appendix
+%\gdef\thechapter{Appendix \Alph{chapter}}
 
 \input appendices/appendix1.tex
 

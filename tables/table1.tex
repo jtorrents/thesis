@@ -1,0 +1,81 @@
+\begin{table}
+\begin{footnotesize}
+\begin{tabular}{|c|p{1.7cm}|p{2.7cm}|p{2cm}|p{6cm}|p{1.7cm}|p{1.7cm}|p{1.7cm}|p{1.7cm}|p{2.7cm}|}
+\hline
+&Based on&Criteria&Measure&Definition&Robust&Overlap&Positional&Hierarchical&Computational\\
+\hline
+% Local measures
+\multirow{6}{*}{\begin{sideways}\mbox{Absolute: only internal}\end{sideways}}&
+    % Clique
+    complete\newline connectivity&$diam=\varrho=1$\newline$\delta=\lambda=\kappa=n-1$&clique
+    &maximal subgraph of nodes all of which are adjacent to each other
+    &Yes&Yes: clique percolation&Yes: structural folds&Yes:\newline$k$-cliques&Slow\\
+    \cline{2-10}
+    % Relax distance
+    &\multirow{3}{*}{relax distance}
+        % N-clique
+        & $max{\{d_{G}(u,v)\}} \le n $&$n$-clique&
+        maximal subgraph in which the largest geodesic distance is no greater than $n$
+        &No&No&No&No&Slow\\
+        \cline{3-10}
+        % N-clan
+        &&$n$-clique with\newline $diam \le n$&$n$-clan&
+        $n$-clique that also have a diameter no greater than $n$&No&Yes&No&No&Slow\\
+        \cline{3-10}
+        % N- club
+        &&$diam=n$&$n$-club&a maximal subgraph of diameter $n$&No&Yes&No&No&Slow\\
+        \cline{2-10}
+    % Relax degree
+    &\multirow{2}{*}{relax degree}
+        % K-plex
+        &$\delta \ge n - k$&$k$-plex&maximal subgraph in which each node may be lacking ties to
+        no more than $k$ other nodes&No&Yes&No&No&Slow\\
+        \cline{3-10}
+        % K- core
+        &&$\delta \ge k$&$k$-core&maximal subgraph in which all nodes have degree $k$ or more
+        &No&No&No&Yes&Very fast $O(m)$\\
+        \cline{2-10}
+    % Relax density
+    &relax density& $\varrho \ge \eta $&$\eta$-dense subgraph
+    &subgraph with density greater than or equal to $\eta$, where $0 \le \eta \le 1$
+    &No&No&No&No&Slow\\
+\hline
+\hline
+% Global measures
+\multirow{5}{*}{\begin{sideways}\mbox{Relative: Internal (+) External (-)}\end{sideways}}&
+    % Density based
+    \multirow{2}{*}{density}
+        % LS sets
+        &minimize edges to\newline outside&LS sets&set of nodes in which each of its proper subsets
+        has more ties with the nodes outside that subset than the LS set itself
+        &Yes&No&Yes&Yes&Slow $O(n^4)$\\
+        \cline{3-10}
+        % community algorithms: modularity
+        &&quality function of\newline partitions&modularity&the fraction of the edges that fall within
+        the given groups minus the expected such fraction if edges were distributed at random
+        &No&No&No&No&Optimum: Slow\newline Approx: Fast\\
+        \cline{2-2} \cline{4-5}
+    % Connectivity based
+    &\multirow{3}{*}{connectivity}
+        % Community algorithms: conductance
+        &&conductance&weight of edge cut-sets among different subgroups&&&&& \\
+        \cline{3-10}
+        % Lambda sets
+        &&edge-connectivity&lambda sets&maximal subset of nodes that have more edge
+        independent paths between them than with nodes outside the subset&Not as robust as LS sets&No&No&Yes
+        &Slow $O(n^4)$\\
+        \cline{3-10}
+        % K-components
+        &&node-connectivity&$k$-components&maximal subgraph that has, at least, node connectivity $k$:
+        we need to remove at least $k$ nodes to break it into more components&Yes&Yes: $k-1$ nodes&Yes
+        &Yes&Exact: Slow $O(n^4)$\newline Approx: $\ll O(n^4)$\\
+\hline
+\hline
+% Other measures?
+\multicolumn{5}{|c|}{random walk based partition algorithms}&No&No&No&No&Fast\\
+\hline
+\end{tabular}
+\end{footnotesize}
+\caption[Summary of cohesive subgroups formalizations.]{Summary of cohesive subgroups formalizations from social network analysis literature \citep{luce:1949,luccio:1969,lawler:1973,seidman:1978,mokken:1979,seidman:1983,seidman:1983ls,borgatti:1990,wasserman:1994,white:2001,moody:2003,brandes:2005,fortunato:2010}. Notation: $diam$ is diameter, $\varrho$ is density, $\delta$ is minimum degree, $\lambda$ is edge-connectivity, $\kappa$ is node connectivity, $n$ is the number of nodes, $m$ is the number of edges, and $d_{G}(u,v)$ is the distance between nodes $u$ and $v$ in $G$.}
+\label{t:cohesive}
+\end{table}

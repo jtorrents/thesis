@@ -1,0 +1,172 @@
+Developer,censored,duration,top,first_year,last_year,contributions,edits
+Guido van Rossum,0,24,1,1991,2014,2048922,27313
+Berker Peksag,0,1,1,2014,2014,4904,420
+Bob Ippolito,1,5,0,2005,2009,14123,102
+Bill Janssen,1,2,0,2007,2008,7741,82
+David Scherer,1,1,0,2000,2000,12517,73
+Reid Kleckner,1,1,0,2011,2011,591,13
+Ezio Melotti,0,6,1,2009,2014,144634,4919
+Walter Dörwald,1,12,1,2002,2013,52023,1678
+Steve Dower,0,1,0,2014,2014,48415,581
+Nicholas Bastin,1,1,1,2004,2004,1243,81
+Benjamin Peterson,0,7,1,2008,2014,1026414,13628
+Robert Collins,0,1,0,2014,2014,2148,57
+Sjoerd Mullender,1,16,1,1992,2007,16527,266
+Josiah Carlson,1,2,0,2008,2009,985,42
+George Yoshida,1,2,0,2006,2007,570,77
+Eric Snow,0,3,1,2012,2014,62034,275
+Just van Rossum,1,6,1,1999,2004,46747,596
+Andrew MacIntyre,1,7,1,2002,2008,20030,281
+Stefan Krah,0,5,1,2010,2014,72061,773
+Andrew McNamara,1,4,0,2003,2006,1842,46
+Eric S. Raymond,1,3,0,2000,2002,4187,171
+Mark Dickinson,0,7,1,2008,2014,102396,4267
+Jean-Paul Calderone,1,3,1,2010,2012,2003,46
+Alexis Metaireau,1,1,0,2011,2011,44,2
+Raymond Hettinger,0,13,1,2002,2014,198875,6840
+Brian Curtin,0,5,1,2010,2014,105084,1023
+Collin Winter,1,4,1,2007,2010,26748,934
+R. David Murray,0,6,1,2009,2014,115033,3928
+Andrew Svetlov,0,3,1,2012,2014,27649,984
+Jeroen Ruigrok van der Werven,1,3,0,2008,2010,5805,174
+Skip Montanaro,1,12,1,2000,2011,112802,1272
+Ken Manheimer,1,6,0,1998,2003,208,7
+Ka-Ping Yee,1,9,0,2000,2008,10904,138
+Hynek Schlawack,1,2,1,2012,2013,3143,231
+Trent Mick,1,8,0,2000,2007,20279,94
+Petri Lehtinen,0,4,1,2011,2014,5293,493
+Michael Foord,0,6,1,2009,2014,47850,698
+Robert Jordens,0,1,0,2014,2014,21,2
+Samuele Pedroni,1,2,0,2003,2004,338,11
+Finn Bock,1,2,0,2001,2002,189,17
+Sean Reifscheider,1,9,0,2004,2012,1995,79
+Travis E. Oliphant,1,2,1,2007,2008,5006,76
+Ethan Furman,0,2,1,2013,2014,7977,182
+Fred Drake,1,16,1,1996,2011,458569,10727
+Neil Schemenauer,1,13,1,2000,2012,28041,484
+Roger E. Masse,1,2,1,1996,1997,25397,101
+Larry Hastings,0,5,1,2010,2014,88410,1061
+Tal Einat,0,1,0,2014,2014,374,6
+Ned Deily,0,5,1,2010,2014,28949,1275
+Kushal Das,0,1,0,2014,2014,545,27
+Trent Nelson,1,5,1,2008,2012,18516,210
+Jeremy Kloth,1,1,0,2011,2011,62,4
+Dirkjan Ochtman,0,5,0,2010,2014,126,16
+Sandro Tosi,1,3,1,2011,2013,14126,421
+Matt Fleming,1,1,0,2006,2006,32,5
+Eli Bendersky,0,4,1,2011,2014,14636,489
+Greg Stein,1,5,0,1999,2003,5559,33
+Andrew Dalke,1,1,0,2006,2006,681,18
+Armin Ronacher,1,5,0,2008,2012,562,41
+Peter Schneider-Kamp,1,3,1,2000,2002,8170,126
+Brett Cannon,0,12,1,2003,2014,488867,4493
+Donald Stufft,0,2,1,2013,2014,4297,198
+Greg Ward,1,9,0,1998,2006,57537,1158
+Tim Golden,0,5,1,2010,2014,3520,142
+Victor Stinner,0,5,1,2010,2014,279341,7326
+Thomas Wouters,0,15,1,2000,2014,470490,4769
+Thomas Heller,1,11,1,2000,2010,190599,1939
+Ross Lagerwall,1,2,1,2011,2012,4787,163
+Charles-François Natali,0,4,1,2011,2014,21254,763
+Ralf Schmitt,1,1,0,2011,2011,42,4
+Ask Solem,1,1,0,2010,2010,172,9
+Andrew Kuchling,0,2,1,2013,2014,3795,141
+Alexandre Vassalotti,1,7,1,2007,2013,150303,947
+Edward Loper,1,1,0,2004,2004,5204,66
+Chris Jerdonek,1,2,1,2012,2013,4865,241
+Steven Bethard,1,4,0,2008,2011,19435,124
+Kurt B. Kaiser,1,11,0,2001,2011,27147,1016
+Facundo Batista,1,7,1,2004,2010,147001,748
+David Goodger,1,7,0,2003,2009,298,15
+Mark Summerfield,1,2,0,2007,2008,1156,54
+Mark Hammond,1,12,1,2000,2011,17134,430
+Jerry Seutter,1,1,0,2008,2008,1004,4
+Peter Moody,0,2,0,2013,2014,186,13
+Daniel Stutzbach,1,2,1,2010,2011,1479,69
+Łukasz Langa,0,5,0,2010,2014,8594,179
+Doug Hellmann,1,2,0,2009,2010,69,12
+Nick Coghlan,0,10,1,2005,2014,121714,1635
+Michael W. Hudson,1,6,1,2001,2006,41756,754
+Jason Tishler,1,4,1,2002,2005,1006,63
+Johannes Gijsbers,1,2,0,2004,2005,4127,147
+Felix Crux,1,1,0,2013,2013,20,5
+Charles G. Waldman,1,1,0,2001,2001,11,1
+Senthil Kumaran,0,7,1,2008,2014,32332,2045
+Roger Serwy,1,1,0,2013,2013,699,101
+Yury Selivanov,0,1,1,2014,2014,8891,325
+Ronald Oussoren,0,9,1,2006,2014,145524,1669
+Neal Norwitz,1,9,1,2001,2009,102232,4120
+Martin v. Löwis,0,15,1,2000,2014,1079112,9416
+Serhiy Storchaka,0,3,1,2012,2014,196843,6067
+Jesse Noller,1,3,1,2008,2010,5377,264
+David Malcolm,1,4,0,2010,2013,760,50
+Brian Quinlan,0,5,0,2010,2014,3100,34
+Kristján Valur Jónsson,0,9,1,2006,2014,92170,698
+Chris Withers,1,4,0,2009,2012,149,11
+Anthony Baxter,1,7,1,2001,2007,41959,879
+Armin Rigo,1,10,1,2003,2012,13039,347
+Tarek Ziadé,1,4,1,2008,2011,81463,1895
+Gregory P. Smith,0,15,1,2000,2014,180831,2802
+Richard Oudkerk,0,3,1,2012,2014,21008,498
+Steve Holden,1,6,0,2002,2007,1414,52
+Terry Jan Reedy,0,5,1,2010,2014,30288,1203
+Barry Warsaw,0,21,1,1994,2014,179242,3731
+Amaury Forgeot d'Arc,1,6,1,2007,2012,60226,1253
+Nadeem Vawda,1,3,1,2011,2013,12424,491
+Tim Peters,0,15,1,2000,2014,391490,5991
+Frank Wierzbicki,1,5,0,2009,2013,759,9
+Andrew M. Kuchling,1,13,1,1998,2010,118363,2928
+Christian Tismer,1,12,0,2002,2013,468,11
+Gerhard Häring,1,6,0,2006,2011,8213,263
+Christian Heimes,0,8,1,2007,2014,488366,6221
+Steve Purcell,1,3,0,2001,2003,904,19
+Piers Lauder,1,5,0,2001,2005,991,38
+Florent Xicluna,0,5,1,2010,2014,201602,1045
+Nicholas Riley,1,1,0,2000,2000,39,2
+Dave Cole,1,1,0,2004,2004,276,17
+Zachary Ware,0,2,1,2013,2014,35805,1098
+Phillip J. Eby,1,7,0,2004,2010,27822,216
+Žiga Seilnacht,1,1,0,2007,2007,1164,41
+Vladimir Marangozov,1,1,0,2000,2000,2830,26
+Eric Smith,0,8,1,2007,2014,33440,818
+Martin Blais,1,1,0,2006,2006,1213,23
+Gustavo Niemeyer,1,6,1,2002,2007,6945,141
+Lars Gustäbel,1,13,0,2000,2012,10848,340
+Steven M. Gava,1,2,0,2001,2002,9607,209
+Tony Lownds,1,2,0,2002,2003,493,27
+Giampaolo Rodolà,0,5,1,2010,2014,8819,451
+Matthias Klose,0,11,1,2004,2014,503388,1992
+Jason R. Coombs,0,4,1,2011,2014,3157,125
+Marc-André Lemburg,1,13,1,2000,2012,199650,1056
+Jeffrey Yasskin,1,4,1,2007,2010,9310,252
+Alexander Belopolsky,0,5,1,2010,2014,55683,765
+Daniel Holth,0,1,0,2014,2014,6,1
+Antoine Pitrou,0,7,1,2008,2014,1741901,9624
+Georg Brandl,0,10,1,2005,2014,1468448,19085
+David Wolever,1,6,0,2008,2013,1440,23
+Jim Fulton,1,5,0,2000,2004,4790,58
+Jesus Cea,0,7,1,2008,2014,38329,725
+Éric Araujo,0,5,1,2010,2014,85862,2468
+Alex Martelli,1,5,0,2003,2007,1171,70
+Hirokazu Yamamoto,1,3,1,2008,2010,14231,731
+Jack Jansen,1,15,1,1992,2006,1685806,11297
+Vinay Sajip,0,11,1,2004,2014,49688,1410
+Moshe Zadka,1,2,1,2000,2001,4923,150
+Alex Gaynor,0,4,0,2011,2014,228,15
+Jeremy Hylton,1,13,1,1997,2009,154002,2132
+Philip Jenvey,0,6,0,2009,2014,10315,140
+krisvale,1,1,0,2012,2012,13,2
+Jack Diederich,1,5,0,2006,2010,3325,88
+Robert Schuppenies,1,2,1,2008,2009,1852,57
+Richard Jones,1,5,0,2006,2010,5879,40
+Guilherme Polo,1,2,0,2008,2009,15522,223
+Paul Prescod,1,3,0,2000,2002,1923,28
+Chui Tey,1,2,0,2001,2002,1528,18
+Meador Inge,0,4,0,2011,2014,32712,214
+Atsuo Ishimoto,1,1,0,2012,2012,134,3
+Peter Astrand,1,4,0,2004,2007,723,62
+Fredrik Lundh,1,7,1,2000,2006,191663,658
+David Ascher,1,1,0,2004,2004,302,6
+Zbigniew Jędrzejewski-Szmek,1,1,0,2012,2012,27,2
+Hye-Shik Chang,1,7,1,2003,2009,148596,633
+bquinlan,1,1,0,2013,2013,5,1

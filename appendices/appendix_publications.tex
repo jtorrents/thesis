@@ -1,0 +1,89 @@
+\chapter{Publications derived from my work on this thesis}
+
+Brief overview of the outcomes published from this thesis.
+
+\section{Algorithms and heuristics for graph connectivity as Free Software}
+
+The implementation of node and edge connectivity algorithms, and the design and implementation of heuristics for approximation to node connectivity and $k$-component structure that I developed during these years, have turned out to be a central part of my thesis. All these implementations are now part of the official \href{https://networkx.github.io/}{NetworkX} \citep{hagberg:2008}, a popular free Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks. They were published in NetworkX version 1.10, released August, 2nd 2015.
+
+The algorithms and heuristics that I developed as part of my thesis that are now included in NetworkX are: 
+
+\begin{description}
+
+\item[Exact node and edge connectivity] Maximum flow based implementation of node and edge connectivity:
+
+\begin{scriptsize} 
+\begin{itemize} 
+
+\item \href{http://networkx.readthedocs.io/en/stable/reference/generated/networkx.algorithms.connectivity.connectivity.node_connectivity.html}{http://networkx.readthedocs.io/en/stable/reference/generated/networkx.algorithms.connectivity.connectivity.node\_connectivity.html}
+
+\item \href{http://networkx.readthedocs.io/en/stable/reference/generated/networkx.algorithms.connectivity.connectivity.edge_connectivity.html}{http://networkx.readthedocs.io/en/stable/reference/generated/networkx.algorithms.connectivity.connectivity.edge\_connectivity.html}
+
+\end{itemize}
+\end{scriptsize}
+
+\item[Exact all minimum size $k$-cutsets]  Kanevsky's algorithm for finding all minimum-size node cut-sets of an undirected graph G \citep{kanevsky:1993}:
+
+\begin{scriptsize} 
+\begin{itemize} 
+
+\item \href{http://networkx.readthedocs.io/en/stable/reference/generated/networkx.algorithms.connectivity.kcutsets.all_node_cuts.html}{http://networkx.readthedocs.io/en/stable/reference/generated/networkx.algorithms.connectivity.kcutsets.all\_node\_cuts.html}
+
+\end{itemize}
+\end{scriptsize}
+
+\item[Exact $k$-component structure] Moody and White exact algorithm for $k$-components \citep{moody:2003}:
+
+\begin{scriptsize} 
+\begin{itemize}
+
+\item \href{http://networkx.readthedocs.io/en/stable/reference/generated/networkx.algorithms.connectivity.kcomponents.k_components.html}{http://networkx.readthedocs.io/en/stable/reference/generated/networkx.algorithms.connectivity.kcomponents.k\_components.html}
+
+\end{itemize}
+\end{scriptsize}
+
+\item[Approximation for node connectivity] White and Newman fast approximation algorithm for finding node independent paths \citep{white:2001b}:
+
+\begin{scriptsize} 
+\begin{itemize} 
+
+\item \href{http://networkx.readthedocs.io/en/stable/reference/generated/networkx.algorithms.approximation.connectivity.node_connectivity.html}{http://networkx.readthedocs.io/en/stable/reference/generated/networkx.algorithms.approximation.connectivity.node\_connectivity.html}
+
+\end{itemize}
+\end{scriptsize}
+
+\item[Approximation for $k$-components] The heuristics that I developed for a fast approximation to the $k$-component structure \citep{torrents:2015,torrents:2015b}.
+
+\begin{scriptsize} 
+\begin{itemize}
+
+\item \href{http://networkx.readthedocs.io/en/stable/reference/generated/networkx.algorithms.approximation.kcomponents.k_components.html}{http://networkx.readthedocs.io/en/stable/reference/generated/networkx.algorithms.approximation.kcomponents.k\_components.html}
+
+\end{itemize}
+\end{scriptsize}
+
+\end{description}
+
+My work on this front has taken quite more time and energy than initially planed, as now I'm also the maintainer of part of NetworkX and have to fix the problems that users find when using the software. So far I had to deal with several problems that arose from use cases that were far from my use in the thesis. Having people using the software for other purposes than analyzing collaboration networks provided an opportunity to improve the implementation of several parts of these algorithms making them more robust and generally applicable to many kinds of problems.
+
+It is usually not considered academic work to develop software tools that implement the analysis on which empirical research is build. This is, I think, a bad practice, and something that is slowly changing. An essential element of scientific research is reproducibility, and the only way to incorporate reproducibility in the empirical analysis is not only to publish the data on which the analysis is based, but also to have tools that actually implement the analysis that can be audited, modified and shared freely \citep{ince:2012}.
+
+\section{Conference presentation and paper at the 14th Python in Science Conference (SciPy2015)}
+
+My work on the free software package NetworkX has allowed me to be selected as a sponsored student at the Python in Science Conference that is held every year at the University of Texas at Austin for several years: 2011, 2012, and 2015. These last year, July 2015, I presented a conference communication, and published a paper in the conference proceedings \citep{torrents:2015b}. There is a video of the presentation, along with the full text pdf of the paper, in the official web site of the proceedings: \href{http://conference.scipy.org/proceedings/scipy2015/jordi_torrents.html}{http://conference.scipy.org/proceedings/scipy2015/jordi\_torrents.html}.
+
+I also attach the accepted paper in the conference cited above as a companion of this report, the title of the paper is: ``\textit{Structural Cohesion: Visualization and Heuristics for Fast Computation with NetworkX and matplotlib}''. The peer review process of this paper has been quite challenging as it was reviewed by scientists not familiar with the social sciences. The Scipy proceedings have as intended audience scientists from any discipline that uses computation as a central part of their research. Thus the papers and the presentations in the scipy conference have to be accessible to scientists not familiar with the discipline of the author of the paper.
+
+Most scientists that attend the scipy conference are from the Natural sciences disciplines, and the reviewers of my proceedings paper had also this background. This made adapting the paper to the intended audience quite hard and time consuming, as I had to rewrite many parts of my original submission (which was already adapted from my work on the thesis) to meet the criteria of the reviewers.
+
+I think that this work has been beneficial because it made my contribution more accessible to the audience of a scientific computing conference, which is highly interdisciplinary. The presentation was also a challenge for me as I had to deliver it in a very big room filled with hundred of scientists from other disciplines. I received positive feedback from the attendees to my presentation, and in the following months I received several emails from different people that attended the conference, or read the paper in the proceedings, asking for clarifications or related material to my work. Thus, I think that all the time and energy spend in making my research accessible for a wider interdisciplinary audience has been worth.
+
+\section{Paper at Journal for Social Structure (JoSS)}
+
+In December 2015 it was published a more sociological motivated version of the methodological work for my thesis at the Journal of Social Structure (JoSS), an electronic journal of the International Network for Social Network Analysis (INSNA) hosted by the library of Carnegie Mellon University. The current editor is James Moody (Professor of Sociology at Duke University). The title of the paper is ``\textit{Structural Cohesion:Visualization and Heuristics for Fast Computation}'' \citep{torrents:2015}. This paper is also attached as a companion of this report.
+
+Publishing this paper has also required more time and energy that initially planned. I submitted the first version of this paper to another journal, Social Networks, in late 2012. After two revisions the paper was finally rejected by the editor, despite the positive reviews of two of the three reviewers involved in the process. All this process took two years, and despite the rejection, the comments of the reviewers at Social Networks helped greatly to improve the paper.
+
+Early 2015 I submitted the paper to the Journal of Social Structure, the paper was accepted after one round of review conditional on some minor modifications, which also improved the paper further, and took more time than expected. The paper was finally published on December 2015. The initial version of the paper, as submitted to Social Networks in late 2012 was significantly longer than the version finally published at JoSS.
+
+I argue that these groups are a key element of the structural dimension of cooperation. That is, the kind of patterns of relations between the individual producers in a collaboration network, and their evolution through time, that foster the development of cooperation in knowledge intensive tasks, and allow projects such as Debian or Python to produce world class technological artifacts, such as an operating system or a programing language, by organizing voluntary work of hundreds of individuals that communicate mostly through the Internet.

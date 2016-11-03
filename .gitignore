@@ -1,5 +1,9 @@
 # Latex build logs
 *.log
+*.ps
+
+# tmp folder
+tmp/*
 
 # Python stuff
 *.pyc

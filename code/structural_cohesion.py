@@ -93,7 +93,7 @@ def write_structural_cohesion_table(actual, random, project_name, kind):
             rand = random[name]['k_components']
             max_rand = max(rand.keys())
             total = sum(len(component) for k, component in act[1])
-            row = '{:s}&{:d}&{:.1f}\%&{:.1f}\%&{:.1f}\%&{:.1f}\%&{:d} ({:.1f}\%)&{:d} ({:.1f}\%)\\\\\n'
+            row = '{:s}&{:,}&{:.1f}\%&{:.1f}\%&{:.1f}\%&{:.1f}\%&{:d} ({:.1f}\%)&{:d} ({:.1f}\%)\\\\\n'
             f.write(row.format(
                         str(name),
                         total,

@@ -146,7 +146,7 @@ def write_small_world_table(result, project_name, kind):
         f.write(header % (first, top))
         f.write("\hline\n")
         for name in sorted(result, key=order.index):
-            row = '{:s}&{:d}&{:d}&{:d}&{:d}&{:.3f}&{:.3f}&{:.1f}&{:.1f}&{:.1f}\\\\\n'
+            row = '{:s}&{:,}&{:,}&{:,}&{:,}&{:.3f}&{:.3f}&{:.1f}&{:.1f}&{:.1f}\\\\\n'
             f.write(row.format(
                         str(name),
                         result[name]['n'],

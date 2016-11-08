@@ -1,0 +1,21 @@
+\chapter{FOSS projects as Cohesive Small Worlds}
+
+As discussed in chapter \ref{collaborative_communities}, we named ``collaborative small world'' the network model that we propose in order to theoretically understand the structural dimension oc cooperation of FOSS projects. We focus here on the empirical analysis of the network structure of two mature and well stablished FOSS projects: the CPython reference implementation of the Python programming language and the Debian Operating System.
+
+These two projects, as outlined in the previous chapter, are quite different despite being both successful FOSS projects. The Debian project has approximately ten times more participants than Python. Debian, being a complete Operating system, has many parts which are only lightly related between them becuse it contains programs that do very different tasks (eg the developers working on packaging software for music editing do not need to pay close attention to what devian developers focused on packaging word processors do). On the other hand, the Python programming language is a much more integrated software projects, and thus developers working on different parts of the language implementation have to play attention, and work very closely, with other developers.
+
+This has a strong impact in the structure of the patterns of relations that emerge between developers in the two projects. The analysis presented here has two parts: first we will compute the small world metrics for the two projects, as described in chapter \ref{collaborative_communities}, and then we will compute the structural cohesion metrics as described in the chapter \ref{structural_cohesion}.
+
+Both kinds of analysis have in common the use of null models in order to assess that the metrics observed in the actual networks are significantly different to the patterns of relations that we might expect if the relation between developers and packages (or developers and files in the case of Python) were produced uniformly at random.
+
+The null model that we use in our analysis is the configuration model (cite properly) in which we preserve the number of developers and packages or files observed in empirical networks along with their degree distributions, that is the null model contains the same number of nodes, edges, and node degrees but the connections between nodes are assigned uniformly at random.
+
+\section{Small World Metrics}
+
+In the first place we compute small world metrics for python networks. The results are shown in table \ref{swi_python}.
+
+\input{tables/table_small_world_python_years.tex}
+
+For the Debian project, the results for the small world metrics are presented in table \ref{swi_debian}.
+
+\input{tables/table_small_world_debian_years.tex}

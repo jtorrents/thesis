@@ -6,8 +6,14 @@ from __future__ import division, print_function
 
 import math
 import pickle
-from itertools import count
+from itertools import count, chain
 from operator import itemgetter
+
+
+# flatten a nested list
+def flatten(listOfLists):
+    "Flatten one level of nesting"
+    return chain.from_iterable(listOfLists)
 
 
 ##
@@ -21,7 +27,7 @@ def write_results_pkl(results, filename):
 
 # Load results from pickle
 def load_result_pkl(filename):
-    with  open(filename , 'rb') as f:
+    with open(filename, 'rb') as f:
         result = pickle.load(f)
     return result
 

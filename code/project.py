@@ -8,6 +8,7 @@ data_dir = os.path.join(root, os.pardir, 'data')
 plots_dir = os.path.join(root, os.pardir, 'figures')
 results_dir = os.path.join(root, os.pardir, 'results')
 tmp_dir = os.path.join(root, os.pardir, 'tmp')
+tables_dir = os.path.join(root, os.pardir, 'tables')
 
 # Bipartite Multigraph graphml file
 multigraph_file = os.path.join(data_dir, "cpython_multigraph.graphml.gz")
@@ -31,7 +32,7 @@ python_years = list(range(1999, 2015))
 default_branches = ['2.0', '2.1', '2.2', '2.3', '2.4', '2.5', '2.6', '2.7',
                     '3.0', '3.1', '3.2', '3.3', '3.4']
                     #, 'default', 'legacy-trunk']
-
+python_releases = default_branches
 # Debian years and releases
 debian_years = list(range(1999, 2013))
 debian_releases = ['Slink', 'Potato', 'Woody', 'Sarge', 'Etch', 'Lenny', 'Squeeze']

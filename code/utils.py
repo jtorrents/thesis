@@ -31,6 +31,25 @@ def load_result_pkl(filename):
         result = pickle.load(f)
     return result
 
+##
+## Relabel
+##
+def relabel_layout(G, Gr, pos):
+    top = {n for n, d in G.nodes(data=True) if d['bipartite']==1}
+    bottom = set(G) - top
+    top_r = {n for n, d in Gr.nodes(data=True) if d['bipartite']==1}
+    bottom_r = set(Gr) - top_r
+    assert len(top) == len(top_r)
+    assert len(bottom) == len(bottom_r)
+    new_pos = {}
+    for node in top:
+        rnode = top_r.pop()
+        new_pos[rnode] = pos[node]
+    for node in bottom:
+        rnode = bottom_r.pop()
+        new_pos[rnode] = pos[node]
+    return new_pos
+
 
 ##
 ## ID generator

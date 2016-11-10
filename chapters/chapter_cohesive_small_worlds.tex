@@ -25,5 +25,79 @@ For the Debian project, the results for the small world metrics are presented in
 
 \input{tables/table_structural_cohesion_python_years.tex}
 
+\begin{figure}[p]
+%\centering
+\subfloat[Actual Python network 2000]{
+\label{fig:s3d_actual_python_2000}
+\includegraphics[scale=0.23]{figures/3d_scatter_python_2000}
+}
+\hspace{.01in}
+\subfloat[Null model Python network 2000]{
+\label{fig:s3d_null_python_2000}
+\includegraphics[scale=0.23]{figures/3d_scatter_python_2000_null}
+}
+
+\subfloat[Actual Python network 2004]{
+\label{fig:s3d_actual_python_2004}
+\includegraphics[scale=0.23]{figures/3d_scatter_python_2004}
+}
+\hspace{.01in}
+\subfloat[Null model Python network 2004]{
+\label{fig:s3d_null_python_2004}
+\includegraphics[scale=0.23]{figures/3d_scatter_python_2004_null}
+}
+
+\subfloat[Actual Python network 2013]{
+\label{fig:s3d_actual_python_2013}
+\includegraphics[scale=0.23]{figures/3d_scatter_python_2013}
+}
+\hspace{.01in}
+\subfloat[Null model Python network 2013]{
+\label{fig:s3d_null_python_2013}
+\includegraphics[scale=0.23]{figures/3d_scatter_python_2013_null}
+}
+
+\caption[Python average connectivity three-dimensional scatter plots.]{Python average connectivity three-dimensional scatter plots for actual networks and their random null models counterparts. X and Y are the positions determined by the Kamada-Kawai layout algorithm. The vertical dimension is average connectivity. Each mark is a node of the network as two-mode networks they contain both programs (triangles) and developers (circles).}
+\label{fig:python-s3d}
+\end{figure}
+
 
 \input{tables/table_structural_cohesion_debian_years.tex}
+
+
+\begin{figure}[p]
+%\centering
+\subfloat[Actual Debian network 2000]{
+\label{fig:s3d_actual_debian_2000}
+\includegraphics[scale=0.23]{figures/3d_scatter_debian_2000}
+}
+\hspace{.01in}
+\subfloat[Null model Debian network 2000]{
+\label{fig:s3d_null_debian_2000}
+\includegraphics[scale=0.23]{figures/3d_scatter_debian_2000_null}
+}
+
+\subfloat[Actual Debian network 2004]{
+\label{fig:s3d_actual_debian_2004}
+\includegraphics[scale=0.23]{figures/3d_scatter_debian_2004}
+}
+\hspace{.01in}
+\subfloat[Null model Debian network 2004]{
+\label{fig:s3d_null_debian_2004}
+\includegraphics[scale=0.23]{figures/3d_scatter_debian_2004_null}
+}
+
+\subfloat[Actual Debian network 2011]{
+\label{fig:s3d_actual_debian_2011}
+\includegraphics[scale=0.23]{figures/3d_scatter_debian_2011}
+}
+\hspace{.01in}
+\subfloat[Null model Debian network 2011]{
+\label{fig:s3d_null_debian_2011}
+\includegraphics[scale=0.23]{figures/3d_scatter_debian_2011_null}
+}
+
+\caption[Debian average connectivity three-dimensional scatter plots.]{Debian average connectivity three-dimensional scatter plots for actual networks and their random null models counterparts. X and Y are the positions determined by the Kamada-Kawai layout algorithm. The vertical dimension is average connectivity. Each mark is a node of the network as two-mode networks they contain both programs (triangles) and developers (circles).}
+\label{fig:debian-s3d}
+\end{figure}
+

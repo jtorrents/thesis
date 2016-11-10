@@ -173,8 +173,10 @@ def scatter_3d_connectivity(G, k_number, pos, name, project_name,
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.set_zlabel(r'Average connectivity $\bar(\kappa)$')
-    fig.colorbar(scatter_top, shrink=0.5, aspect=9,
-                 ticks=range(1, int(zmax)+1 if max_k is None else int(max_k)+1))
+    cbar = fig.colorbar(scatter_top, shrink=0.5, aspect=9,
+                        ticks=range(1, int(zmax)+1 if max_k is None else int(max_k)+1))
+    cbar.set_label(r'Average connectivity $\bar(\kappa)$', size=22)
+    cbar.ax.tick_params(labelsize=28)
 
     if null:
         plt.title('Null model {} 3d scatter plot {}'.format(project_name.capitalize(), name))

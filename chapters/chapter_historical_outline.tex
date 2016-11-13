@@ -51,28 +51,26 @@ Murdock says, rightly, that the distributions are essential for the future of GN
 
 The Debian project does not produce all the software that distributes; their main task is software integration. The source code of the software that composes the operating system is published originally under some kind of free license by authors that typically aren't involved in the project. The aim of Debian is to integrate useful programs and package them so that an average user ---without deep knowledge of software engineering--- can install or upgrade many programs in an easy and automated way. One of the main features of the production process of Debian is modularity, that is, dividing the project into semi-independent modules, designed to work together but that can be developed relatively independently. This feature allows people with different expertise, skills and motivation to participate in the development of the system at different levels and with different intensity.
 
-\begin{table}[h]
-\begin{center}
-\begin{tabular}{c c c c c c}
-Start date&Release date&Version&Code name&\# developers&\# source packages \\
-\hline
-1998-07-24&1999-03-09&2.1&Slink&275&1577 \\
-1999-03-09&2000-08-15&2.2&Potato&439&3465 \\
-2000-08-15&2002-07-19&3&Woody&896&6659 \\
-2002-07-19&2005-06-06&3.1&Sarge&1229&10733 \\
-2005-06-06&2007-04-08&4&Etch&1284&10300 \\
-2007-04-08&2009-02-14&5&Lenny&1426&11738 \\
-2009-02-14&2011-02-06&6&Squeeze&1618&13080 \\
-2011-02-07&2013-05-04&7&Wheezy&1754&14989 \\
-\end{tabular}
-\caption[Evolution of the Debian project.]{Evolution of number of developers and packages in released stable version of the Debian operating system from 1998 to 2013. Data from the Ultimate Debian database: \url{http://wiki.debian.org/UltimateDebianDatabase}}
-\label{t:evo}
-\end{center}
-\end{table}
-
-
-Table \ref{t:evo} summarizes the evolution of the number of Debian developers and software packages when stable versions of the operating system were released. The availability of data derived of the open nature of the project and the recent interest by community forms of organizing have triggered an interesting stream of research about the Debian project in the last years \citep{omahony:2003,coleman:2005,omahony:2007,ferraro:2010}. Those research efforts have focused mainly in the governance system, the membership process and the ethical motivations of developers. Thus we have a good understanding of the political and individual dynamics of the project but we lack a detailed analysis of its production related dynamics. Our aim is to fill this gap providing a longitudinal analysis of the global patterns of relations among developers in the production process. This allowed us to illustrate the relevance of the network approach in order to understand the development of an actual collaborative community.
+The availability of data derived of the open nature of the project and the recent interest by community forms of organizing have triggered an interesting stream of research about the Debian project in the last years \citep{omahony:2003,coleman:2005,omahony:2007,ferraro:2010}. Those research efforts have focused mainly in the governance system, the membership process and the ethical motivations of developers. Thus we have a good understanding of the political and individual dynamics of the project but we lack a detailed analysis of its production related dynamics. Our aim is to fill this gap providing a longitudinal analysis of the global patterns of relations among developers in the production process. This allows us to illustrate the relevance of a structural approach in order to understand the actual production process of the Debian operating system.
 
 \section{The Python Language}
 
-In the late 1980s, Guido van Rossum ---a dutch computer scientist working at the \emph{Centrum Wiskunde \& Informatica}\footnote{Which translates in English to National Research Institute for Mathematics and Computer Science}--- invented the Python programming language. The CPython project produces the reference implementation of this free computer language. In the begining, it started as an individual effort of Guido van Rossum, and has become one of the mainstream computer languages in the XXI century. Until 2000 it was almost an individual effort of van Rossum with few close collaborators. From 2000 the project gained popularity and several developers joined the project. In 2013, 97 individuals contributed at least one line of source code to Python. Nowadays, the Python language is widely used in several key areas of computing and software development. Some of the biggest websites of the WWW are powered by Python, such as youtube.com and reddit.com. Another main area where Python is very prominent is scientific computing. For instance, all the data coming from the big telescopes on ---and around--- our planet are processed using tools mostly written in Python.
+In the late 1980s, Guido van Rossum ---a dutch computer scientist working at the \emph{Centrum Wiskunde \& Informatica}\footnote{Which translates in English to National Research Institute for Mathematics and Computer Science}--- invented the Python programming language. A commonly cited account of the invention of Python by his author is the foreword to one of the first books on the Python programming language \citep{lutz:1996}:
+
+\begin{quote}
+Over six years ago, in December 1989, I was looking for a ``hobby'' programming project that would keep me occupied during the week around Christmas. My office ... would be closed, but I had a home computer, and not much else on my hands. I decided to write an interpreter for the new scripting language I had been thinking about lately: a descendant of ABC\footnote{ABC was a teaching language that van Rossum helped develop in the early eighties at \emph{Centrum   Wiskunde \& Informatica}. It was a language aimed at non-professional programmers.} that would appeal to Unix/C hackers. I chose Python as a working title for the project, being in a slightly irreverent mood (and a big fan of Monty Python's Flying Circus).
+\end{quote}
+
+The Python programming language, according to the nice definition that Wikipedia provides\footnote{\href{https://en.wikipedia.org/wiki/Python_(programming_language)}{https://en.wikipedia.org/wiki/Python\_(programming\_language)} accessed November 2016}, is a high-level, general-purpose, interpreted, dynamic programming language. Its design philosophy emphasizes code readability, and its syntax allows programmers to express concepts in fewer lines of code than possible in other widely used programming languages. Python provides constructs intended to enable writing clear programs on both a small and large scale.
+
+It is necessary to distinguish between the specification of a programming language and its concrete implementation. A specification or technical standard is a set of grammatical, syntactic, and semantic rules and conventions that define how to write programms, and what those programms should do. A concrete implementation is what actual computers execute. There are several different implmentations of the Python language, but the reference implementation ---that is the standard concrete form that implements the language specification--- is written in the C programming language and is nammed CPython to reflect this fact. The developemnt of Python's reference implementation is lead by Guido van Rossum and has a community-based development model: a non-profit organitzation, the Python Software Foundation, acts as a legal umbrella to sponsor and direct the development of the Python language.
+
+The analysis of the production process of Python presented in the following chapters focuses on the development of the CPython reference implmentation of the Python programming language, but we'll refer to it as just the Python project henceforth for the sake of brevity.    
+
+The governance model of the Python project is based on public debates and discussions taking place in mailing lists and public meetings such as the language summits held each year in the annual Python conferences, where some Python developers meet face to face and discuss key issues in order to make decisions. The inventor of Python has however a lead role in settling disputes or arguments when the community of developers don't reach consensus. He has the power of making final decisions when there is no consensus. This is why he has the somewhat irreverent title of ``Benevolent Dictator For Life (BDFL)'' in the python community. 
+
+In the begining, the Python project started as an individual effort of Guido van Rossum, and has become one of the mainstream computer languages in the XXI century. Until 2000 it was almost an individual effort of van Rossum with few close collaborators. From 2000 the project gained popularity and several developers joined the project. In 2014, 172 individuals contributed at least one line of source code to Python project in all its history.
+
+Nowadays, the Python language is widely used in several key areas of computing and software development. Some of the biggest websites of the World Wide Web (WWW) are powered by Python, such as youtube.com or reddit.com. Another main area where Python is very prominent is scientific computing and data processing and analysis. For instance, a big part of the data coming from the big telescopes on ---and around--- our planet are processed using tools written completelly or partially in Python.
+
+Finally, it is worth saying that most of the data processing, analysis, and graphical representations presented in this thesis are also written Python. The only other programming language used is the R language which is a programming language that focus on statistical computing.

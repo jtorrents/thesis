@@ -20,7 +20,7 @@ default_branches = ['2.0', '2.1', '2.2', '2.3', '2.4', '2.5', '2.6', '2.7',
 python_releases = default_branches
 # Debian years and releases
 debian_years = list(range(1999, 2013))
-debian_releases = ['Slink', 'Potato', 'Woody', 'Sarge', 'Etch', 'Lenny', 'Squeeze']
+debian_releases = ['Slink', 'Potato', 'Woody', 'Sarge', 'Etch', 'Lenny', 'Squeeze', 'Wheezy']
 # Bipartite Multigraph graphml file with all python networks
 multigraph_file = os.path.join(data_dir, "cpython_multigraph.graphml.gz")
 
@@ -56,15 +56,15 @@ python_layouts_releases_file = os.path.join(results_dir, 'layouts_python_release
 ## Debian analysis results
 ##
 # Connectivity
-debian_connectivity_years_file = os.path.join(results_dir, 'structural_cohesion_debian_201611061716.pkl')
+debian_connectivity_years_file = os.path.join(results_dir, 'structural_cohesion_debian_years_201611141538.pkl')
 debian_connectivity_releases_file = os.path.join(results_dir, 'structural_cohesion_debian_releases_201611062047.pkl')
-debian_connectivity_null_model_years_file = os.path.join(results_dir, 'structural_cohesion_null_model_debian_years_201611082001.pkl')
+debian_connectivity_null_model_years_file = os.path.join(results_dir, 'structural_cohesion_null_model_debian_years_201611141553.pkl')
 debian_connectivity_null_model_releases_file = os.path.join(results_dir, 'structural_cohesion_null_model_debian_releases_201611082023.pkl')
 # Small world metrics
 debian_small_world_years_file = os.path.join(results_dir, 'small_world_debian_years_201611141323.pkl')
 debian_small_world_releases_file = os.path.join(results_dir, 'small_world_debian_201611052103.pkl')
 # Network Layouts
-debian_layouts_years_file = os.path.join(results_dir, 'layouts_debian_201611061716.pkl')
+debian_layouts_years_file = os.path.join(results_dir, 'layouts_debian_years_201611141608.pkl')
 debian_layouts_releases_file = os.path.join(results_dir, 'layouts_debian_releases_201611062157.pkl')
 
 ##

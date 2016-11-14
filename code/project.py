@@ -61,7 +61,7 @@ debian_connectivity_releases_file = os.path.join(results_dir, 'structural_cohesi
 debian_connectivity_null_model_years_file = os.path.join(results_dir, 'structural_cohesion_null_model_debian_years_201611082001.pkl')
 debian_connectivity_null_model_releases_file = os.path.join(results_dir, 'structural_cohesion_null_model_debian_releases_201611082023.pkl')
 # Small world metrics
-debian_small_world_years_file = os.path.join(results_dir, 'small_world_debian_years_201611071507.pkl')
+debian_small_world_years_file = os.path.join(results_dir, 'small_world_debian_years_201611141323.pkl')
 debian_small_world_releases_file = os.path.join(results_dir, 'small_world_debian_201611052103.pkl')
 # Network Layouts
 debian_layouts_years_file = os.path.join(results_dir, 'layouts_debian_201611061716.pkl')

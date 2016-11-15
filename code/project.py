@@ -57,9 +57,9 @@ python_layouts_releases_file = os.path.join(results_dir, 'layouts_python_release
 ##
 # Connectivity
 debian_connectivity_years_file = os.path.join(results_dir, 'structural_cohesion_debian_years_201611141538.pkl')
-debian_connectivity_releases_file = os.path.join(results_dir, 'structural_cohesion_debian_releases_201611062047.pkl')
+debian_connectivity_releases_file = os.path.join(results_dir, 'structural_cohesion_debian_releases_201611142003.pkl')
 debian_connectivity_null_model_years_file = os.path.join(results_dir, 'structural_cohesion_null_model_debian_years_201611141553.pkl')
-debian_connectivity_null_model_releases_file = os.path.join(results_dir, 'structural_cohesion_null_model_debian_releases_201611082023.pkl')
+debian_connectivity_null_model_releases_file = os.path.join(results_dir, 'structural_cohesion_null_model_debian_releases_201611150946.pkl')
 # Small world metrics
 debian_small_world_years_file = os.path.join(results_dir, 'small_world_debian_years_201611141323.pkl')
 debian_small_world_releases_file = os.path.join(results_dir, 'small_world_debian_201611052103.pkl')

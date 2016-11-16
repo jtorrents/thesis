@@ -311,11 +311,11 @@ def negative_binomial_tables(directory=tables_dir):
     ])
     control_variables = OrderedDict([
     ('psizes', 'Package Size'),
-    ('deps', '# of package despendencies'),
     ('bugs', '# bugs reported'),
-    ('tenure', 'Tenure (years)'),
-    ('degree', 'Degree'),
-    ('closeness', 'Closeness'),
+    ('deps', '# of package despendencies'),
+    ('tenure', 'Developer tenure (years)'),
+    ('degree_cent', 'Degree centrality'),
+    ('betweenness', 'Betweenness'),
     ('clus_sq', 'Square clustering'),
     ])
 

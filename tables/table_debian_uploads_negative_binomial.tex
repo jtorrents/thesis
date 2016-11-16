@@ -1,0 +1,42 @@
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: dc, nov 16, 2016 - 19:18:41
+% Requires LaTeX packages: dcolumn 
+\begin{table}[!htbp] \centering 
+  \caption{Negative binomial model for Debian uploads} 
+  \label{debian_nbinomial} 
+\begin{tabular}{@{\extracolsep{5pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-5} 
+\\[-1.8ex] & \multicolumn{4}{c}{Number of uploads by developer} \\ 
+\\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)} & \multicolumn{1}{c}{(3)} & \multicolumn{1}{c}{(4)}\\ 
+\hline \\[-1.8ex] 
+ Intercept & -0.647^{*} & -0.685^{***} & -0.901^{***} & -1.362^{***} \\ 
+  & (0.262) & (0.198) & (0.198) & (0.189) \\ 
+  log(Package size) & 0.309^{***} & 0.236^{***} & 0.244^{***} & 0.204^{***} \\ 
+  & (0.021) & (0.016) & (0.016) & (0.015) \\ 
+  \# of bugs reported & -0.007^{***} & 0.002 & 0.003 & 0.001 \\ 
+  & (0.002) & (0.001) & (0.001) & (0.001) \\ 
+  \# of package dependencies & -0.020^{**} & -0.016^{**} & -0.017^{**} & -0.022^{***} \\ 
+  & (0.008) & (0.006) & (0.006) & (0.005) \\ 
+  Developer tenure (years) & 0.105^{***} & 0.067^{***} & 0.074^{***} & 0.090^{***} \\ 
+  & (0.008) & (0.006) & (0.006) & (0.006) \\ 
+  Degree centrality &  & 56.374^{***} & 53.163^{***} & 35.202^{***} \\ 
+  &  & (1.868) & (1.883) & (1.816) \\ 
+  Betweenness &  & -9.538^{***} & -6.246^{**} & -9.026^{***} \\ 
+  &  & (1.921) & (1.936) & (1.815) \\ 
+  Square clustering &  &  & 0.393^{***} & -0.042 \\ 
+  &  &  & (0.077) & (0.077) \\ 
+  k-component number &  &  &  & 0.667^{***} \\ 
+  &  &  &  & (0.031) \\ 
+ \hline \\[-1.8ex] 
+Observations & \multicolumn{1}{c}{1,750} & \multicolumn{1}{c}{1,750} & \multicolumn{1}{c}{1,750} & \multicolumn{1}{c}{1,750} \\ 
+Log Likelihood & \multicolumn{1}{c}{-8,235.163} & \multicolumn{1}{c}{-7,538.000} & \multicolumn{1}{c}{-7,527.210} & \multicolumn{1}{c}{-7,394.033} \\ 
+Akaike Inf. Crit. & \multicolumn{1}{c}{16,480.330} & \multicolumn{1}{c}{15,090.000} & \multicolumn{1}{c}{15,070.420} & \multicolumn{1}{c}{14,806.070} \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.05; $^{**}$p$<$0.01; $^{***}$p$<$0.001} \\ 
+\end{tabular} 
+\end{table} 

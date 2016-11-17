@@ -18,11 +18,11 @@ ctrl <- glm.control(maxit=100)
 
 model1 <- glm.nb(contributions ~ psizes + bugs + deps + tenure, data=df, control=ctrl)
 
-model2 <- glm.nb(contributions ~ psizes + bugs + deps + tenure + degree_cent + betweenness, data=df, control=ctrl)
+model2 <- glm.nb(contributions ~ psizes + bugs + deps + tenure + degree_cent + closeness, data=df, control=ctrl)
 
-model3 <- glm.nb(contributions ~ psizes + bugs + deps + tenure + degree_cent + betweenness + clus_sq, data=df, control=ctrl)
+model3 <- glm.nb(contributions ~ psizes + bugs + deps + tenure + degree_cent + closeness + clus_sq, data=df, control=ctrl)
 
-model4 <- glm.nb(contributions ~ psizes + bugs + deps + tenure + degree_cent + betweenness + clus_sq + knum, data=df, control=ctrl)
+model4 <- glm.nb(contributions ~ psizes + bugs + deps + tenure + degree_cent + closeness + clus_sq + knum, data=df, control=ctrl)
 
 # Cheicking model assumptions
 pois4 <- glm(contributions ~ psizes + bugs + deps + tenure + degree + closeness + clus_sq + knum, family="poisson", data=df, control=ctrl)
@@ -51,7 +51,7 @@ stargazer(model1, model2, model3, model4,
                 "\\# of package dependencies",
                 "Developer tenure (years)",
                 "Degree centrality",
-                "Betweenness",
+                "Closeness",
                 "Square clustering",
                 "k-component number"
             ),

@@ -18,21 +18,21 @@ contrib_2000 <- contrib[contrib['year'] > 1999,]
 ##
 # Test several models againt each other
 # Regular OLS (for comparison)
-fit.lm <- lm(log(contributions_sc) ~ degree_cent + collaborators + tenure + betweenness + clus_sq + as.factor(top) + knum, data=contrib)
+fit.lm <- lm(log(contributions_sc) ~ degree_cent + collaborators + tenure + closeness + clus_sq + as.factor(top) + knum, data=contrib)
 summary(fit.lm)
 
 # Pooling OLS
-fit.po <- plm(log(contributions_sc) ~ degree_cent + collaborators + tenure + betweenness + clus_sq + as.factor(top) + knum, data=contrib, index=c("id", "year"), model="pooling")#, effect="time")
+fit.po <- plm(log(contributions_sc) ~ degree_cent + collaborators + tenure + closeness + clus_sq + as.factor(top) + knum, data=contrib, index=c("id", "year"), model="pooling")#, effect="time")
 
 summary(fit.po)
 
 # Fixed effects
-fit.fe <- plm(log(contributions_sc) ~ degree_cent + collaborators + tenure + betweenness + clus_sq + as.factor(top) + knum, data=contrib, index=c("id", "year"), model="within")#, effect="time")
+fit.fe <- plm(log(contributions_sc) ~ degree_cent + collaborators + tenure + closeness + clus_sq + as.factor(top) + knum, data=contrib, index=c("id", "year"), model="within")#, effect="time")
 
 summary(fit.fe)
 
 # Random effects
-fit.re <- plm(log(contributions_sc) ~ degree_cent + collaborators + tenure + betweenness + clus_sq + as.factor(top) + knum, data=contrib, index=c("id", "year"), model="random")#, effect="time")
+fit.re <- plm(log(contributions_sc) ~ degree_cent + collaborators + tenure + closeness + clus_sq + as.factor(top) + knum, data=contrib, index=c("id", "year"), model="random")#, effect="time")
 
 summary(fit.re)
 
@@ -58,24 +58,24 @@ rob.std.err <- sqrt(diag(cov.fit.fe))
 #
 # Make a pretty table with the results
 #
-fit.fe.1 <- plm(log(contributions_sc) ~ degree_cent + collaborators + tenure + betweenness, data=contrib, index=c("id", "year"), model="within")
+fit.fe.1 <- plm(log(contributions_sc) ~ degree_cent + collaborators + tenure + closeness, data=contrib, index=c("id", "year"), model="within")
 cov.fit.fe.1 <- vcovHC(fit.fe.1, type = "HC4")
 rob.std.err.1 <- sqrt(diag(cov.fit.fe.1))
 
-fit.fe.2 <- plm(log(contributions_sc) ~ degree_cent + collaborators + tenure + betweenness + clus_sq, data=contrib, index=c("id", "year"), model="within")
+fit.fe.2 <- plm(log(contributions_sc) ~ degree_cent + collaborators + tenure + closeness + clus_sq, data=contrib, index=c("id", "year"), model="within")
 cov.fit.fe.2 <- vcovHC(fit.fe.2, type = "HC4")
 rob.std.err.2 <- sqrt(diag(cov.fit.fe.2))
 
-fit.fe.3 <- plm(log(contributions_sc) ~ degree_cent + collaborators + tenure + betweenness + clus_sq + as.factor(top), data=contrib, index=c("id", "year"), model="within")
+fit.fe.3 <- plm(log(contributions_sc) ~ degree_cent + collaborators + tenure + closeness + clus_sq + as.factor(top), data=contrib, index=c("id", "year"), model="within")
 cov.fit.fe.3 <- vcovHC(fit.fe.3, type = "HC4")
 rob.std.err.3 <- sqrt(diag(cov.fit.fe.3))
 
-fit.fe.4 <- plm(log(contributions_sc) ~ degree_cent + collaborators + tenure + betweenness + clus_sq + as.factor(top) + knum, data=contrib, index=c("id", "year"), model="within")
+fit.fe.4 <- plm(log(contributions_sc) ~ degree_cent + collaborators + tenure + closeness + clus_sq + as.factor(top) + knum, data=contrib, index=c("id", "year"), model="within")
 cov.fit.fe.4 <- vcovHC(fit.fe.4, type = "HC4")
 rob.std.err.4 <- sqrt(diag(cov.fit.fe.4))
 
 stargazer(fit.fe.1, fit.fe.2, fit.fe.3, fit.fe.4,
-            title="Contributions Panel Regression Results", 
+            title="Contributions Fixed Effects Panel Regression Results", 
             dep.var.labels=c("Lines of Source Code"), 
             type='latex',
             out = '../tables/table_plm_contributions.tex',
@@ -83,10 +83,10 @@ stargazer(fit.fe.1, fit.fe.2, fit.fe.3, fit.fe.4,
             covariate.labels=c("Degree Centrality",
                                 "Collaborators", 
                                 "Tenure (years)", 
-                                "Betweenness", 
+                                "Closeness", 
                                 "Square clustering", 
                                 "Top connectivity level", 
-                                "$\\kappa$-component number"
+                                "k-component number"
             ),
             no.space=TRUE,
             omit.stat=c("f", "rsq"),
@@ -102,17 +102,17 @@ contrib_2000 <- contrib[contrib['year'] > 1999,]
 # Regression Models for Count Data in R
 # www.jstatsoft.org/v27/i08/paper
 
-plain.negbin <- glm.nb(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + betweenness + clus_sq + factor(top) + knum, data=contrib_2000)
+plain.negbin <- glm.nb(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + closeness + clus_sq + factor(top) + knum, data=contrib_2000)
 
 summary(plain.negbin)
 
 # Test if top is statistically significant (previous model only used top=1 because it is a factor)
-plain.negbin.ntop <- glm.nb(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + betweenness + clus_sq + knum, data=contrib_2000)
+plain.negbin.ntop <- glm.nb(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + closeness + clus_sq + knum, data=contrib_2000)
 anova(plain.negbin, plain.negbin.ntop)
 # Looks good
 
 # Cheicking model assumptions
-poisson.glm <- glm(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + betweenness + clus_sq + factor(top) + knum, family="poisson", data=contrib_2000)
+poisson.glm <- glm(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + closeness + clus_sq + factor(top) + knum, family="poisson", data=contrib_2000)
 
 pchisq(2 * (logLik(plain.negbin) - logLik(poisson.glm)), df=1, lower.tail=FALSE)
 ## 'log Lik.' 8.822025e-115 (df=24)
@@ -122,11 +122,11 @@ pchisq(2 * (logLik(plain.negbin) - logLik(poisson.glm)), df=1, lower.tail=FALSE)
 exp(est)
 
 # Hurdle and Zero inflated versions of the negative binomial model
-negbin.hurdle <- hurdle(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + betweenness + clus_sq + factor(top) + knum, dist="negbin", data=contrib_2000)
+negbin.hurdle <- hurdle(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + closeness + clus_sq + factor(top) + knum, dist="negbin", data=contrib_2000)
 
 summary(negbin.hurdle)
 
-negbin.zi <- zeroinfl(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + betweenness + clus_sq + factor(top) + knum, dist="negbin", data=contrib_2000, EM=TRUE)
+negbin.zi <- zeroinfl(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + closeness + clus_sq + factor(top) + knum, dist="negbin", data=contrib_2000, EM=TRUE)
 
 summary(negbin.zi)
 
@@ -158,13 +158,13 @@ fit <- hurdle(total_accepted_peps ~ tenure + factor(top), dist = "negbin", data=
 
 
 # Make a nice table
-zinfl.1 <- zeroinfl(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + betweenness + clus_sq, dist="negbin", data=contrib_2000, EM=TRUE)
+zinfl.1 <- zeroinfl(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + closeness + clus_sq, dist="negbin", data=contrib_2000, EM=TRUE)
 
-zinfl.2 <- zeroinfl(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + betweenness + clus_sq + factor(top), dist="negbin", data=contrib_2000, EM=TRUE)
+zinfl.2 <- zeroinfl(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + closeness + clus_sq + factor(top), dist="negbin", data=contrib_2000, EM=TRUE)
 
-zinfl.3 <- zeroinfl(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + betweenness + clus_sq + knum, dist="negbin", data=contrib_2000, EM=TRUE)
+zinfl.3 <- zeroinfl(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + closeness + clus_sq + knum, dist="negbin", data=contrib_2000, EM=TRUE)
 
-zinfl.4 <- zeroinfl(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + betweenness + clus_sq + factor(top) + knum, dist="negbin", data=contrib_2000, EM=TRUE)
+zinfl.4 <- zeroinfl(total_accepted_peps ~ factor(year) + log(contributions_sc) + degree_cent + tenure + collaborators + closeness + clus_sq + factor(top) + knum, dist="negbin", data=contrib_2000, EM=TRUE)
 
 
 stargazer(zinfl.1, zinfl.2, zinfl.3, zinfl.4,
@@ -178,10 +178,10 @@ stargazer(zinfl.1, zinfl.2, zinfl.3, zinfl.4,
                 "Degree Centrality",
                 "Tenure (years)", 
                 "Collaborators", 
-                "Betweenness", 
+                "Closeness", 
                 "Square clustering", 
                 "Top connectivity level", 
-                "$\\kappa$-component number"
+                "k-component number"
             ),
             zero.component=FALSE,
             omit="year",

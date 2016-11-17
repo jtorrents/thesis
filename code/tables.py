@@ -192,7 +192,7 @@ def write_correlation_table(dataframe, variables, labels, fname, caption=None, t
         #out.write('\ \n')
 
 ##
-## Finctions to define each pair of descriptive -- correlation tables
+## Functions to define each pair of descriptive -- correlation tables
 ##
 def survival_regression_tables(directory=tables_dir):
     fname_dataframe = os.path.join(data_dir, 'survival_python_df.csv')
@@ -212,7 +212,7 @@ def survival_regression_tables(directory=tables_dir):
     ('degree', 'Degree'),
     ('tenure', 'Tenure (years)'),
     ('colaborators', 'Collaborators'),
-    ('betweenness', 'Betweenness'),
+    ('closeness', 'Closeness'),
     ('clus_sq', 'Square clustering'),
     ])
 
@@ -263,7 +263,7 @@ def contributions_panel_regression_tables(directory=tables_dir):
     ('degree_cent', 'Degree Centrality'),
     ('tenure', 'Tenure (years)'),
     ('collaborators', 'Collaborators'),
-    ('betweenness', 'Betweenness'),
+    ('closeness', 'Closeness'),
     ('clus_sq', 'Square clustering'),
     ])
 
@@ -296,6 +296,57 @@ def contributions_panel_regression_tables(directory=tables_dir):
                             caption_corr, tlabel_corr)
 
 
+def peps_zero_inflated_nb_tables(directory=tables_dir):
+    fname_dataframe = os.path.join(data_dir, 'developer_contributions_df.csv')
+    dataframe = get_dataframe(fname_dataframe)
+    # Define variables
+    # Variables appear in the same order as written here in the
+    # descriptive and correlation tables.
+    dependent_variable = OrderedDict([
+    ('total_accepted_peps', 'Total accepted PEPs'),
+    ('contributions_sc', '# of lines of code authored'),
+    ])
+    independent_variables = OrderedDict([
+    ('top', 'Top connectivity level'),
+    ('knum', r'k-component number'),
+    ])
+    control_variables = OrderedDict([
+    ('degree_cent', 'Degree Centrality'),
+    ('tenure', 'Tenure (years)'),
+    ('collaborators', 'Collaborators'),
+    ('closeness', 'Closeness'),
+    ('clus_sq', 'Square clustering'),
+    ])
+
+    variables = list(
+    chain.from_iterable([
+        dependent_variable,
+        control_variables,
+        independent_variables,
+        ])
+    )
+
+    labels = dict(
+    chain.from_iterable([
+        dependent_variable.items(),
+        control_variables.items(),
+        independent_variables.items(),
+        ])
+    )
+
+    tlabel_desc = 'desc_table_zinfl'
+    tlabel_corr = 'corr_table_zinfl'
+    caption_desc = 'Descriptive statistics for accepted PEPs from Python developers.'
+    caption_corr = 'Correlation matrix for accepted PEPs from Python developers.'
+    fname_descriptives = os.path.join(directory, 'table_descriptives_zinfl_regression.tex')
+    fname_correlation = os.path.join(directory, 'table_correlation_zinfl_regression.tex')
+
+    write_descriptives_table(dataframe, variables, labels, fname_descriptives,
+                             caption_desc, tlabel_desc)
+    write_correlation_table(dataframe, variables, labels, fname_correlation,
+                            caption_corr, tlabel_corr)
+
+
 def negative_binomial_tables(directory=tables_dir):
     fname_dataframe = os.path.join(data_dir, 'debian_Wheezy_developers_df.csv')
     dataframe = get_dataframe(fname_dataframe)
@@ -315,7 +366,7 @@ def negative_binomial_tables(directory=tables_dir):
     ('deps', '# of package despendencies'),
     ('tenure', 'Developer tenure (years)'),
     ('degree_cent', 'Degree centrality'),
-    ('betweenness', 'Betweenness'),
+    ('closeness', 'Closeness'),
     ('clus_sq', 'Square clustering'),
     ])
 
@@ -369,6 +420,8 @@ def main():
                         help='Descriptive and correlation tables for Python survival regression')
     group_model.add_argument('-n', '--nbinomial', action='store_true',
                         help='Descriptive and correlation tables for Debian negative binomial')
+    group_model.add_argument('-z', '--zero_inflated', action='store_true',
+                        help='Descriptive and correlation tables for Python zero inflated NB.')
 
     args = parser.parse_args()
 
@@ -378,6 +431,8 @@ def main():
         survival_regression_tables()
     elif args.nbinomial:
         negative_binomial_tables()
+    elif args.zero_inflated:
+        peps_zero_inflated_nb_tables()
 
 
 if __name__ == '__main__':

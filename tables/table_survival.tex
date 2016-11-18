@@ -1,37 +1,39 @@
 
 % Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
-% Date and time: dt, nov 01, 2016 - 13:03:27
+% Date and time: dv, nov 18, 2016 - 12:37:21
 % Requires LaTeX packages: dcolumn 
 \begin{table}[!htbp] \centering 
   \caption{Survival Analysis: Cox proportional hazards regression model} 
-  \label{} 
-\begin{tabular}{@{\extracolsep{5pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
+  \label{python_cox_reg} 
+\begin{tabular}{@{\extracolsep{5pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
 \\[-1.8ex]\hline 
 \hline \\[-1.8ex] 
- & \multicolumn{3}{c}{\textit{Dependent variable:}} \\ 
-\cline{2-4} 
-\\[-1.8ex] & \multicolumn{3}{c}{Time active in the community} \\ 
-\\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)} & \multicolumn{1}{c}{(3)}\\ 
+ & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-5} 
+\\[-1.8ex] & \multicolumn{4}{c}{Time active in the project} \\ 
+\\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)} & \multicolumn{1}{c}{(3)} & \multicolumn{1}{c}{(4)}\\ 
 \hline \\[-1.8ex] 
- Total accepted PEPs & -0.111 & -0.122 & -0.107 \\ 
-  & (0.115) & (0.118) & (0.119) \\ 
-  Contributions & -0.00001 & -0.00001 & -0.00001 \\ 
-  & (0.00003) & (0.00003) & (0.00003) \\ 
-  Collaborators & 0.005 & -0.012 & 0.004 \\ 
-  & (0.010) & (0.008) & (0.009) \\ 
-  Degree & -0.012 & -0.015 & -0.006 \\ 
-  & (0.007) & (0.008) & (0.007) \\ 
-  k-component number & -0.349^{***} &  & -0.286^{**} \\ 
-  & (0.098) &  & (0.099) \\ 
-  Top connectivity level &  & -1.681^{**} & -1.351^{*} \\ 
-  &  & (0.623) & (0.660) \\ 
+ Total accepted PEPs & -0.118 & -0.105 & -0.113 & -0.103 \\ 
+  & (0.111) & (0.114) & (0.118) & (0.118) \\ 
+  Contributions & -0.00003 & -0.00002 & -0.00003 & -0.00002 \\ 
+  & (0.00003) & (0.00003) & (0.00003) & (0.00003) \\ 
+  Collaborators & -0.015 & 0.005 & -0.012 & 0.004 \\ 
+  & (0.008) & (0.010) & (0.008) & (0.009) \\ 
+  Degree Centrality & -50.770^{**} & -13.886 & -25.344 & -6.944 \\ 
+  & (15.834) & (12.770) & (15.175) & (12.282) \\ 
+  Closeness & 7.894 & 0.930 & 5.212 & 1.015 \\ 
+  & (5.052) & (4.741) & (4.562) & (4.353) \\ 
+  k-component number &  & -0.376^{***} &  & -0.295^{**} \\ 
+  &  & (0.097) &  & (0.101) \\ 
+  Top connectivity level &  &  & -1.885^{**} & -1.467^{*} \\ 
+  &  &  & (0.617) & (0.657) \\ 
  \hline \\[-1.8ex] 
-Observations & \multicolumn{1}{c}{754} & \multicolumn{1}{c}{754} & \multicolumn{1}{c}{754} \\ 
-R$^{2}$ & \multicolumn{1}{c}{0.137} & \multicolumn{1}{c}{0.133} & \multicolumn{1}{c}{0.143} \\ 
-Max. Possible R$^{2}$ & \multicolumn{1}{c}{0.396} & \multicolumn{1}{c}{0.396} & \multicolumn{1}{c}{0.396} \\ 
-Log Likelihood & \multicolumn{1}{c}{-134.570} & \multicolumn{1}{c}{-136.426} & \multicolumn{1}{c}{-132.191} \\ 
+Observations & \multicolumn{1}{c}{754} & \multicolumn{1}{c}{754} & \multicolumn{1}{c}{754} & \multicolumn{1}{c}{754} \\ 
+R$^{2}$ & \multicolumn{1}{c}{0.118} & \multicolumn{1}{c}{0.135} & \multicolumn{1}{c}{0.132} & \multicolumn{1}{c}{0.142} \\ 
+Max. Possible R$^{2}$ & \multicolumn{1}{c}{0.396} & \multicolumn{1}{c}{0.396} & \multicolumn{1}{c}{0.396} & \multicolumn{1}{c}{0.396} \\ 
+Log Likelihood & \multicolumn{1}{c}{-142.808} & \multicolumn{1}{c}{-135.379} & \multicolumn{1}{c}{-136.915} & \multicolumn{1}{c}{-132.501} \\ 
 \hline 
 \hline \\[-1.8ex] 
-\textit{Note:}  & \multicolumn{3}{r}{$^{*}$p$<$0.05; $^{**}$p$<$0.01; $^{***}$p$<$0.001} \\ 
+\textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.05; $^{**}$p$<$0.01; $^{***}$p$<$0.001} \\ 
 \end{tabular} 
 \end{table} 

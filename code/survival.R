@@ -6,23 +6,25 @@ df <- read.csv('../data/survival_python_df.csv')
 # Stratifyed by tenure and interactions of contributions and core with time for proportional hazards
 # http://cran.r-project.org/doc/contrib/Fox-Companion/appendix-cox-regression.pdf
 
-fit.cox.knum <- coxph(Surv(rstart, rstop, status) ~ strata(tenure) + total_accepted_peps + contributions + colaborators + degree + knum, data=df)
-fit.cox.top <- coxph(Surv(rstart, rstop, status) ~ strata(tenure) + total_accepted_peps + contributions + colaborators + degree + top, data=df)
-fit.cox.all <- coxph(Surv(rstart, rstop, status) ~ strata(tenure) + total_accepted_peps + contributions + colaborators + degree + top + knum, data=df)
+fit.cox <- coxph(Surv(rstart, rstop, status) ~ strata(tenure) + total_accepted_peps + contributions + colaborators + dcentrality + closeness, data=df)
+fit.cox.knum <- coxph(Surv(rstart, rstop, status) ~ strata(tenure) + total_accepted_peps + contributions + colaborators + dcentrality + closeness + knum, data=df)
+fit.cox.top <- coxph(Surv(rstart, rstop, status) ~ strata(tenure) + total_accepted_peps + contributions + colaborators + dcentrality + closeness + top, data=df)
+fit.cox.all <- coxph(Surv(rstart, rstop, status) ~ strata(tenure) + total_accepted_peps + contributions + colaborators + dcentrality + closeness + knum + top, data=df)
 
 summary(fit.cox.all)
 
-stargazer(fit.cox.knum, fit.cox.top, fit.cox.all,
+stargazer(fit.cox, fit.cox.knum, fit.cox.top, fit.cox.all,
             out = '../tables/table_survival.tex',
             #se = NULL, # list(rob.std.err.1, rob.std.err.2, rob.std.err.3, rob.std.err.4)
             title="Survival Analysis: Cox proportional hazards regression model",
             align=TRUE,
-            dep.var.labels=c("Time active in the community"),
+            dep.var.labels=c("Time active in the project"),
             covariate.labels=c(
                 "Total accepted PEPs",
                 "Contributions",
                 "Collaborators",
-                "Degree",
+                "Degree Centrality",
+                "Closeness",
                 "k-component number",
                 "Top connectivity level"
             ),

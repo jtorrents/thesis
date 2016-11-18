@@ -39,87 +39,15 @@ def to_datetime(d):
         return pd.NaT
     return datetime.strptime(str(d), '%Y%m%d')
 
+
 def get_dataframe(fname):
     return pd.read_csv(fname, na_values=['.'])
 
-##
-## Tables
-##
-def write_mobility_table(G=None, fname='../tables/table_mobility.tex'):
-    if G is None:
-        G = get_dataframe()
-    def formatter(x):
-        #print(type(x), x, x % 1)
-        if not almost_zero(x % 1, decimal=4):
-            return '{:.1f}'.format(x)
-        else:
-            return '{:,d}'.format(int(x))
-    years = list(range(1992, 2014))
-    columns = OrderedDict([
-        ('num_dev', '# Devs top'),
-        ('num_dev_pct', '% of all devs'),
-        ('new_devs', '# New devs'),
-        ('new_devs_pct', '% new devs'),
-        ('out_devs', '# Devs out'),
-        ('out_devs_pct', '% Devs out'),
-        ('came_back', '# Devs back'),
-        ('came_back_pct', '% Devs back'),
-    ])
-    with open(fname, 'w') as out:
-        out.write('\\begin{table}\n')
-        out.write('\caption{Mobility table.}\n')
-        out.write('\\begin{center}\n')
-        out.write('\\begin{small}\n')
-        #out.write('\\ \n')
-
-        df = pd.DataFrame(
-            index=years,
-            columns=[
-                'num_dev', 'num_dev_pct',
-                'new_devs', 'new_devs_pct',
-                'out_devs', 'out_devs_pct',
-                'came_back', 'came_back_pct',
-            ])
-        for year in years:
-            total_all_net = G.node[year]['total_devs']
-            total = G.node[year]['number_devs']
-            node_in = '{}-in'.format(year)
-            if node_in in G:
-                devs_in = G.node[node_in]['number_devs']
-            else:
-                devs_in = 0
-            node_out = '{}-out'.format(year)
-            if node_out in G:
-                devs_out = G.node[node_out]['number_devs']
-            else:
-                devs_out = 0
-            back = 0
-            for u in G.predecessors(year):
-                if u in years:
-                    if not u == year-1:
-                        back += G.edge[u][year]['weight']
-            df.loc[year, 'num_dev'] = total
-            df.loc[year, 'num_dev_pct'] = (total /total_all_net) * 100
-            df.loc[year, 'new_devs'] = devs_in
-            df.loc[year, 'new_devs_pct'] = (devs_in / total) * 100
-            df.loc[year, 'out_devs'] = devs_out
-            df.loc[year, 'out_devs_pct'] = (devs_out / total) * 100
-            df.loc[year, 'came_back'] = back
-            df.loc[year, 'came_back_pct'] = (back / total) * 100
-        # Write the actual table with pandas
-        # Change column names
-        dataframe = df.rename(columns=columns)
-        out.write(dataframe.to_latex(float_format=formatter))
-
-        out.write('\end{small}\n')
-        out.write('\end{center} \n')
-        out.write('\end{table}\n')
-        #out.write('\ \n')
 
 ##
 ## Descriptives and correlation tables
 ##
-# Add numbers to vars as in correlations
+# Add numbers to variables as in correlations
 def write_descriptives_table(dataframe, variables, labels, fname, caption=None, tlabel=None):
     if caption is None:
         caption = 'Descriptive statistics.'
@@ -205,12 +133,12 @@ def survival_regression_tables(directory=tables_dir):
     ('contributions', '# of lines of code authored'),
     ])
     independent_variables = OrderedDict([
-    ('top', 'Top connectivity level'),
     ('knum', r'k-component number'),
+    ('top', 'Top connectivity level'),
     ])
     control_variables = OrderedDict([
-    ('degree', 'Degree'),
     ('tenure', 'Tenure (years)'),
+    ('dcentrality', 'Degree centrality'),
     ('colaborators', 'Collaborators'),
     ('closeness', 'Closeness'),
     ('clus_sq', 'Square clustering'),

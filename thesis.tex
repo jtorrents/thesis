@@ -1,7 +1,7 @@
 \documentclass[a4paper,12pt]{memoir}
 \usepackage{times}
 \usepackage[utf8x]{inputenc}
-\usepackage[english]{babel}
+\usepackage[english,catalan]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[breaklinks, colorlinks, linkcolor=black, citecolor=black, urlcolor=blue, filecolor=black]{hyperref}
 \usepackage{natbib}
@@ -61,84 +61,58 @@
   pdfauthor={Jordi Torrents},%
   pdfcreator={Jordi Torrents},%
   pdfproducer=LaTeX,%
-  pdfsubject={},%
-  pdfkeywords={}%
+  pdfsubject={Sociology PhD Thesis},%
+  pdfkeywords={Cooperation, Networks, Small World, Structural Cohesion, Cohesive Small World, Free Software, FOSS}%
 }
 
-\title{\Huge {The Structural Dimension of Cooperation}\\ \Large{Dynamic hierarchies and their role in Socialization}}
+\title{\Huge {The Structural Dimension of Cooperation}\\ \Large{Cooperation Networks as Cohesive Small Worlds}}
 \author{Jordi Torrents Vivó \\jordi.t21@gmail.com}
 \date{\today}
 
 
 \begin{document}
 
-\begin{titlingpage}
-\begin{center}
-{\Huge \textsc{\textbf{The Structural Dimension of Cooperation}}}\\[1cm]
-{\Huge Nice subtitle}\\[2cm]
-{\Large Jordi Torrents Vivó} \\
-{\large jtorrents@milnou.net}\\[1cm]
-{\Large November 2016}\\[7cm]
-{\large Director:  \Large Joaquim Sempere Carreras} \\[1.5cm]
-{\LARGE PhD Thesis}\\[0.5cm]
-{\LARGE Doctorat de Sociologia}\\[1cm]
-{\Large Departament de Teoria Sociològica, Filosofia del Dret i Metodologia de les Ciències Socials} \\[0.5cm]
-{\LARGE Universitat de Barcelona}\\
-\end{center}
-\end{titlingpage}
-\cleardoublepage
+\frontmatter
+    \input{frontmatter/titlepage.tex}
+    \input{frontmatter/dedication.tex}
+    \input{frontmatter/abstract.tex}
+    \input{frontmatter/acknowledgements.tex}
 
-%\maketitle
-\pagenumbering{roman}
-\setcounter{tocdepth}{3}
-\tableofcontents
-\newpage
-\listoffigures
-\newpage
-\listoftables
-\newpage
-%\cleardoublepage
-%\thispagestyle{empty}
+    \setcounter{tocdepth}{3}
+    \tableofcontents
+    \newpage
+    \listoffigures
+    \newpage
+    \listoftables
+    \newpage
 
-\pagenumbering{arabic}
 
-\part{Introduction}
+\mainmatter
+    \part{Introduction}
+        \input{chapters/chapter_intro.tex}
 
-\input chapters/chapter_intro.tex
+    \part{Theory and Methods}
+        \input{chapters/chapter_collaborative_communities.tex}
+        \input{chapters/chapter_structural_cohesion.tex}
 
-\part{Theory and Methodology}
+    \part{Empirical analysis}
+        \input{chapters/chapter_historical_outline.tex}
+        \input{chapters/chapter_cohesive_small_worlds.tex}
+        \input{chapters/chapter_connectivity_hierarchies_and_contributions.tex}
 
-\input chapters/chapter_collaborative_communities.tex
+    \part{Conclusion and Future Work}
+        \input{chapters/chapter_conclusion.tex}
 
-\input chapters/chapter_structural_cohesion.tex
+    \part{Appendices}
+    \appendix
+    %\gdef\thechapter{Appendix \Alph{chapter}}
+        \input{appendices/appendix_small_world.tex}
+        \input{appendices/appendix_cohesive_groups.tex}
+        \input{appendices/appendix_support_tables.tex}
+        \input{appendices/appendix_publications.tex}
 
-\part{Empirical analysis}
-
-\input chapters/chapter_historical_outline.tex
-
-\input chapters/chapter_cohesive_small_worlds.tex
-
-\input chapters/chapter_connectivity_hierarchies_and_contributions.tex
-
-\part{Conclusion and Future Work}
-
-\input chapters/chapter_conclusion.tex
-
-% Bibliografia
-%\nocite{*}
-\bibliographystyle{chicago}
-%\bibliographystyle{ajs}
-\bibliography{thesis}
-
-\appendix
-%\gdef\thechapter{Appendix \Alph{chapter}}
-
-\input appendices/appendix_small_world.tex
-
-\input appendices/appendix_cohesive_groups.tex
-
-\input appendices/appendix_publications.tex
-
-\input appendices/appendix_support_tables.tex
+\backmatter
+    \bibliographystyle{chicago}
+    \bibliography{thesis}
 
 \end{document}

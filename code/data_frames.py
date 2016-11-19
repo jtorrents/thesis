@@ -10,8 +10,8 @@ import networkx as nx
 from networkx.algorithms import bipartite as bp
 #from networkx.algorithms.connectivity.approximation import k_components
 
-from sna.analysis.kcomponents import k_components
-from sna import utils
+from kcomponents import k_components
+import utils
 
 from data import (networks_by_year, networks_by_branches, 
                   get_multigraph, branches, get_peps)

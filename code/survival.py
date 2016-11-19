@@ -1,60 +1,54 @@
 # Survival anaysis in python
-import os
-import csv
-from itertools import tee, izip
+import argparse
 from copy import copy
+import csv
+import os
+import sys
 
 import numpy as np
 import pandas as pd
 # https://github.com/CamDavidsonPilon/lifelines
 import lifelines
 
-# Set up some better defaults for matplotlib
-# Based on https://raw.github.com/cs109/content/master/lec_03_statistical_graphs.ipynb
+from matplotlib import cm
+color_map = cm.get_cmap('Dark2', 8)
 from matplotlib import rcParams
-# colorbrewer2 Dark2 qualitative color table
-import brewer2mpl
-dark2_colors = brewer2mpl.get_map('Dark2', 'Qualitative', 8).mpl_colors
-# we need 10 colors but dark2 has only 8, we almost always will use less than 8
-# Thus we append the two first colors for 'Set3', 'Qualitative'
-dark2_colors.append((0.5529411764705883, 0.8274509803921568, 0.7803921568627451))
-dark2_colors.append((1.0, 1.0, 0.7019607843137254))
-#dark2_colors = brewer2mpl.get_map('Set3', 'Qualitative', 10).mpl_colors
-rcParams['figure.figsize'] = (10, 6)
-rcParams['figure.dpi'] = 150
-rcParams['axes.color_cycle'] = dark2_colors
+rcParams['font.family'] = 'sherif'
+rcParams['font.serif'] = 'Times'
+rcParams['text.usetex'] = True
+rcParams['figure.figsize'] = (10, 8)
+rcParams['figure.dpi'] = 300
 rcParams['lines.linewidth'] = 2
 rcParams['axes.facecolor'] = 'white'
-rcParams['font.size'] = 14
+rcParams['font.size'] = 16
 rcParams['patch.edgecolor'] = 'white'
-rcParams['patch.facecolor'] = dark2_colors[0]
+from matplotlib import pyplot as plt
 
-from sna import utils
-
-from project import connectivity_file, survival_file, default_years
-from data import networks_by_year
+from project import lifetime_file, python_years, tmp_dir, plots_dir
+from project import get_structural_cohesion_results
+from networks import python_networks_by_year
 
 ##
 ## Helper functions
 ##
 def get_developers_by_years(networks=None):
     if networks is None:
-        networks = networks_by_year()
+        networks = python_networks_by_year()
     devs_by_year = {}
-    for G in networks:
+    for name, G in networks:
         year = G.graph['year']
-        devs = set(n for n, d in G.nodes(data=True) if d['bipartite']==1)
+        devs = {n for n, d in G.nodes(data=True) if d['bipartite']==1}
         devs_by_year[year] = devs
     return devs_by_year
 
 def get_all_remaining_devs(devs_by_year, years):
     return set.union(*[v for k, v in devs_by_year.items() if k in years])
 
-def get_developers_top_connectivity(devs_by_year=None, connectivity=None):
+def get_developers_top_connectivity(devs_by_year=None):
     if devs_by_year is None:
         devs_by_year = get_developers_by_years()
     if connectivity is None:
-        connectivity = utils.load_result_pkl(connectivity_file)
+        connectivity = get_structural_cohesion_results('python', 'years')
     all_devs = set.union(*[v for k, v in devs_by_year.items()])
     top_devs = set()
     for year in connectivity:
@@ -114,10 +108,10 @@ def compute_lifetime(devs_by_year, years):
     return lifetime
 
 def get_lifetime_data_frame(recompute=False):
-    if not recompute and os.path.exists(survival_file):
-        return pd.read_csv(survival_file)
+    if not recompute and os.path.exists(lifetime_file):
+        return pd.read_csv(lifetime_file)
     devs_by_year = get_developers_by_years()
-    years = default_years
+    years = python_years
     lifetime = compute_lifetime(devs_by_year, years)
     df = pd.DataFrame(
         data=lifetime.values(),
@@ -143,8 +137,87 @@ def compute_censorship(networks):
                 seen.add(dev)
     return censorship
 
-def build_python_survival_df(fname='data/survival_python_df.csv'):
-    years = range(1991, 2014)
-    networks = list(networks_by_year())
-    devs_by_year = get_developers_by_years(networks)
-     
+
+##
+## Survival analysts plots
+##
+def survival_estimation(directory=tmp_dir):
+    """ Use the Kaplan-Meier Estimate to estimate the survival function
+    
+        see: https://github.com/CamDavidsonPilon/lifelines    
+    """
+    from lifelines.estimation import KaplanMeierFitter
+
+    df = get_lifetime_data_frame(recompute=False)
+    # Estimate the survival function for all developers
+    T = df['duration']
+    C = df['censored']
+    kmf = KaplanMeierFitter()
+    kmf.fit(T, event_observed=C, label='All developers')
+    print("Median survival time for all developers: {} years".format(kmf.median_))
+    fig = plt.figure(figsize=(10, 8))
+    ax = plt.subplot(111)
+    kmf.plot(ax=ax, color=color_map(2))
+    plt.ylabel('Survival probablility')
+    plt.xlabel('Time in years')
+    plt.ylim(0,1)
+    plt.grid()
+    #plt.title("Estimated Survival function for developer activity")
+    if directory is None:
+        plt.ion()
+        plt.show()
+    else:
+        plt.savefig('{0}/survival_all.png'.format(directory))
+        plt.savefig('{0}/survival_all.pdf'.format(directory))
+        plt.close()
+    # Estimate the survival function by connectivity level
+    mtop = df['top'] == 1
+    kmf = KaplanMeierFitter()
+    fig = plt.figure(figsize=(10, 8))
+    ax = plt.subplot(111)
+    kmf.fit(T[mtop], event_observed=C[mtop], label="Top connectivity level")
+    print("Median survival time for top developers: {} years".format(kmf.median_))
+    kmf.plot(ax=ax, color=color_map(0))
+    kmf.fit(T[~mtop], event_observed=C[~mtop], label="Not in the top")
+    print("Median survival time for not top developers: {} years".format(kmf.median_))
+    kmf.plot(ax=ax, color=color_map(1))
+    plt.ylabel('Survival probablility')
+    plt.xlabel('Time in years')
+    plt.ylim(0,1)
+    plt.grid()
+    #plt.title("Estimated Survival function for top level connectivity")
+    if directory is None:
+        plt.ion()
+        plt.show()
+    else:
+        plt.savefig('{0}/survival_top.png'.format(directory))
+        plt.savefig('{0}/survival_top.pdf'.format(directory))
+        plt.close()
+
+
+##
+## Main function
+##
+def main():
+    # Print help when we find an error in arguments
+    class DefaultHelpParser(argparse.ArgumentParser):
+        def error(self, message):
+            sys.stderr.write('error: %s\n' % message)
+            self.print_help()
+            sys.exit(2)
+
+    #parser = argparse.ArgumentParser()
+    parser = DefaultHelpParser()
+
+    parser.add_argument('-p', '--plots', action='store_true',
+                        help='Plot Kaplan-Meier survival estimations')
+
+
+    args = parser.parse_args()
+
+    if args.plots:
+        survival_estimation()
+
+
+if __name__ == '__main__':
+    main()

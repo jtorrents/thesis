@@ -187,9 +187,9 @@ $$
 \hat{S}(t) = \prod_{t_i < t} \frac{n_i - d_i}{n_i}
 $$
 
-where $d_i$ are the number of ``death events'' at time $t$ and $n_i$ is the number of subjects at risk of death at time $t$. If we compute the Kaplan-Meier estimator for all developers (figure \ref{fig:survival_all}) we can see that the median time of a developer on the community, defined as the point in time where on average half of the population has abandoned the community, is 5 years. But if we consider separately the developers in the top level of the connectivity hierarchy (figure \ref{fig:survival_groups}), their median time is 10 years; but only 3 years for the developers that are not on the top of the connectivity hierarchy.
+where $d_i$ are the number of ``death events'' at time $t$ and $n_i$ is the number of subjects at risk of death at time $t$. If we compute the Kaplan-Meier estimator for all developers (figure \ref{fig:survival_all}) we can see that the median survival time of a developer on the community, defined as the point in time where on average half of the population has abandoned the community, is 6 years. But if we consider separately the developers in the top level of the connectivity hierarchy (figure \ref{fig:survival_groups}), their median survival time is 12 years; but only 3 years for the developers that are not on the top of the connectivity hierarchy.
 
-Although it is clear that the two survival functions depicted in figure \ref{fig:survival_groups} are different, we performed the log rank test, a common statistical test in survival analysis that compares two event series' generators. The test confirms that that the two series have different generator mechanisms and are significantly different.
+Although it is clear that the two survival functions depicted in figure \ref{fig:survival_groups} are different, we performed the log rank test, a common statistical test in survival analysis that compares two event series' generators. The test confirms that that the two series have different generator mechanisms and are significantly different. The Kaplan-Meier estimatior analysis and plots are performed using the lifelines python package \citep{lifelines:2016}.
 
 Finally, given that we observe an important flow of new developers towards the top levels of the connectivity hierarchy; and also having established that the contributions of the developers in these top levels is significantly higher than other developers, it is interesting to analyze the personal trajectories of developers in the project. We model the active time of developers in the Python project using a Cox proportional hazards model with time-dependent covariates and right-censoring \citep[appendix on survival analysis]{fox:2002}.
 
@@ -198,15 +198,15 @@ Finally, given that we observe an important flow of new developers towards the t
 \centering
 \subfloat[Survival Function for all developers]{
 \label{fig:survival_all}
-\includegraphics[scale=0.28]{figures/survival_all}
+\includegraphics[scale=0.35]{figures/survival_all}
 }
 \hspace{.01in}
 \subfloat[Survival Function for developers in the top connectivity level]{
 \label{fig:survival_groups}
-\includegraphics[scale=0.28]{figures/survival_top}
+\includegraphics[scale=0.35]{figures/survival_top}
 }
 \label{fig:survival}
-\caption[Survival function using the Kaplan-Meier estimate.]{Estimation of the survival function using the Kaplan-Meier estimate. The median time of a developer in the community, defined as the point in time where on average half of the population has abandoned the community, is 5 years if we consider all developers (left). But if we consider separately the developers in the top level of the connectivity hierarchy (right), their median time is 10 years; but only 3 years for the developers that are not on the top of the connectivity hierarchy.}
+\caption[Survival function using the Kaplan-Meier estimate.]{Estimation of the survival function using the Kaplan-Meier estimate. The median survival time of a developer in the community, defined as the point in time where on average half of the population has abandoned the community, is 6 years if we consider all developers (left). But if we consider separately the developers in the top level of the connectivity hierarchy (right), their median survival time is 12 years; but only 3 years for the developers that are not on the top of the connectivity hierarchy.}
 \end{figure}
 
 We are interested in assessing the impact of being in the higher levels of the connectivity structure in terms of the expected active life of a developer in the project. The covariates in the model are: the number of accepted PEPs authored by each developer, the contributions of each developer to the Python project, measured as number of source code lines, the number of collaborators (ie second order neighbors in network terms) that each developer has in the cooperation network, the degree centrality and closeness of each developer in the cooperation network, the highest $k$ of a $k$-component in which the developer is embedded, and the \emph{Top connectivity level} dummy variable that equals to 1 if the developer is in the $k$-component of highest $k$ in the cooperation network for that time period, and 0 otherwise.
@@ -221,7 +221,7 @@ As we can see in table \ref{python_cox_reg}, the effect of being part of the top
 
 It is relevant that both measures of cohesion are significative and negative when included in the same model, although the $k$-component number it's significative at $p < 0.01$ and being part of the top component at $p < 0.05$. When these two variables are included in the model none of the control variables is significative. We can conclude that not only being at the top connectivity level has a relevant impact on the active life of a developer in a project, but also smaller increments in cohesion of the groups in which a developer is embedded have a significant impact on their active life in the project.
 
-\section{Conclusion}
+\section{Summary}
 
 In this chapter we explored the dynamical dimension of the connectivity hierarchies that emerge on the cooperation networks of the Python and Debian projects. We defined cooperation networks as the patterns of relations among developers established while contributing to the project. The dynamic analysis, in this case, is not only a longitudinal account of the changes in the hierarchy through time, but also the analysis of the pace of renewal of individuals in the positions defined by the hierarchy. We propose that organizations ---and not only FOSS projects--- can be classified in a continuum depending on the pace of renewal of the individuals that occupy top positions in the hierarchy.
 

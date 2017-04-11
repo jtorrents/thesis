@@ -1,3 +1,4 @@
+% notes can be: hide, only or show
 \documentclass[ignorenonframetext,red,8pt,notes=show]{beamer}
 
 \usepackage[utf8]{inputenc}
@@ -396,9 +397,9 @@ Despite all its merits, the structural cohesion model has not been widely applie
 \end{block}
 \end{frame}
 
-\section{Algorithms and Heuristics}
+\subsection{Algorithms and Heuristics}
 
-\subsection{Exact algorithm for structural cohesion}
+\subsubsection{Exact algorithm for structural cohesion}
 
 \begin{frame}[fragile]
 \frametitle{Exact Algorithm}
@@ -445,7 +446,7 @@ kcomponents = nx.k_components(G)
 
 \end{frame}
 
-\subsection{Heuristics for computing structural cohesion}
+\subsubsection{Heuristics for computing structural cohesion}
 
 \begin{frame}[fragile]
 \frametitle{Heuristics}
@@ -521,7 +522,6 @@ Nuclear Theory&10,371&15,969&3.08&1,205.2&4,827&14,488&6.00&3,934.1\\
 \end{tiny}
 \end{block}
 
-
 \end{frame}
 
 
@@ -529,30 +529,115 @@ Nuclear Theory&10,371&15,969&3.08&1,205.2&4,827&14,488&6.00&3,934.1\\
 \section{The Network Structure of Collaborative Communities}
 
 \begin{frame}
-\frametitle{A Network Model for Collaborative Communities}
-A new form of community, qualitatively different from the traditional \emph{Gemeinschaft} and the modern \emph{Gesellschaft} \citep{tonnies:1974} 
+\frametitle{Collaborative Communities}
+A new form of community, qualitatively different from the traditional \emph{Gemeinschaft} and the modern \emph{Gesellschaft} \citep{tonnies:1974}. 
 
 \begin{block}{Collaborative Communities \citep{adler:2006}}
 Novel organizational form ---both inside and outside large capitalist corporations--- strongly grounded on large scale cooperation which defy the traditional dichotomy between \textbf{hierarchy} and \textbf{market} as coordinating mechanisms.
 
 \begin{itemize}
-\item Generalized trust
-\item Conscius cooperation and High individual interdependence
-\item Shared values and Value-rational basis for legitimate authority 
+\item Generalized trust based on other's contributions towards a shared end.
+\item Conscious cooperation and high individual interdependence.
+\item Shared values and value-rational basis for legitimate authority. 
 \end{itemize}
 \end{block}
 
-\begin{block}{Network (structural) model for Collaborative Communities}
+So far scarce attention is given to the structural features of collaborative communities.
 
 \begin{description}
-\item[Cohesive Small World] Based on the well known Small World and Structural Cohesion Models. Which structural conditions enable trust and value congruence?
+\item[Question] explore the network structure that lead to their emergence and effectiveness in the production and diffusion of knowledge.
+
+\item[Contribution] I suggest that a unique network structure undergirds collaborative communities and build a model to understand its key mechanisms: the \textbf{cohesive small world} model.
 \end{description}
 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{knowledge-based production processes}
+Collaborative Communities are especially well suited to deal with the challenges of knowledge-based production processes because, hierarchy and market have proved ineffective, at best, at managing knowledge.  
+
+\begin{columns}[c]
+
+\begin{column}{0.5\textwidth}
+\begin{block}{Hierarchy as a coordinating mechanism}
 \begin{itemize}
-\item Small Worlds: Local clusters connected by shortest paths.
-\item Structural Cohesion: Increasingly cohesive groups nested inside each other.
+\item Knowledge is treated as a scare resource.
+\item Centralized at the higher levels where key decisions are taken.
+\item Rigidity prevents flexibility to deal with unanticipated problems.
+\item Difficulty to foster innovation and generation of new knowledge.
 \end{itemize}
 \end{block}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{block}{Market as coordinating mechanism}
+\begin{itemize}
+\item Fails to optimize at the same time production and allocation of knowledge.
+\item Knowledge is a public good that grow rather than diminish with use.
+\item Strong property rights incentive knowledge production, but
+\item they block socially optimal allocation (free access).
+\end{itemize}
+\end{block}
+\end{column}
+
+\end{columns}
+
+\begin{block}{Collaborative Communities that excel at knowledge-based production}
+\begin{itemize}
+\item Free and Open Source Communities.
+\item Novel forms of professional work organization \citep*{adler:2008}.
+\item Knowledge-intensive production processes in corporations \citep{adler:2006}.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{A network model for Collaborative Communities}
+
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{block}{The Small World Model}
+Networks characterized by a high level of local density of social ties and short average distances among nodes.
+
+\begin{itemize}
+\item $L$: average number of intermediaries between any two nodes.
+\item $CC$: mean probability that two nodes that are neighbors of the same other node will themselves be neighbors.
+\item They foster the flow of information and ideas.
+
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{block}{The Structural Cohesion Model}
+Networks characterized by the presence of increasingly cohesive groups nested inside each other. 
+\begin{itemize}
+\item Cohesion definition based on the graph-theoretic property of connectivity.
+\item $k$-components as the key subgroups of the network.
+\item They foster the development of trust and social cohesion.
+\end{itemize}
+\end{block}
+\end{column}
+
+\end{columns}
+
+These two models are not mutually exclusive. The networks that fit in the intersection of both models exhibit consistent structural patterns.
+
+\begin{block}{Cohesive Small World Model}
+Network (structural) model for Collaborative Communities that help explain how trust, value congruence, and large scale cooperation are enabled and fostered.
+
+\begin{itemize}
+\item Local clusters connected by short paths.
+\item Increasingly cohesive groups nested inside each other.
+\end{itemize}
+\end{block}
+
+These patterns provide the structural scaffolding for collaborative communities.
+
+\note{On the one hand, the generation of trust and congruent values among heterogeneous individuals are fostered by structurally cohesive groups in the connectivity hierarchy of cooperation networks because individuals embedded in these structures are able to compare independent perspectives on each other through a variety of relations that flow through distinct sets of intermediaries, which provides multiple independent sources of information about each other. Thus, the perception of an individual embedded in such structures of the other members of the group to whom she is not directly linked is filtered by the perception of a variety of others whom she trusts because is directly linked to them. This mediated perception of the group generates trust at a global scale. On the other hand, the existence of dense local clusters connected between them by relative short paths allows successful cooperation among heterogeneous individuals with common interests and, at the same time, fosters the flow of information between these clusters preventing the local clusters to be trapped in echo chambers of like minded collaborators.}
 
 \end{frame}
 
@@ -603,74 +688,6 @@ Novel organizational form ---both inside and outside large capitalist corporatio
 \end{frame}
 
 
-\subsection{Structural cohesion model}
-
-\begin{frame}
-\frametitle{The structural cohesion model}
-
-The structural cohesion model \citep{white:2001,moody:2003} is based on two mathematically equivalent definitions of cohesion (Menger's theorem).
-
-\begin{block}{Precise definition of group cohesion based on \textbf{node connectivity}}
-
-\begin{itemize}
-
-\item a group's structural cohesion is equal to the minimum number of actors who, if removed from the group, would disconnect the group.
-
-\item a group's structural cohesion is equal to the minimum number of node independent paths linking each pair of actors in the group.
-
-\end{itemize}
-\end{block}
-
-This equivalence relation has a deep sociological meaning because it allows to define structural cohesion in terms of:
-
-\begin{itemize}
-
-\item the difficulty to pull a group apart by removing actors.
-
-\item multiple relations between actors that keep a group together.
-
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Measures of structural cohesion}
-
-%\begin{block}{Local node connectivity $\kappa_{G}(u,v)$}
-%Given two nodes $u$ and $v$, $\kappa_{G}(u,v)$ is the minimum number of nodes that must be removed to destroy all paths that join $u$ and $v$.
-%\end{block}
-
-\begin{block}{Node connectivity $\kappa(G)$}
-\begin{description}
-\item[Local] given two nodes $u$ and $v$, $\kappa_{G}(u,v)$ is the minimum number of nodes that must be removed to destroy all paths that join $u$ and $v$.
-
-\item[Global] the minimum number of nodes that must be removed in order to disconnect a graph $G$.
-
-%\begin{equation*}
-%\kappa = min{\{\kappa_{G}(u,v):u,v \in V(G)\}}
-%\end{equation*}
-
-\end{description}
-
-\end{block}
-
-%\begin{block}{Average node connectivity $\bar{\kappa}(G)$}
-%the sum of local node connectivity between all pairs of different nodes of $G$ divided by the number of distinct pairs of nodes. \citep*{beineke:2002}.
-
-%\begin{equation*}
-%\bar{\kappa}(G) = \frac{\sum_{u,v} \kappa_{G}(u,v)}{{n \choose 2}}
-%\end{equation*}
-%\end{block}
-
-\begin{block}{$k$-components}
-A $k$-component is a maximal subgraph that has, at least, node connectivity $k$: we need to remove at least $k$ nodes to break it into more components. 
-\end{block}
-
-\begin{center}
-\includegraphics[scale=0.25]{img/knum_colors}
-\end{center}
-
-\end{frame}
-
 \section{Empirical analysis: FOSS projects}
 
 \subsection{Debian and Python}
@@ -704,16 +721,72 @@ Free Software, broadly defined, is computer software that allows users to run, c
 \end{column}
 \end{columns}
 
-\begin{block}{Building and Analyzing Cooperation Networks}
+\begin{block}{}
 \begin{itemize}
-\item Cooperation networks are bipartite or two mode (both developers and programs)
-\item A developer is linked to the package or source code file that she works on
-\item Structural Cohesion Analysis: $\kappa$-components as sub-groups
-\item Small World Analysis: Average Path Length and Clustering Coefficient 
+\item 
+\item 
+\item 
 \end{itemize}
 \end{block}
 
 \end{frame}
+
+\subsection{Cooperation Networks and Null Models}
+
+\begin{frame}
+\frametitle{Cooperation Networks and Null Models}
+
+My modeling strategy to capture the patterns of relations among developers in these two projects is to focus on the actual contributions of each developer to the project. 
+
+\begin{block}{Building Cooperation Networks}
+\begin{itemize}
+\item Focus on the patterns of relations among developers in the productive process.
+\item Cooperation networks are bipartite or two mode; node sets are developers and programs/files and edges only link nodes from opposite sets.
+\item A developer is linked to the package (in Debian) or source code file (in Python) that she works on.
+\item We have complete electronic records of all package uplads to Debain and all sorce code file edits in Python.
+\end{itemize}
+\end{block}
+
+\begin{block}{Building Suitable Null models}
+\begin{itemize}
+\item We need to compare the statistical measures obtained from the actual networks with a suitable null model in order to assert that what we observe is not the result of pure chance.
+\end{itemize}
+\begin{description}
+\item [Configuration Model] assigns at random developers to packages, or developers to source code files, maintaining the concrete skewed distribution of packages by developer and files by developer observed in the actual networks. That is, the degree distribution.
+\end{description}
+\end{block}
+
+\end{frame}
+
+\subsection{Small World Analysis}
+
+\begin{frame}
+\frametitle{Small World Analysis}
+
+A network fits the small world model if it is more locally clustered ($CC$) than its random network counterpart but has approximately the same average distance ($L$) between nodes. 
+
+\begin{align}
+Q = \frac{CC_{ratio}}{L_{ratio}} & \hspace{0.5cm} \textit{Where:} & 
+CC_{ratio}& = \frac{CC_{actual}}{CC_{random}} &
+L_{ratio}& = \frac{L_{actual}}{L_{random}} \nonumber \\
+\end{align}
+
+
+
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+
+\end{column}
+
+\begin{column}{0.5\textwidth}
+
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+
 
 \subsection{Structural Cohesion Analysis}
 

@@ -766,32 +766,83 @@ My modeling strategy to capture the patterns of relations among developers in th
 A network fits the small world model if it is more locally clustered ($CC$) than its random network counterpart but has approximately the same average distance ($L$) between nodes. 
 
 \begin{align}
-Q = \frac{CC_{ratio}}{L_{ratio}} & \hspace{0.5cm} \textit{Where:} & 
-CC_{ratio}& = \frac{CC_{actual}}{CC_{random}} &
+Q = \frac{CC_{ratio}}{L_{ratio}} \nonumber & \hspace{0.5cm} \textit{Where:} & 
+CC_{ratio}& = \frac{CC_{actual}}{CC_{random}} \nonumber &
 L_{ratio}& = \frac{L_{actual}}{L_{random}} \nonumber \\
 \end{align}
 
-
+If the Small World Index ($Q$) is greater than 1, then the network fits the model. 
 
 \begin{columns}[c]
 \begin{column}{0.5\textwidth}
-
+\begin{block}{The Debian Project: 1999-2012}
+\begin{itemize}
+\item $CC_{actual} \gg CC_{random}$ for all years.
+\item $L_{actual} > L_{random}$ for all years.
+\item $Q \gg 1$ for all years (21.4 in 2011 to 97 in year 2000).
+\end{itemize}
+\end{block}
 \end{column}
 
 \begin{column}{0.5\textwidth}
-
+\begin{block}{The Python project: 1999-2014}
+\begin{itemize}
+\item $CC_{actual} > CC_{random}$ for all years.
+\item $L_{actual} \approx L_{random}$ for all years.
+\item $Q > 1$ for all years (ranging from 3 in 1999 to 1.3 in 2011).
+\end{itemize}
+\end{block}
 \end{column}
 \end{columns}
 
+\vspace{0.3cm}
+
+The low value of the Small World Index ($Q$) in the Python project, compared with the values of $Q$ in the Debian project, can be attributed to the lower modularity of Python as a programming language compared with the inherent modularity of the Debian project as an operating system.
+
 \end{frame}
-
-
 
 
 \subsection{Structural Cohesion Analysis}
 
 \begin{frame}
 \frametitle{Structural Cohesion Analysis}
+
+Analyze the percentage of nodes in $k$-components in actual networks and in their random counterparts.
+
+For $k \leq 2$ the random null model is the upper bound of component size. Thus a network fits the model if it has more levels ($k$) than its random counterparts and the percentage of nodes for $k \leq 2$ is comparable. 
+
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{block}{The Debian Project: 1999-2012}
+\begin{itemize}
+\item For 1-components $|V_{actual}| < |V_{random}|$
+\item For 2-components $|V_{actual}| < |V_{random}|$
+\item Maximum $k$:\\ $3 \leq max(k_{actual}) \leq 5$ and\\ $2 \leq  max(k_{random}) \leq 3$, but always \\ $max(k_{actual}) > max(k_{random})$. 
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{block}{The Python project: 1999-2014}
+\begin{itemize}
+\item For 1-components $|V_{actual}| \approx |V_{random}|$
+\item For 2-components $|V_{actual}| \approx |V_{random}|$
+\item Maximum $k$:\\ $5 \leq max(k_{actual}) \leq 10$ and\\ $3 \leq  max(k_{random}) \leq 7$, but always\\ $max(k_{actual}) > max(k_{random})$. 
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+
+\vspace{0.3cm}
+
+The fact that cooperation networks in the Python project are more cohesive than the cooperation networks of the Debian project, can also be attributed in part to the lower modularity of Python as a programming language compared with the inherent modularity of the Debian project as an operating system.
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Graphical Representation of the Structural Cohesion Analysis}
 
 \begin{columns}[c]
 \begin{column}{0.5\textwidth}
@@ -815,7 +866,159 @@ L_{ratio}& = \frac{L_{actual}}{L_{random}} \nonumber \\
 
 \end{frame}
 
-\subsection{Analysis of Individual Contributions}
+\subsection{Cohesive Small World Model}
+
+\begin{frame}
+\frametitle{The Cohesive Small World Model}
+
+The cooperation networks of both Debian and Python projects can be modeled using the proposed Cohesive Small World model.
+
+
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{block}{Small World Model}
+\begin{itemize}
+\item Fosters the flow of information through short paths.
+\item Dense local clusters connected between them by relative short paths allow successful cooperation among heterogeneous individuals with common interests.
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+
+\begin{block}{Structural Cohesion Model}
+\begin{itemize}
+\item Fosters trust and congruent values.
+\item Individuals embedded in cohesive groups can compare independent perspectives on other members through a variety of relations that flow through distinct intermediaries.
+\item Prevents the local clusters to be trapped in echo chambers of like minded       collaborators.
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+
+\vspace{0.2cm}
+But there are significative differences between Debian and Python.
+
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{block}{Debian Cooperation Networks}
+\begin{itemize}
+\item Lean more towards the Small World Model.
+\item Subgroups work more independently from each other.
+\item High modularity.
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+
+\begin{block}{Python Cooperation Networks}
+\begin{itemize}
+\item Lean more towards the Structural Cohesion Model. 
+\item Sharper and steep connectivity hierarchy.
+\item Less modularity.
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+\section{Connectivity Hierarchy and Individual Contributions}
+
+\begin{frame}
+\frametitle{Dynamic Hierarchies as Open Elites}
+
+The analysis of the hierarchical structure of organizations has been a central topic on organizational research in the last decades.
+
+\begin{block}{Dynamic Analysis of Hierarchies}
+Focus the analysis on the ratio of renewal of the individuals in the positions defined by that hierarchy.
+
+\begin{description}
+\item[Open Elite] ``reconceptualization of the concept of elite, more as a fluidly reproduced ideal than as a stable demographic reality'' \citep[360]{padgett:2010}.
+\end{description}
+
+\end{block}
+
+\vspace{0.5cm}
+
+I propose that hierarchical structures can be classified in a continuum, the two extreme points of which are: 
+
+\begin{description}
+\item[Static Hierarchy] where when an individual is appointed in a position of the hierarchy, this position is for life.
+\item[Dynamic Hierarchy] where the individuals occupying positions defined by the hierarchy have a very high pace of renewal.
+\end{description}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The Hierarchical Structure of FOSS projects}
+
+Free and Open Source Software (FOSS) communities have attracted a lot of attention from researchers. Academic efforts took mainly two directions:
+
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{block}{Reconcile with neoclassical economy}
+\begin{itemize}
+\item Mainly focused on the individual motivations of the participants. What is usually referred as ``microfundaments''.
+\item Trying to explain motivations in terms of of rational self-interested individuals to match the dominant economic accounts.
+\item Proposed that individuals 
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+
+\begin{block}{Uncritically celebratory and a bit naive}
+\begin{itemize}
+\item Very influenced by practitioners account of the phenomenon.
+\item Supported the ethical stand that valued more cooperation and reciprocity than competition and self-interest.
+\item Assumed that FOSS communities are composed by loosely organized individuals with a very flat or nonexistent hierarchy among them.
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+
+%\vspace{0.5cm}
+
+\begin{block}{Well established empirical fact about FOSS projects}
+\begin{itemize}
+\item Only few of the participants account for the lion's share of the work done.
+\item The deep contribution inequalities may mean that these projects follow the ``iron law of the oligarchy'' \citep{shaw:2014}.
+\item I propose that one of the central characteristics of FOSS projects is their high ratio of turnover in key hierarchical positions.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Empirical Analysis of Individual Contributions}
+
+The informal structure emerging from the patterns of cooperation among individuals in a FOSS project is quite hierarchical because reflects the fact that only few individuals are responsible for most contributions to the project.
+
+\begin{block}{Analyze the Social Structure of FOSS projects}
+The social structure of a community are the patterns of relations established among individual participants in the process of building the software packages (or any other product, such as on on-line encyclopedia) that they release.
+\end{block}
+
+\vspace{0.5cm}
+
+Results of the empirical analysis:
+
+\begin{itemize}
+\item The developers that contribute the most to the projects analyzed are in the higher levels of the connectivity structure of the project's cooperation networks.
+\item My analysis shows that the ratio of renewal of individuals at these structural positions is quite fast, which characterizes FOSS communities as dynamic hierarchies and open
+elites.
+\item This continuous renewal of the people that does most of the work is a key mechanism to explain how FOSS projects can thrive and success.
+\item I found that the position of an individual in the connectivity structure of the cooperation network also impacts significantly in the median active life of a developer in the project.
+\end{itemize}
+
+\note{Thus, if we analyze cross-sectionally (ie in a concrete point of time) a FOSS project, a very small fraction of the participants are the ones that actually do the lion's share of contributions, as previous empirical research has shown. However if we analyze the evolution of contributions longitudinally, we find that the persons that contribute the most change through time.}
+
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Iron law of the Oligarchy or an Open Elite?}

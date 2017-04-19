@@ -16,6 +16,9 @@
 \usepackage{multirow}
 \usepackage{rotating}
 
+\usepackage{booktabs}
+
+
 % hack for beamer and natbib working together
 %\newcommand{\newblock}{}
 
@@ -997,21 +1000,36 @@ Free and Open Source Software (FOSS) communities have attracted a lot of attenti
 \begin{frame}
 \frametitle{Empirical Analysis of Individual Contributions}
 
-The informal structure emerging from the patterns of cooperation among individuals in a FOSS project is quite hierarchical because reflects the fact that only few individuals are responsible for most contributions to the project.
+\note{The informal structure emerging from the patterns of cooperation among individuals in a FOSS project is quite hierarchical because reflects the fact that only few individuals are responsible for most contributions to the project.}
 
-\begin{block}{Analyze the Social Structure of FOSS projects}
-The social structure of a community are the patterns of relations established among individual participants in the process of building the software packages (or any other product, such as on on-line encyclopedia) that they release.
+\begin{block}{Longitudinal Analysis of the Social Structure of FOSS projects}
+The social structure of a community are the patterns of relations established among individual participants in the production process. But I do not limit the analysis to one point in time; I analyze its evolution.
 \end{block}
 
-\vspace{0.5cm}
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{block}{Puzzle: FOSS projects as Oligarchies?}
+\citet{michels:1915} ``iron law of oligarchy'' states that organizations tend towards oligarchy as they grow, even if democracy and participation are part of their core goals.
+\end{block}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{block}{FOSS projects as Open Elites}
+The continuous renewal of the people that does most of the work is a key mechanism to explain how FOSS projects can thrive and success through time.
+\end{block}
+\end{column}
+\end{columns}
+
+\vspace{0.2cm}
 
 Results of the empirical analysis:
 
 \begin{itemize}
-\item The developers that contribute the most to the projects analyzed are in the higher levels of the connectivity structure of the project's cooperation networks.
+\item The developers that contribute the most to the projects analyzed are in the higher levels of the connectivity structure of the project's cooperation networks. The hierarchical connectivity structure shapes the volume of contribution of individual developers.
+
 \item My analysis shows that the ratio of renewal of individuals at these structural positions is quite fast, which characterizes FOSS communities as dynamic hierarchies and open
 elites.
-\item This continuous renewal of the people that does most of the work is a key mechanism to explain how FOSS projects can thrive and success.
+
 \item I found that the position of an individual in the connectivity structure of the cooperation network also impacts significantly in the median active life of a developer in the project.
 \end{itemize}
 
@@ -1021,42 +1039,114 @@ elites.
 
 
 \begin{frame}
-\frametitle{Iron law of the Oligarchy or an Open Elite?}
+\frametitle{Individual contributions by connectivity level}
 
-The literature on FOSS, especially from software engineering and computer science, have stressed that only a small fraction of the developers is doing most of the work.
+\begin{figure}
+\vspace{-0.6cm}
+\centering
+\subfloat[Debian: developer \% by connectivity level]{
+\label{}
+\includegraphics[scale=0.19]{../../figures/evolution_developers_debian_years}
+}
+\hspace{0.5cm}
+\subfloat[Python: developer \% by connectivity level]{
+\label{}
+\includegraphics[scale=0.19]{../../figures/evolution_developers_python_years}
+}
+\hspace{0.1cm}
+\subfloat[Debian: contributions by connectivity level]{
+\label{}
+\includegraphics[scale=0.19]{../../figures/evolution_connectivity_debian_years}
+}
+\hspace{0.5cm}
+\subfloat[Python: contributions by connectivity level]{
+\label{}
+\includegraphics[scale=0.19]{../../figures/evolution_connectivity_python_years}
+}
+\label{fig:contributions}
+\caption[]{}
+\end{figure}
 
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
-\begin{center}
-\textbf{Debian Contributions}
-\includegraphics[scale=0.16]{../../figures/evolution_developers_debian_years}
-\newline
-\includegraphics[scale=0.16]{../../figures/evolution_connectivity_debian_years}
-\end{center}
-\end{column}
+\end{frame}
 
-\begin{column}{0.5\textwidth}
-\begin{center}
-\textbf{Python Contributions}
-\includegraphics[scale=0.16]{../../figures/evolution_developers_python_years}
-\newline
-\includegraphics[scale=0.16]{../../figures/evolution_connectivity_python_years}
-\end{center}
-\end{column}
-\end{columns}
+
+\begin{frame}
+\frametitle{Analyzing Source Code Contributions and beyond}
+\note{From the figures on the previous slide, it is clear that there is a strong correlation between the connectivity level of a developer and her level of contribution to the project.
+
+The hierarchical structure of the cooperation network shapes the volume of contribution of individual developers.}
+
+To further the analysis I used more sophisticated statistical modeling strategies to assess the impact of the connectivity structure in the individual contributions to the project.
+
+\begin{itemize}
+
+\item \textbf{Debian package uploads:} Modeled with a negative binomial regression. Over-dispersed and discrete dependent variable: \# of uploads. The $k$-component number is the second most important independent variable only after Degree Centrality.
+
+\item \textbf{Added source code lines to Python:} Modeled with a panel regression with individual and year fixed effect. Dependent variable treated as a continuous variable. The $k$-component number is also the second most important independent variable only after Degree Centrality.
+
+\end{itemize}
+
+\begin{block}{Potential endogenity problems of the previous models}
+There is a relation between the dependent variable and the network metrics (independent variables) because the cooperation networks are build precisely based on contributions to the projects.
+\end{block}
+
+\begin{itemize}
+
+\item \textbf{Number of accepted \textit{Python Enhancement Proposals} (PEP):} Modeled with a zero inflated negative binomial. PEPs are design documents that define the language; are thus contributions not directly related to the cooperation networks. Being part of the top connectivity level is also the second most important independent variable, this time only after developer's tenure (in years).
+
+\end{itemize}
+
+
 \end{frame}
 
 
 \begin{frame}
 \frametitle{Cooperation Networks' Connectivity Hierarchies as Open Elites}
 
-Sankey diagram of Python developer mobility in the top connectivity level.
-
-\begin{center}
-\includegraphics[scale=0.2]{../../figures/sankey_mobility_python_years}
-\end{center}
+\begin{figure}
+\centering
+\vspace{-0.2cm}
+\hspace{-0.8cm}
+\includegraphics[scale=0.22]{../../figures/sankey_mobility_python_years}
+\caption{Sankey diagram of Python developer mobility at the top connectivity level.}
+\end{figure}
 
 \end{frame}
+
+\begin{frame}
+\frametitle{Cooperation Networks' Connectivity Hierarchies as Open Elites}
+
+\begin{table}[h]
+\caption{Developer mobility in the top connectivity level for the Python project.}
+\label{python_mobility_table}
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+Years&Top Developers&New Developers&Developers Out&Developers back \\ 
+\midrule
+1999&3 (33.3\%)&3 (100.0\%)&0 (0.0\%)&0 (0.0\%) \\ 
+2000&11 (35.5\%)&8 (72.7\%)&1 (9.1\%)&0 (0.0\%) \\ 
+2001&13 (39.4\%)&4 (30.8\%)&1 (7.7\%)&0 (0.0\%) \\ 
+2002&19 (50.0\%)&8 (42.1\%)&1 (5.3\%)&0 (0.0\%) \\ 
+2003&19 (45.2\%)&3 (15.8\%)&5 (26.3\%)&0 (0.0\%) \\ 
+2004&14 (28.6\%)&3 (21.4\%)&1 (7.1\%)&0 (0.0\%) \\ 
+2005&19 (43.2\%)&1 (5.3\%)&4 (21.1\%)&5 (26.3\%) \\ 
+2006&12 (23.1\%)&0 (0.0\%)&4 (33.3\%)&1 (8.3\%) \\ 
+2007&20 (39.2\%)&10 (50.0\%)&7 (35.0\%)&3 (15.0\%) \\ 
+2008&21 (35.6\%)&6 (28.6\%)&6 (28.6\%)&3 (14.3\%) \\ 
+2009&22 (37.9\%)&9 (40.9\%)&3 (13.6\%)&1 (4.5\%) \\ 
+2010&28 (44.4\%)&9 (32.1\%)&7 (25.0\%)&2 (7.1\%) \\ 
+2011&25 (39.7\%)&7 (28.0\%)&2 (8.0\%)&1 (4.0\%) \\ 
+2012&32 (49.2\%)&8 (25.0\%)&12 (37.5\%)&4 (12.5\%) \\ 
+2013&33 (52.4\%)&8 (24.2\%)&16 (48.5\%)&5 (15.2\%) \\ 
+2014&20 (32.3\%)&3 (15.0\%)&0 (0.0\%)&0 (0.0\%) \\ 
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+\end{frame}
+
 
 
 \begin{frame}
@@ -1077,19 +1167,63 @@ Sankey diagram of Python developer mobility in the top connectivity level.
 \caption[Survival function using the Kaplan-Meier estimate.]{Estimation of the survival function using the Kaplan-Meier estimate. The median survival time of a developer in the community, defined as the point in time where on average half of the population has abandoned the community, is 6 years if I consider all developers (left). But if I consider separately the developers in the top level of the connectivity hierarchy (right), their median survival time is 12 years; but only 3 years for the developers that are not on the top of the connectivity hierarchy.}
 \end{figure}
 
-
-
 \end{frame}
 
 %\section{References}
 
+\begin{frame}
+\frametitle{Conclusions}
+
+\begin{itemize}
+
+\item \textbf{Cooperation Networks:} A meso level approach to large scale cooperation focused on the patterns of relations that direct producers establish between them in knowledge intensive production processes.
+
+\item \textbf{The Cohesive Small World model}: The structural patterns defined by this model provide the scaffolding for enabling effective large scale cooperation.
+
+\begin{itemize}
+\item Structurally cohesive groups nested inside each other that form a connectivity hierarchy.
+
+\item Dense local clusters connected between them by relative short paths.
+\end{itemize}
+
+\item I \textbf{developed heuristics} to compute the $k$-components structure that allow for the computing of the approximate value of group cohesion for moderately large networks in a reasonable time frame. I \textbf{contributed an implementation} of these heuristics to a popular Python software package for the analysis of complex networks: NetworkX \citep{hagberg:2008}.
+
+\item The ``Cohesive Small World'' model is a good fit to describe the cooperation networks ---that is, the patterns of relations between direct producers--- of two big and mature FOSS projects: the Python programming language, and the Debian operating system.
+
+\item The nested structure of $k$-components nicely captures the hierarchy in the patterns of relations that individual contributors establish when working together. This hierarchy:
+
+\begin{itemize}
+\item reflects the empirically well established fact that in FOSS projects only a small fraction of the developers account for most of the contributions.
+
+\item refutes the naive views of early academic accounts that characterized FOSS projects as a flat hierarchy of peers in which every individual does more or less the same.
+\end{itemize}
+
+\item \textbf{Cooperation has a structural dimension} because membership in cohesive groups that emerge from the cooperation networks has an important and statistically significative impact on both the volume of individual contributions, and on the median active life of developers.
+
+\item The connectivity structure of collaborative communities' cooperation networks can be characterized as an \textbf{open elite}, where the top levels of this hierarchy are filled with new individuals at a high pace. This feature is key for understanding the mechanisms and dynamics that make FOSS communities able to develop long term projects, with high individual turnover, and yet achieve high impact and coherent results as a result of large scale cooperation.
+
+\item However, it is not clear that the theoretical model that I proposed fits all cooperation networks of Collaborative Communities, or even cooperation networks of all FOSS projects. Because the empirical analysis presented in this thesis was a case study of two successful projects aimed to develop a theoretical framework, I cannot determine if other FOSS projects also fit nicely in it. Thus what I presented is more an existence proof than a empirical test of my proposed theoretical model.
+
+\end{itemize}
+
+\note{
+\begin{itemize}
+\item The generation of trust and congruent values among heterogeneous individuals are fostered by structurally cohesive groups in the connectivity hierarchy of cooperation networks because individuals embedded in these structures are able to compare independent perspectives on each other through a variety of paths that flow through distinct sets of intermediaries, which provides multiple independent sources of information about each other. This mediated perception of the group generates trust at a global scale.
+
+\item The existence of dense local clusters connected between them by relative short paths allows successful cooperation among heterogeneous individuals with common interests and, at the same time, fosters the flow of information between these clusters preventing the local clusters to be trapped in echo chambers of like minded collaborators.
+\end{itemize}
+}
+
+\end{frame}
+
+
 \begin{frame}[label=biblio]
 \frametitle{References}
 % Bibliografia
-\begin{footnotesize}
+\begin{tiny}
 \bibliographystyle{chicago}
 \bibliography{../../thesis.bib}
-\end{footnotesize}
+\end{tiny}
 \end{frame}
 
 \end{document}

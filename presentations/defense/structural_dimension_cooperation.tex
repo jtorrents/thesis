@@ -367,15 +367,38 @@ the sum of local node connectivity between all pairs of different nodes of $G$ d
 \end{equation*}
 \end{block}
 
+\end{frame}
+
+\begin{frame}
+\frametitle{Components and $k$-components}
+
+\begin{block}{Component}
+A \emph{component} of a graph $G$ is a maximal connected subgraph, which means that there is at least one path between any two nodes in that subgraph.
+\end{block}
+
 \begin{block}{$k$-components}
 A $k$-component is a maximal subgraph that has, at least, node connectivity $k$: we need to remove at least $k$ nodes to break it into more components. 
 \end{block}
 
+\begin{columns}[c]
+\begin{column}{0.4\textwidth}
 \begin{center}
 \includegraphics[scale=0.25]{img/knum_colors}
 \end{center}
+\end{column}
+
+\begin{column}{0.6\textwidth}
+\begin{itemize}
+\item \textbf{Red Nodes} form a 4-component: we need to remove 4 nodes to disconnect it.
+\item \textbf{Purple Nodes} form a 3-component along with red nodes: we need to remove 3 nodes to disconnect it.
+\item \textbf{Blue Nodes} form a 2-component along with red and purple nodes: we need to remove 2 nodes to disconnect it. 
+\end{itemize}
+\end{column}
+\end{columns}
 
 \end{frame}
+
+
 
 \begin{frame}
 \frametitle{Structural cohesion in empirical analysis}
@@ -429,7 +452,7 @@ Despite all its merits, the structural cohesion model has not been widely applie
 
 
 \begin{columns}[c]
-\begin{column}{0.4\textwidth}
+\begin{column}{0.3\textwidth}
 \begin{scriptsize}
 \begin{lstlisting}
 import networkx as nx
@@ -445,7 +468,7 @@ kcomponents = nx.k_components(G)
 
 \end{column}
 
-\begin{column}{0.6\textwidth}
+\begin{column}{0.7\textwidth}
 \begin{center}
 \includegraphics[scale=0.45]{img/grid}
 \end{center}

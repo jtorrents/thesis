@@ -1,5 +1,5 @@
 % notes can be: hide, only or show
-\documentclass[ignorenonframetext,red,8pt,notes=show]{beamer}
+\documentclass[ignorenonframetext,red,8pt,notes=hide]{beamer}
 
 \usepackage[utf8]{inputenc}
 \usepackage{beamerthemesplit}
@@ -71,7 +71,7 @@
   pdfkeywords={}%
 }
 
-%\AtBeginSection[]{\frame{\frametitle{Contents}\tableofcontents[current]}}
+\AtBeginSection[]{\frame{\frametitle{Contents}\tableofcontents[current]}}
 
 \title{The Structural Dimension of Cooperation}
 \subtitle{Cooperation Networks as Cohesive Small Worlds\\PhD Thesis Defense}
@@ -84,10 +84,10 @@
 \maketitle
 \end{frame}
 
-%\begin{frame}[label=toc]
-%\frametitle{Contents}
-%\tableofcontents
-%\end{frame}
+\begin{frame}[label=toc]
+\frametitle{Contents}
+\tableofcontents
+\end{frame}
 
 \section{Large Scale Cooperation}
 
@@ -192,7 +192,7 @@ Focus on Cooperation networks: patterns of relations that direct producers estab
 \end{frame}
 
 
-\subsection{Man Topic and Research Question}
+\subsection{Main Topic and Research Question}
 \begin{frame}[label=]
 \frametitle{Main Topic and Research Question}
 
@@ -209,6 +209,8 @@ The central topic of this thesis is to understand and explain under which condit
 \item focusing on the patterns of relations between direct producers we can analyze key mechanisms that enable and foster large scale cooperation.
 \end{itemize}
 \end{block}
+
+\pause
 
 \begin{block}{Research question}
 How does large scale cooperation work in knowledge intensive and technically complex production processes developed in new organizational environments, such as Free and Open Source Software projects, where loosely coupled individuals that rarely meet face to face have to coordinate through internet in order to produce world class software products, without relying on hierarchy or market as coordinating mechanisms.
@@ -283,6 +285,8 @@ Neither the classical approaches nor new developments in community analysis work
 \end{center}
 \end{column}
 
+\pause
+
 \begin{column}{0.3\textwidth}
 \textbf{Overlap} a cohesion measure should allow some actors to be part of more than one cohesive subgroup.
 
@@ -294,6 +298,8 @@ Neither the classical approaches nor new developments in community analysis work
 \includegraphics[scale=0.1]{img/fold}
 \end{center}
 \end{column}
+
+\pause
 
 \begin{column}{0.4\textwidth}
 \textbf{Hierarchical} highly cohesive subgroups are nested inside less cohesive ones.
@@ -386,6 +392,8 @@ Structural cohesion is a powerful and robust explanatory factor for a wide varie
 
 \end{itemize}
 
+\pause
+
 \begin{block}{Some problems with the structural cohesion model}
 
 Despite all its merits, the structural cohesion model has not been widely applied to empirical analysis because:
@@ -401,8 +409,6 @@ Despite all its merits, the structural cohesion model has not been widely applie
 \end{frame}
 
 \subsection{Algorithms and Heuristics}
-
-\subsubsection{Exact algorithm for structural cohesion}
 
 \begin{frame}[fragile]
 \frametitle{Exact Algorithm}
@@ -448,8 +454,6 @@ kcomponents = nx.k_components(G)
 \end{columns}
 
 \end{frame}
-
-\subsubsection{Heuristics for computing structural cohesion}
 
 \begin{frame}[fragile]
 \frametitle{Heuristics}
@@ -510,6 +514,8 @@ inclusion relation among node connectivity $\kappa(G)$, edge connectivity $\lamb
 \end{enumerate}
 \end{block}
 
+\pause
+
 \begin{block}{Trade Accuracy for Speed}
 \begin{tiny}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
@@ -545,6 +551,8 @@ Novel organizational form ---both inside and outside large capitalist corporatio
 \end{itemize}
 \end{block}
 
+\pause
+
 So far scarce attention is given to the structural features of collaborative communities.
 
 \begin{description}
@@ -573,6 +581,8 @@ Collaborative Communities are especially well suited to deal with the challenges
 \end{block}
 \end{column}
 
+\pause
+
 \begin{column}{0.5\textwidth}
 \begin{block}{Market as coordinating mechanism}
 \begin{itemize}
@@ -585,6 +595,8 @@ Collaborative Communities are especially well suited to deal with the challenges
 \end{column}
 
 \end{columns}
+
+\pause
 
 \begin{block}{Collaborative Communities that excel at knowledge-based production}
 \begin{itemize}
@@ -627,6 +639,10 @@ Networks characterized by the presence of increasingly cohesive groups nested in
 
 \end{columns}
 
+\pause
+
+\vspace{0.2cm}
+
 These two models are not mutually exclusive. The networks that fit in the intersection of both models exhibit consistent structural patterns.
 
 \begin{block}{Cohesive Small World Model}
@@ -644,7 +660,7 @@ These patterns provide the structural scaffolding for collaborative communities.
 
 \end{frame}
 
-\subsection{Cohesive Small Worlds}
+\subsection{Cohesive Small World Model}
 
 \begin{frame}
 \frametitle{Cohesive Small World}
@@ -750,6 +766,8 @@ My modeling strategy to capture the patterns of relations among developers in th
 \end{itemize}
 \end{block}
 
+\pause
+
 \begin{block}{Building Suitable Null models}
 \begin{itemize}
 \item We need to compare the statistical measures obtained from the actual networks with a suitable null model in order to assert that what we observe is not the result of pure chance.
@@ -761,7 +779,9 @@ My modeling strategy to capture the patterns of relations among developers in th
 
 \end{frame}
 
-\subsection{Small World Analysis}
+
+\subsection{Cohesive Small World Model Analysis}
+
 
 \begin{frame}
 \frametitle{Small World Analysis}
@@ -775,6 +795,8 @@ L_{ratio}& = \frac{L_{actual}}{L_{random}} \nonumber \\
 \end{align}
 
 If the Small World Index ($Q$) is greater than 1, then the network fits the model. 
+
+\pause
 
 \begin{columns}[c]
 \begin{column}{0.5\textwidth}
@@ -805,14 +827,14 @@ The low value of the Small World Index ($Q$) in the Python project, compared wit
 \end{frame}
 
 
-\subsection{Structural Cohesion Analysis}
-
 \begin{frame}
 \frametitle{Structural Cohesion Analysis}
 
 Analyze the percentage of nodes in $k$-components in actual networks and in their random counterparts.
 
 For $k \leq 2$ the random null model is the upper bound of component size. Thus a network fits the model if it has more levels ($k$) than its random counterparts and the percentage of nodes for $k \leq 2$ is comparable. 
+
+\pause
 
 \begin{columns}[c]
 \begin{column}{0.5\textwidth}
@@ -869,8 +891,6 @@ The fact that cooperation networks in the Python project are more cohesive than 
 
 \end{frame}
 
-\subsection{Cohesive Small World Model}
-
 \begin{frame}
 \frametitle{The Cohesive Small World Model}
 
@@ -898,6 +918,8 @@ The cooperation networks of both Debian and Python projects can be modeled using
 \end{block}
 \end{column}
 \end{columns}
+
+\pause
 
 \vspace{0.2cm}
 But there are significative differences between Debian and Python.
@@ -944,6 +966,8 @@ Focus the analysis on the ratio of renewal of the individuals in the positions d
 
 \end{block}
 
+\pause
+
 \vspace{0.5cm}
 
 I propose that hierarchical structures can be classified in a continuum, the two extreme points of which are: 
@@ -972,6 +996,8 @@ Free and Open Source Software (FOSS) communities have attracted a lot of attenti
 \end{block}
 \end{column}
 
+\pause
+
 \begin{column}{0.5\textwidth}
 
 \begin{block}{Uncritically celebratory and a bit naive}
@@ -983,6 +1009,8 @@ Free and Open Source Software (FOSS) communities have attracted a lot of attenti
 \end{block}
 \end{column}
 \end{columns}
+
+\pause
 
 %\vspace{0.5cm}
 
@@ -1006,6 +1034,8 @@ Free and Open Source Software (FOSS) communities have attracted a lot of attenti
 The social structure of a community are the patterns of relations established among individual participants in the production process. But I do not limit the analysis to one point in time; I analyze its evolution.
 \end{block}
 
+\pause
+
 \begin{columns}[c]
 \begin{column}{0.5\textwidth}
 \begin{block}{Puzzle: FOSS projects as Oligarchies?}
@@ -1019,6 +1049,8 @@ The continuous renewal of the people that does most of the work is a key mechani
 \end{block}
 \end{column}
 \end{columns}
+
+\pause
 
 \vspace{0.2cm}
 
@@ -1085,6 +1117,8 @@ To further the analysis I used more sophisticated statistical modeling strategie
 \item \textbf{Added source code lines to Python:} Modeled with a panel regression with individual and year fixed effect. Dependent variable treated as a continuous variable. The $k$-component number is also the second most important independent variable only after Degree Centrality.
 
 \end{itemize}
+
+\pause
 
 \begin{block}{Potential endogenity problems of the previous models}
 There is a relation between the dependent variable and the network metrics (independent variables) because the cooperation networks are build precisely based on contributions to the projects.
@@ -1162,6 +1196,8 @@ Years&Top Developers&New Developers&Developers Out&Developers back \\
 \end{block}
 \end{column}
 
+\pause
+
 \begin{column}{0.5\textwidth}
 
 \begin{block}{My approach: Survival analysis}
@@ -1174,6 +1210,8 @@ Years&Top Developers&New Developers&Developers Out&Developers back \\
 \end{column}
 \end{columns}
 
+\pause
+
 \begin{block}{Cox proportional hazards model}
 \begin{itemize}
 \item Time-dependent variables and right-censoring.
@@ -1181,6 +1219,8 @@ Years&Top Developers&New Developers&Developers Out&Developers back \\
 \item Also an increment of one connectivity level decreases the yearly hazard of leaving the project by 26\%.
 \end{itemize}
 \end{block}
+
+\pause
 
 \begin{block}{Estimating the survival function with the Kaplan-Meier estimator}
 \begin{columns}[c]
@@ -1220,7 +1260,7 @@ where $d_i$ are the number of ``death events'' at time $t$ and $n_i$ is the numb
 \end{frame}
 
 
-\section{Conclusions}
+\section{Conclusions, Limitations, and Future Work}
 
 
 \begin{frame}
@@ -1276,7 +1316,7 @@ where $d_i$ are the number of ``death events'' at time $t$ and $n_i$ is the numb
 
 \item The connectivity structure of these collaborative communities' cooperation networks can be characterized as an \textbf{open elite}, where the top levels of this hierarchy are filled with new individuals at a high pace. 
 
-\item This feature is key for understanding the mechanisms and dynamics that make FOSS communities able to develop long term projects, with high individual turnover, and yet achieve high impact and coherent results as a result of large scale cooperation.
+\item This feature is \textbf{key for understanding the mechanisms and dynamics} that make FOSS communities able to develop long term projects, with high individual turnover, and yet achieve high impact and coherent results as a result of large scale cooperation.
 
 \end{itemize}
 

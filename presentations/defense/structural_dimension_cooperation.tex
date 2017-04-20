@@ -1148,6 +1148,56 @@ Years&Top Developers&New Developers&Developers Out&Developers back \\
 \end{frame}
 
 
+\begin{frame}
+\frametitle{Modeling robustness of Cooperation Networks}
+
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{block}{Usual measures of robustness}
+\begin{itemize}
+%\item Perform simulations \citep{albert:2000} of:
+\item Failures: remove nodes at random and see how this affects the size of the giant component.  
+\item Attacks: remove nodes incrementally starting for the ones with higher degree.
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+
+\begin{block}{My approach: Survival analysis}
+\begin{itemize}
+%\item Origin in medicine: Used to model lifespans of ill individuals.
+\item I model active life of a developer as the period that this developer is contributing to the project.
+\item I consider a developer ``dead'' when she no longer contributes to the project.
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+
+\begin{block}{Cox proportional hazards model}
+\begin{itemize}
+\item Time-dependent variables and right-censoring.
+\item Being part of the top connectivity level decreases the yearly hazard of leaving the project by 77\%.
+\item Also an increment of one connectivity level decreases the yearly hazard of leaving the project by 26\%.
+\end{itemize}
+\end{block}
+
+\begin{block}{Estimating the survival function with the Kaplan-Meier estimator}
+\begin{columns}[c]
+\begin{column}{0.2\textwidth}
+$$
+\hat{S}(t) = \prod_{t_i < t} \frac{n_i - d_i}{n_i}
+$$
+\end{column}
+
+\begin{column}{0.7\textwidth}
+where $d_i$ are the number of ``death events'' at time $t$ and $n_i$ is the number of subjects at risk of death at time $t$. 
+\end{column}
+\end{columns}
+\end{block}
+
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Modeling robustness as median active live of individuals in the project}
@@ -1156,12 +1206,12 @@ Years&Top Developers&New Developers&Developers Out&Developers back \\
 \centering
 \subfloat[Survival Function for all developers]{
 \label{fig:survival_all}
-\includegraphics[scale=0.2]{../../figures/survival_all}
+\includegraphics[scale=0.24]{../../figures/survival_all}
 }
 \hspace{.01in}
 \subfloat[Survival Function for developers in the top connectivity level]{
 \label{fig:survival_groups}
-\includegraphics[scale=0.2]{../../figures/survival_top}
+\includegraphics[scale=0.24]{../../figures/survival_top}
 }
 \label{fig:survival}
 \caption[Survival function using the Kaplan-Meier estimate.]{Estimation of the survival function using the Kaplan-Meier estimate. The median survival time of a developer in the community, defined as the point in time where on average half of the population has abandoned the community, is 6 years if I consider all developers (left). But if I consider separately the developers in the top level of the connectivity hierarchy (right), their median survival time is 12 years; but only 3 years for the developers that are not on the top of the connectivity hierarchy.}
@@ -1169,7 +1219,9 @@ Years&Top Developers&New Developers&Developers Out&Developers back \\
 
 \end{frame}
 
-%\section{References}
+
+\section{Conclusions}
+
 
 \begin{frame}
 \frametitle{Conclusions}
@@ -1181,28 +1233,15 @@ Years&Top Developers&New Developers&Developers Out&Developers back \\
 \item \textbf{The Cohesive Small World model}: The structural patterns defined by this model provide the scaffolding for enabling effective large scale cooperation.
 
 \begin{itemize}
-\item Structurally cohesive groups nested inside each other that form a connectivity hierarchy.
+\item Structurally cohesive groups nested inside each other that form a connectivity hierarchy. Provide a plausible mechanism of generation of trust and congruent values: individuals embedded in these structures are able to compare independent perspectives on each other through a variety of paths that flow through distinct sets of intermediaries.
 
-\item Dense local clusters connected between them by relative short paths.
+
+\item Dense local clusters connected between them by relative short paths is a structural pattern that allows successful cooperation among heterogeneous individuals with common interests. 
 \end{itemize}
 
-\item I \textbf{developed heuristics} to compute the $k$-components structure that allow for the computing of the approximate value of group cohesion for moderately large networks in a reasonable time frame. I \textbf{contributed an implementation} of these heuristics to a popular Python software package for the analysis of complex networks: NetworkX \citep{hagberg:2008}.
+\item I \textbf{developed heuristics} to compute the $k$-components structure that allow for the computing of the approximate value of group cohesion for moderately large networks in a reasonable time frame.
 
-\item The ``Cohesive Small World'' model is a good fit to describe the cooperation networks ---that is, the patterns of relations between direct producers--- of two big and mature FOSS projects: the Python programming language, and the Debian operating system.
-
-\item The nested structure of $k$-components nicely captures the hierarchy in the patterns of relations that individual contributors establish when working together. This hierarchy:
-
-\begin{itemize}
-\item reflects the empirically well established fact that in FOSS projects only a small fraction of the developers account for most of the contributions.
-
-\item refutes the naive views of early academic accounts that characterized FOSS projects as a flat hierarchy of peers in which every individual does more or less the same.
-\end{itemize}
-
-\item \textbf{Cooperation has a structural dimension} because membership in cohesive groups that emerge from the cooperation networks has an important and statistically significative impact on both the volume of individual contributions, and on the median active life of developers.
-
-\item The connectivity structure of collaborative communities' cooperation networks can be characterized as an \textbf{open elite}, where the top levels of this hierarchy are filled with new individuals at a high pace. This feature is key for understanding the mechanisms and dynamics that make FOSS communities able to develop long term projects, with high individual turnover, and yet achieve high impact and coherent results as a result of large scale cooperation.
-
-\item However, it is not clear that the theoretical model that I proposed fits all cooperation networks of Collaborative Communities, or even cooperation networks of all FOSS projects. Because the empirical analysis presented in this thesis was a case study of two successful projects aimed to develop a theoretical framework, I cannot determine if other FOSS projects also fit nicely in it. Thus what I presented is more an existence proof than a empirical test of my proposed theoretical model.
+\item I \textbf{contributed an implementation} of these heuristics, and other related connectivity measures, to a popular Python software package for the analysis of complex networks: NetworkX \citep{hagberg:2008}.
 
 \end{itemize}
 
@@ -1213,6 +1252,61 @@ Years&Top Developers&New Developers&Developers Out&Developers back \\
 \item The existence of dense local clusters connected between them by relative short paths allows successful cooperation among heterogeneous individuals with common interests and, at the same time, fosters the flow of information between these clusters preventing the local clusters to be trapped in echo chambers of like minded collaborators.
 \end{itemize}
 }
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Conclusions}
+
+\begin{itemize}
+
+\item The \textbf{Cohesive Small World} model is a good fit to describe the cooperation networks of two big and mature FOSS projects: the Python programming language, and the Debian operating system.
+
+\item The nested structure of $k$-components nicely captures the \textbf{hierarchy in the patterns of relations} that individual contributors establish when working together.
+
+\begin{itemize}
+\item reflects the empirically well established fact that in FOSS projects only a small fraction of the developers account for most of the contributions.
+
+\item refutes the naive views of early academic accounts that characterized FOSS projects as a flat hierarchy of peers in which every individual does more or less the same.
+\end{itemize}
+
+\item \textbf{Cooperation has a structural dimension} because membership in cohesive groups has an important and statistically significative impact on both the volume of individual contributions, and on the median active life of developers.
+
+\item The connectivity structure of these collaborative communities' cooperation networks can be characterized as an \textbf{open elite}, where the top levels of this hierarchy are filled with new individuals at a high pace. 
+
+\item This feature is key for understanding the mechanisms and dynamics that make FOSS communities able to develop long term projects, with high individual turnover, and yet achieve high impact and coherent results as a result of large scale cooperation.
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Limitations and Future Work}
+
+\begin{itemize}
+
+\item It's not clear that the theoretical model that I proposed fits all cooperation networks of Collaborative Communities, in general, or even cooperation networks of FOSS projects, in particular.
+
+\item The empirical analysis presented in this thesis was aimed to develop a theoretical framework and was not designed as an empirical test.
+
+\item The case study of two successful projects is therefore an existence proof, not an empirical test of the Cohesive Small World Model.
+
+\item The next steps in my research agenda will be to expand the kind of empirical analysis that I presented in this thesis to include:
+
+\item Both successful and unsuccessful large scale cooperation projects. There is abundant data on failed FOSS projects.
+
+\item Other knowledge intensive production processes beyond FOSS projects:
+
+\begin{itemize}
+\item Scientific collaborations and coauthorship
+\item State sponsored large scale scientific and technical projects (such as Space exploration)
+\item Productions processes inside big capitalist corporations  
+\end{itemize}
+
+\end{itemize}
 
 \end{frame}
 

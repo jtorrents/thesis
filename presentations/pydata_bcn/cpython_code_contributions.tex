@@ -318,42 +318,30 @@ A $k$-component is a maximal subgraph that has, at least, node connectivity $k$:
 
 \section{Empirical analysis: FOSS projects}
 
-\subsection{Debian and Python}
+\subsection{The CPython project}
 
 \begin{frame}
-\frametitle{Free and Open Source Projects: Debian and Python}
+\frametitle{Free and Open Source Projects: The CPython project}
 
 Free Software, broadly defined, is computer software that allows users to run, copy, distribute, study, change and improve it.
 
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
-\begin{block}{The Debian Project: 1999-2012}
+\begin{block}{The CPython project: 1999-2014}
 \begin{itemize}
-\item A free Operating System
-\item 392 developers in 1999, 1435 in 2012 
-\item 2876 programs in 1999, 10469 in 2012
-\item Widely used in servers (google), desktops (Ubuntu) and embedded devices (raspberry pi)
-\end{itemize}
-\end{block}
-\end{column}
-
-\begin{column}{0.5\textwidth}
-\begin{block}{The Python project: 1999-2014}
-\begin{itemize}
-\item A free Programming Language
+\item Reference implementation of the Python programming language
+\item Guido van Rossum started the development in 1991 as a personal project
 \item 9 developers in 1999, 62 in 2014
-\item 1137 files in 1999, 2134 in 2014 
-\item Widely used in web development (reddit, youtube) and scientific computing
+\item 1137 source code files in 1999, 2134 in 2014
 \end{itemize}
 \end{block}
-\end{column}
-\end{columns}
 
-\begin{block}{}
+\pause
+
+\begin{block}{Why analyze the CPython project?}
 \begin{itemize}
-\item 
-\item 
-\item 
+\item One of the most popular programming languages
+\item Widely used in web development and scientific computing
+\item Thus, a it's successful example of large scale cooperation
+\item We have detailed electronic records of source code contributions: mercurial repository.
 \end{itemize}
 \end{block}
 
@@ -364,14 +352,14 @@ Free Software, broadly defined, is computer software that allows users to run, c
 \begin{frame}
 \frametitle{Cooperation Networks and Null Models}
 
-My modeling strategy to capture the patterns of relations among developers in these two projects is to focus on the actual contributions of each developer to the project. 
+My modeling strategy to capture the patterns of relations among developers is to focus on the actual contributions of each developer to the project. 
 
 \begin{block}{Building Cooperation Networks}
 \begin{itemize}
 \item Focus on the patterns of relations among developers in the productive process.
-\item Cooperation networks are bipartite or two mode; node sets are developers and programs/files and edges only link nodes from opposite sets.
-\item A developer is linked to the package (in Debian) or source code file (in Python) that she works on.
-\item We have complete electronic records of all package uplads to Debain and all sorce code file edits in Python.
+\item Cooperation networks are bipartite or two mode; node sets are developers and source code files, and edges only link nodes from opposite sets.
+\item A developer is linked to the source code files that she works on. Each edge is weighted by the number of lines of source code added.
+\item We have complete electronic records of all source code file edits.
 \end{itemize}
 \end{block}
 
@@ -382,7 +370,7 @@ My modeling strategy to capture the patterns of relations among developers in th
 \item We need to compare the statistical measures obtained from the actual networks with a suitable null model in order to assert that what we observe is not the result of pure chance.
 \end{itemize}
 \begin{description}
-\item [Configuration Model] assigns at random developers to packages, or developers to source code files, maintaining the concrete skewed distribution of packages by developer and files by developer observed in the actual networks. That is, the degree distribution.
+\item [Configuration Model] assigns at random developers to source code files, maintaining the concrete skewed distribution of files by developer observed in the actual networks. That is, the degree distribution.
 \end{description}
 \end{block}
 
@@ -635,10 +623,6 @@ Free and Open Source Software (FOSS) communities have attracted a lot of attenti
 \begin{frame}
 \frametitle{Empirical Analysis of Individual Contributions}
 
-\begin{block}{Well established empirical fact about FOSS projects}
-Only few of the participants account for the lion's share of the work done.
-\end{block}
-
 \note{The informal structure emerging from the patterns of cooperation among individuals in a FOSS project is quite hierarchical because reflects the fact that only few individuals are responsible for most contributions to the project.}
 
 \begin{block}{Longitudinal Analysis of the Social Structure of FOSS projects}
@@ -646,6 +630,7 @@ The social structure of a community are the patterns of relations established am
 \end{block}
 
 \pause
+
 
 \begin{columns}[c]
 \begin{column}{0.5\textwidth}
@@ -663,19 +648,11 @@ The continuous renewal of the people that does most of the work is a key mechani
 
 \pause
 
-\vspace{0.2cm}
+\begin{block}{Longitudinal analysis}
+If we analyze a FOSS project in a concrete point of time, only a very small fraction of the participants are the ones that actually do the lion's share of contributions, as previous empirical research has shown.
 
-Results of the empirical analysis:
-
-\begin{itemize}
-
-\item My analysis shows that the ratio of renewal of individuals at these structural positions is quite fast, which characterizes FOSS communities as dynamic hierarchies and open
-elites.
-
-\item I found that the position of an individual in the connectivity structure of the cooperation network also impacts significantly in the median active life of a developer in the project.
-\end{itemize}
-
-\note{Thus, if we analyze cross-sectionally (ie in a concrete point of time) a FOSS project, a very small fraction of the participants are the ones that actually do the lion's share of contributions, as previous empirical research has shown. However if we analyze the evolution of contributions longitudinally, we find that the persons that contribute the most change through time.}
+However if we analyze the evolution of contributions longitudinally, we find that the persons that contribute the most change through time.
+\end{block}
 
 \end{frame}
 
@@ -719,16 +696,14 @@ To further the analysis I used more sophisticated statistical modeling strategie
 
 \begin{itemize}
 
-\item \textbf{Debian package uploads:} Modeled with a negative binomial regression. Over-dispersed and discrete dependent variable: \# of uploads. The $k$-component number is the second most important independent variable only after Degree Centrality.
-
-\item \textbf{Added source code lines to Python:} Modeled with a panel regression with individual and year fixed effect. Dependent variable treated as a continuous variable. The $k$-component number is also the second most important independent variable only after Degree Centrality.
+\item \textbf{Added source code lines to Python:} Modeled with a panel regression with individual and year fixed effect. The position of the individual developer in the connectivity hierarchy is the second most important independent variable only after Degree Centrality.
 
 \end{itemize}
 
 \pause
 
-\begin{block}{Potential endogenity problems of the previous models}
-There is a relation between the dependent variable and the network metrics (independent variables) because the cooperation networks are build precisely based on contributions to the projects.
+\begin{block}{Potential endogenity problems of the previous model}
+There is a relation between the dependent variable and the network metrics (independent variables) because the cooperation networks are build precisely based on contributions to the project.
 \end{block}
 
 \begin{itemize}
@@ -744,47 +719,15 @@ There is a relation between the dependent variable and the network metrics (inde
 \begin{frame}
 \frametitle{Cooperation Networks' Connectivity Hierarchies as Open Elites}
 
+The ratio of renewal of individuals at the top of the connectivity hierarchy is quite fast, which characterizes the CPython project as an open elite.
+
 \begin{figure}
 \centering
 \vspace{-0.2cm}
 \hspace{-0.8cm}
-\includegraphics[scale=0.22]{../../figures/sankey_mobility_python_years}
+\includegraphics[scale=0.23]{../../figures/sankey_mobility_python_years}
 \caption{Sankey diagram of Python developer mobility at the top connectivity level.}
 \end{figure}
-
-\end{frame}
-
-\begin{frame}
-\frametitle{Cooperation Networks' Connectivity Hierarchies as Open Elites}
-
-\begin{table}[h]
-\caption{Developer mobility in the top connectivity level for the Python project.}
-\label{python_mobility_table}
-\begin{center}
-\begin{tabular}{ccccc}
-\toprule
-Years&Top Developers&New Developers&Developers Out&Developers back \\ 
-\midrule
-1999&3 (33.3\%)&3 (100.0\%)&0 (0.0\%)&0 (0.0\%) \\ 
-2000&11 (35.5\%)&8 (72.7\%)&1 (9.1\%)&0 (0.0\%) \\ 
-2001&13 (39.4\%)&4 (30.8\%)&1 (7.7\%)&0 (0.0\%) \\ 
-2002&19 (50.0\%)&8 (42.1\%)&1 (5.3\%)&0 (0.0\%) \\ 
-2003&19 (45.2\%)&3 (15.8\%)&5 (26.3\%)&0 (0.0\%) \\ 
-2004&14 (28.6\%)&3 (21.4\%)&1 (7.1\%)&0 (0.0\%) \\ 
-2005&19 (43.2\%)&1 (5.3\%)&4 (21.1\%)&5 (26.3\%) \\ 
-2006&12 (23.1\%)&0 (0.0\%)&4 (33.3\%)&1 (8.3\%) \\ 
-2007&20 (39.2\%)&10 (50.0\%)&7 (35.0\%)&3 (15.0\%) \\ 
-2008&21 (35.6\%)&6 (28.6\%)&6 (28.6\%)&3 (14.3\%) \\ 
-2009&22 (37.9\%)&9 (40.9\%)&3 (13.6\%)&1 (4.5\%) \\ 
-2010&28 (44.4\%)&9 (32.1\%)&7 (25.0\%)&2 (7.1\%) \\ 
-2011&25 (39.7\%)&7 (28.0\%)&2 (8.0\%)&1 (4.0\%) \\ 
-2012&32 (49.2\%)&8 (25.0\%)&12 (37.5\%)&4 (12.5\%) \\ 
-2013&33 (52.4\%)&8 (24.2\%)&16 (48.5\%)&5 (15.2\%) \\ 
-2014&20 (32.3\%)&3 (15.0\%)&0 (0.0\%)&0 (0.0\%) \\ 
-\bottomrule
-\end{tabular}
-\end{center}
-\end{table}
 
 \end{frame}
 
@@ -820,8 +763,9 @@ Years&Top Developers&New Developers&Developers Out&Developers back \\
 \pause
 
 \begin{block}{Cox proportional hazards model}
+The position of an individual in the connectivity hierarchy impacts significantly their median active life in the project.
+
 \begin{itemize}
-\item Time-dependent variables and right-censoring.
 \item Being part of the top connectivity level decreases the yearly hazard of leaving the project by 77\%.
 \item Also an increment of one connectivity level decreases the yearly hazard of leaving the project by 26\%.
 \end{itemize}
@@ -865,6 +809,34 @@ where $d_i$ are the number of ``death events'' at time $t$ and $n_i$ is the numb
 \end{figure}
 
 \end{frame}
+
+\section{Conclusions}
+
+\begin{frame}
+\frametitle{Conclusions}
+
+\begin{itemize}
+
+\item \textbf{Cooperation Networks:} A meso level approach to large scale cooperation focused on the patterns of relations that direct producers establish between them in knowledge intensive production processes.
+
+\item The nested structure of $k$-components nicely captures the \textbf{hierarchy in the patterns of relations} that individual contributors establish when working together.
+
+\begin{itemize}
+\item reflects the empirically well established fact that in FOSS projects only a small fraction of the developers account for most of the contributions.
+
+\item refutes the naive views of early academic accounts that characterized FOSS projects as a flat hierarchy of peers in which every individual does more or less the same.
+\end{itemize}
+
+\item \textbf{Cooperation has a structural dimension} because membership in cohesive groups has an important and statistically significative impact on both the volume of individual contributions, and on the median active life of developers.
+
+\item The connectivity structure of these collaborative communities' cooperation networks can be characterized as an \textbf{open elite}, where the top levels of this hierarchy are filled with new individuals at a high pace. 
+
+\item This feature is \textbf{key for understanding the mechanisms and dynamics} that make FOSS communities able to develop long term projects, with high individual turnover, and yet achieve high impact and coherent results as a result of large scale cooperation.
+
+\end{itemize}
+
+\end{frame}
+
 
 
 

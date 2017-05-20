@@ -73,9 +73,9 @@
 
 %\AtBeginSection[]{\frame{\frametitle{Contents}\tableofcontents[current]}}
 
-\title{Analyzing code contributions to the CPython project using NetworkX and Matplotlib}
+\title[Analyzing code contributions to the CPython project]{Analyzing code contributions to the CPython project using NetworkX and Matplotlib}
 \subtitle{PyData Barcelona 2017}
-\author{Jordi Torrents}
+\author{Jordi Torrents\\ jordi.t21@gmail.com}
 \institute{Department of Sociology\\University of Barcelona}
 
 \begin{document}
@@ -325,17 +325,6 @@ A $k$-component is a maximal subgraph that has, at least, node connectivity $k$:
 
 Free Software, broadly defined, is computer software that allows users to run, copy, distribute, study, change and improve it.
 
-\begin{block}{The CPython project: 1999-2014}
-\begin{itemize}
-\item Reference implementation of the Python programming language
-\item Guido van Rossum started the development in 1991 as a personal project
-\item 9 developers in 1999, 62 in 2014
-\item 1137 source code files in 1999, 2134 in 2014
-\end{itemize}
-\end{block}
-
-\pause
-
 \begin{block}{Why analyze the CPython project?}
 \begin{itemize}
 \item One of the most popular programming languages
@@ -344,6 +333,18 @@ Free Software, broadly defined, is computer software that allows users to run, c
 \item We have detailed electronic records of source code contributions: mercurial repository.
 \end{itemize}
 \end{block}
+
+\pause
+
+\begin{block}{The CPython project: 1991-2014}
+\begin{itemize}
+\item Reference implementation of the Python programming language
+\item Guido van Rossum started the development in 1991 as a personal project
+\item 9 developers in 1999, 62 in 2014
+\item 1137 source code files in 1999, 2134 in 2014
+\end{itemize}
+\end{block}
+
 
 \end{frame}
 
@@ -576,88 +577,6 @@ My modeling strategy to capture the patterns of relations among developers is to
 \section{Connectivity Hierarchy and Individual Contributions}
 
 \begin{frame}
-\frametitle{The Hierarchical Structure of FOSS projects}
-
-Free and Open Source Software (FOSS) communities have attracted a lot of attention from researchers. Academic efforts took mainly two directions:
-
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
-\begin{block}{Reconcile with neoclassical economy}
-\begin{itemize}
-\item Mainly focused on the individual motivations of the participants. What is usually referred as ``microfundaments''.
-\item Trying to explain motivations in terms of of rational self-interested individuals to match the dominant economic accounts.
-\item Proposed that individuals 
-\end{itemize}
-\end{block}
-\end{column}
-
-\pause
-
-\begin{column}{0.5\textwidth}
-
-\begin{block}{Uncritically celebratory and a bit naive}
-\begin{itemize}
-\item Very influenced by practitioners account of the phenomenon.
-\item Supported the ethical stand that valued more cooperation and reciprocity than competition and self-interest.
-\item Assumed that FOSS communities are composed by loosely organized individuals with a very flat or nonexistent hierarchy among them.
-\end{itemize}
-\end{block}
-\end{column}
-\end{columns}
-
-\pause
-
-%\vspace{0.5cm}
-
-\begin{block}{Well established empirical fact about FOSS projects}
-\begin{itemize}
-\item Only few of the participants account for the lion's share of the work done.
-\item The deep contribution inequalities may mean that these projects follow the ``iron law of the oligarchy'' \citep{shaw:2014}.
-\item I propose that one of the central characteristics of FOSS projects is their high ratio of turnover in key hierarchical positions.
-\end{itemize}
-\end{block}
-
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Empirical Analysis of Individual Contributions}
-
-\note{The informal structure emerging from the patterns of cooperation among individuals in a FOSS project is quite hierarchical because reflects the fact that only few individuals are responsible for most contributions to the project.}
-
-\begin{block}{Longitudinal Analysis of the Social Structure of FOSS projects}
-The social structure of a community are the patterns of relations established among individual participants in the production process. But I do not limit the analysis to one point in time; I analyze its evolution.
-\end{block}
-
-\pause
-
-
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
-\begin{block}{Puzzle: FOSS projects as Oligarchies?}
-\citet{michels:1915} ``iron law of oligarchy'' states that organizations tend towards oligarchy as they grow, even if democracy and participation are part of their core goals.
-\end{block}
-\end{column}
-
-\begin{column}{0.5\textwidth}
-\begin{block}{FOSS projects as Open Elites}
-The continuous renewal of the people that does most of the work is a key mechanism to explain how FOSS projects can thrive and success through time.
-\end{block}
-\end{column}
-\end{columns}
-
-\pause
-
-\begin{block}{Longitudinal analysis}
-If we analyze a FOSS project in a concrete point of time, only a very small fraction of the participants are the ones that actually do the lion's share of contributions, as previous empirical research has shown.
-
-However if we analyze the evolution of contributions longitudinally, we find that the persons that contribute the most change through time.
-\end{block}
-
-\end{frame}
-
-
-\begin{frame}
 \frametitle{Individual contributions by connectivity level}
 
 \begin{itemize}
@@ -714,6 +633,88 @@ There is a relation between the dependent variable and the network metrics (inde
 
 
 \end{frame}
+
+
+
+\begin{frame}
+\frametitle{The Hierarchical Structure of FOSS projects}
+
+Free and Open Source Software (FOSS) communities have attracted a lot of attention from researchers. Academic efforts took mainly two directions:
+
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{block}{Reconcile with neoclassical economy}
+\begin{itemize}
+\item Mainly focused on the individual motivations of the participants. What is usually referred as ``microfundaments''.
+\item Trying to explain motivations in terms of of rational self-interested individuals to match the dominant economic accounts.
+\end{itemize}
+\end{block}
+\end{column}
+
+\pause
+
+\begin{column}{0.5\textwidth}
+
+\begin{block}{Uncritically celebratory and a bit naive}
+\begin{itemize}
+\item Supported the ethical stand that valued more cooperation and reciprocity than competition and self-interest.
+\item Assumed that FOSS communities are composed by loosely organized individuals with a very flat or nonexistent hierarchy among them.
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+
+\pause
+
+%\vspace{0.5cm}
+
+\begin{block}{Well established empirical fact about FOSS projects}
+\begin{itemize}
+\item Only few of the participants account for the lion's share of the work done.
+%\item The deep contribution inequalities may mean that these projects follow the ``iron law of the oligarchy'' \citep{shaw:2014}.
+%\item I propose that one of the central characteristics of FOSS projects is their high ratio of turnover in key hierarchical positions.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Empirical Analysis of Individual Contributions}
+
+\note{The informal structure emerging from the patterns of cooperation among individuals in a FOSS project is quite hierarchical because reflects the fact that only few individuals are responsible for most contributions to the project.}
+
+\begin{block}{Longitudinal Analysis of the Social Structure of FOSS projects}
+The social structure of a community are the patterns of relations established among individual participants in the production process. But I do not limit the analysis to one point in time; I analyze its evolution.
+\end{block}
+
+\pause
+
+
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{block}{Puzzle: FOSS projects as Oligarchies?}
+\citet{michels:1915} ``iron law of oligarchy'' states that organizations tend towards oligarchy as they grow, even if democracy and participation are part of their core goals.
+\end{block}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{block}{FOSS projects as Open Elites}
+The continuous renewal of the people that does most of the work is a key mechanism to explain how FOSS projects can thrive and success through time.
+\end{block}
+\end{column}
+\end{columns}
+
+\pause
+
+\begin{block}{Longitudinal analysis}
+If we analyze a FOSS project in a concrete point of time, only a very small fraction of the participants are the ones that actually do the lion's share of contributions, as previous empirical research has shown.
+
+However if we analyze the evolution of contributions longitudinally, we find that the persons that contribute the most change through time.
+\end{block}
+
+\end{frame}
+
 
 
 \begin{frame}
@@ -817,7 +818,7 @@ where $d_i$ are the number of ``death events'' at time $t$ and $n_i$ is the numb
 
 \begin{itemize}
 
-\item \textbf{Cooperation Networks:} A meso level approach to large scale cooperation focused on the patterns of relations that direct producers establish between them in knowledge intensive production processes.
+%\item \textbf{Cooperation Networks:} A meso level approach to large scale cooperation focused on the patterns of relations that direct producers establish between them in knowledge intensive production processes.
 
 \item The nested structure of $k$-components nicely captures the \textbf{hierarchy in the patterns of relations} that individual contributors establish when working together.
 
@@ -842,11 +843,13 @@ where $d_i$ are the number of ``death events'' at time $t$ and $n_i$ is the numb
 
 \begin{frame}[label=biblio]
 \frametitle{References}
+You can download the slides from: 
+\begin{small}
+\href{https://github.com/jtorrents/thesis/blob/master/presentations/pydata_bcn/cpython_code_contributions.pdf}{https://github.com/jtorrents/thesis/blob/master/presentations/pydata\_bcn/cpython\_code\_contributions.pdf}
 % Bibliografia
-\begin{tiny}
 \bibliographystyle{chicago}
 \bibliography{../../thesis.bib}
-\end{tiny}
+\end{small}
 \end{frame}
 
 \end{document}

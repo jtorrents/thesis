@@ -92,7 +92,7 @@
 \section{Large Scale Cooperation}
 
 \begin{frame}
-\frametitle{Large Scale Cooperation}
+\frametitle{Central Topic: Large Scale Cooperation}
 
 The last half of twentieth century has witnessed a key shift in knowledge intensive production processes.
 
@@ -198,7 +198,7 @@ Focus on Cooperation networks: patterns of relations that direct producers estab
 
 The central topic of this thesis is to understand and explain under which conditions and through which social mechanisms large scale cooperation operates. 
 
-\begin{block}{Free and Open Source Software as a case study}
+\begin{block}{Free and Open Source Software (FOSS) as a case study}
 \begin{description}
 \item[Free Software] is computer software that allows users to run, copy, distribute, study, change and improve it.  
 \end{description}
@@ -215,6 +215,31 @@ The central topic of this thesis is to understand and explain under which condit
 \begin{block}{Research question}
 How does large scale cooperation work in knowledge intensive and technically complex production processes developed in new organizational environments, such as Free and Open Source Software projects, where loosely coupled individuals that rarely meet face to face have to coordinate through internet in order to produce world class software products, without relying on hierarchy or market as coordinating mechanisms.
 \end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Literature on FOSS}
+
+\begin{block}{The literature has focused on 4 main areas:}
+\begin{enumerate}
+\item individual incentives.
+\item innovation and intellectual property policy.
+\item development methods (mainly from Computer Science).
+\item organization and governance.
+\end{enumerate}
+\end{block}
+
+\pause
+
+\begin{block}{This research focuses on the intersection of areas 3 and 4}
+\begin{itemize}
+\item analyze how individuals coordinate their actions in order to achieve collective outcomes.
+\item focus on the patterns of relations of direct producers to analyze meso level mechanisms that enable and foster large scale cooperation.
+\item FOSS projects as a case study; a proxy to analyze large scale cooperation in the context of new organizational forms.
+\item FOSS tenets are closely related to the ethos of science as described by \citet{merton:1942}, and thus analyzing FOSS we can generalize to other large scale cooperation social processes.
+\end{itemize}
+\end{block}
+
 \end{frame}
 
 
@@ -318,7 +343,7 @@ Neither the classical approaches nor new developments in community analysis work
 \begin{frame}
 \frametitle{The structural cohesion model}
 
-The structural cohesion model \citep{white:2001,moody:2003} is based on two mathematically equivalent definitions of cohesion.
+The structural cohesion model \citep{white:2001,moody:2003} is based on two mathematically equivalent definitions of cohesion (by Menger's theorem).
 
 \begin{block}{Precise definition of group cohesion based on \textbf{node connectivity}}
 
@@ -343,42 +368,22 @@ This equivalence relation has a deep sociological meaning because it allows to d
 \end{frame}
 
 \begin{frame}
-\frametitle{Measures of structural cohesion}
-
-\begin{block}{Node connectivity $\kappa(G)$}
-\begin{description}
-\item[Local] given two nodes $u$ and $v$, $\kappa_{G}(u,v)$ is the minimum number of nodes that must be removed to destroy all paths that join $u$ and $v$.
-
-\item[Global] the minimum number of nodes that must be removed in order to disconnect a graph $G$.
-
-\begin{equation*}
-\kappa = min{\{\kappa_{G}(u,v):u,v \in V(G)\}}
-\end{equation*}
-
-\end{description}
-
-\end{block}
-
-\begin{block}{Average node connectivity $\bar{\kappa}(G)$}
-the sum of local node connectivity between all pairs of different nodes of $G$ divided by the number of distinct pairs of nodes. \citep*{beineke:2002}.
-
-\begin{equation*}
-\bar{\kappa}(G) = \frac{\sum_{u,v} \kappa_{G}(u,v)}{{n \choose 2}}
-\end{equation*}
-\end{block}
-
-\end{frame}
-
-\begin{frame}
-\frametitle{Components and $k$-components}
+\frametitle{Components, node connectivity, and $k$-components}
 
 \begin{block}{Component}
 A \emph{component} of a graph $G$ is a maximal connected subgraph, which means that there is at least one path between any two nodes in that subgraph.
 \end{block}
 
+\begin{block}{Node connectivity $\kappa(G)$}
+The minimum number of nodes that must be removed in order to disconnect a graph $G$.
+\end{block}
+
 \begin{block}{$k$-components}
 A $k$-component is a maximal subgraph that has, at least, node connectivity $k$: we need to remove at least $k$ nodes to break it into more components. 
 \end{block}
+
+\pause
+\vspace{-0.5cm}
 
 \begin{columns}[c]
 \begin{column}{0.4\textwidth}
@@ -425,117 +430,38 @@ Despite all its merits, the structural cohesion model has not been widely applie
 
 \item it is not practical to compute it for networks with more than a few hundreds nodes and edges due to its computational complexity.
 
-\item it is not implemented in most popular network analysis software packages.
+\item it was not implemented in most popular network analysis software packages.
 
 \end{itemize}
 \end{block}
 \end{frame}
 
-\subsection{Algorithms and Heuristics}
-
-\begin{frame}[fragile]
-\frametitle{Exact Algorithm}
-
-\citet[appendix A]{moody:2003} provide an algorithm for identifying $k$-components in a network, which is based on the \citet{kanevsky:1993} algorithm for finding all minimum-size node cut-sets of a graph.
-
-\begin{enumerate}
-
-\item Identify the node connectivity, $k$, of the input graph.
-
-\item Identify all $k$-cutsets at the current level of connectivity.
-
-\item Generate new graph components based on the removal of these cutsets.
-
-\item If the graph is neither complete nor trivial, return to 1; otherwise end.
-
-\end{enumerate}
-
-
-\begin{columns}[c]
-\begin{column}{0.3\textwidth}
-\begin{scriptsize}
-\begin{lstlisting}
-import networkx as nx
-from networkx import convert_node_labels_to_integers as cnlti
-
-G = cnlti(nx.grid_2d_graph(5,5))
-list(nx.all_node_cuts(G))
-[{1, 9}, {22, 23}, {17, 18}, {3, 14}]
-# To compute k-components
-kcomponents = nx.k_components(G)
-\end{lstlisting}
-\end{scriptsize}
-
-\end{column}
-
-\begin{column}{0.7\textwidth}
-\begin{center}
-\includegraphics[scale=0.45]{img/grid}
-\end{center}
-
-\end{column}
-\end{columns}
-
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Heuristics}
-
-The heuristics we developed are based on:
-
-\begin{block}{Approximation to local node connectivity}
-\citet{white:2001b} fast approximation algorithm for finding good lower bounds of the number of node independent paths between two nodes.
-
-\begin{columns}[c]
-\begin{column}{0.1\textwidth}
-
-\end{column}
-
-\begin{column}{0.8\textwidth}
-\begin{scriptsize}
-\begin{lstlisting}
-import networkx as nx
-from networkx.algorithms import approximation as apxa
-# Exact computation of node connectivity
-exact = nx.node_connectivity(G)
-# Lower bound approximation
-aprox = apxa.node_connectivity(G)
-\end{lstlisting}
-\end{scriptsize}
-\end{column}
-
-\begin{column}{0.1\textwidth}
-
-\end{column}
-\end{columns}
-\end{block}
-
-\begin{block}{Whitney's theorem}
-inclusion relation among node connectivity $\kappa(G)$, edge connectivity $\lambda(G)$ and minimum degree $\delta(G)$ for any graph $G$:
-
-\begin{equation*}
-\kappa(G) \le \lambda(G) \le \delta(G)
-\end{equation*}
-
-``$k$-cores can be regarded as seedbeds, within which we can expect highly cohesive subsets to be found'' \citet[281]{seidman:1983}
-\end{block}
-\end{frame}
+\subsection{Methodological Contributions: Algorithms and Heuristics}
 
 \begin{frame}
-\frametitle{Heuristics}
+\frametitle{Methodological Contributions: Algorithms and Heuristics}
 
-\begin{block}{Main logic of the heuristics}
-
-\begin{enumerate}
-
-\item repeatedly applying fast algorithms for $k$-cores \citep{batagelj:2011} and biconnected components \citep{tarjan:1972} in order to narrow down the number of pairs of different nodes over which we have to compute their local node connectivity.
-
-\item Build an auxiliary graph $H$ in which two nodes are linked if they have at least $k$ node independent paths connecting them.
-
-\item Complete subgraphs in $H$ have a one to one correspondence with subgraphs of $G$ in which each node is connected to every other node in the subgraph for at least $k$ node independent paths. That is, $k$-components.
-
-\end{enumerate}
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{block}{Implementation of connectivity measures}
+All contributed to NetworkX \citep{hagberg:2008}.
+\begin{itemize}
+\item Node and edge connectivity algorithms.
+\item \citet{kanevsky:1993} algorithm for finding all minimum-size node cut-sets of a graph.
+\item \citet{moody:2003} algorithm for identifying $k$-components.
+\end{itemize}
 \end{block}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{block}{Developed heuristics for fast computation}
+\begin{itemize}
+\item Allow computing the approximate value of group cohesion for moderately large networks, one order of magnitude bigger than the ones manageable by the exact algorithm. 
+\item The main logic of the heuristics is to repeatedly applying fast algorithms for $k$-cores and biconnected components in order to narrow down the number of pairs of nodes over which we have to compute node connectivity.
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
 
 \pause
 
@@ -555,7 +481,6 @@ Nuclear Theory&10,371&15,969&3.08&1,205.2&4,827&14,488&6.00&3,934.1\\
 \end{block}
 
 \end{frame}
-
 
 
 \section{The Network Structure of Collaborative Communities}
@@ -623,13 +548,57 @@ Collaborative Communities are especially well suited to deal with the challenges
 
 \begin{block}{Collaborative Communities that excel at knowledge-based production}
 \begin{itemize}
-\item Free and Open Source Communities.
-\item Novel forms of professional work organization \citep*{adler:2008}.
-\item Knowledge-intensive production processes in corporations \citep{adler:2006}.
+\item Free and Open Source Software communities.
+\item Novel forms of professional work organization \citep*{adler:2008}
+\item Knowledge-intensive production processes in corporations \citep{adler:2006}
+%\item contribution-based trust as its primary social mechanism: ``The basis of trust is the degree to which members of the community believe that others have contributions to make towards this shared [end]'' \citep[21]{adler:2006}.
+%\item value-rational form of authority.
 \end{itemize}
 \end{block}
 
 \end{frame}
+
+\begin{frame}
+\frametitle{Authority forms, generalized trust, and social structure}
+
+\begin{columns}[c]
+
+\begin{column}{0.5\textwidth}
+\begin{block}{Importance of Authority}
+\begin{itemize}
+\item Exclusivism and elitism are potential problems of communities based on trust and shared norms. Effective authority is key to counter balance those downsides.
+\item The value-rational form of authority is essential to Collaborative Communities.
+\item Avoid the ``iron cage'' of instrumental-rational authority.
+\end{itemize}
+\end{block}
+\end{column}
+
+\pause
+
+\begin{column}{0.5\textwidth}
+\begin{block}{Trust as the key mechanism}
+\begin{itemize}
+\item Contribution-based trust as the primary social mechanism of collaborative communities.
+\item Reduces both transaction costs and agency risks.
+\item Mitigates coordination difficulties created by knowledge's public good character: allows to combine different people with different sets of knowledge in order to solve complex problems.
+\end{itemize}
+\end{block}
+\end{column}
+
+\end{columns}
+
+\pause
+
+\begin{block}{Social Structure as key element for enabling and fostering trust}
+\begin{itemize}
+\item The literature on Collaborative Communities has focused on interdependence and common identities as the main elements that foster trust.
+\item However we have ample evidence that the social structure plays a key role in enabling and fostering trust \citep{granovetter:1985,coleman:1988,moody:2003}. 
+\item I suggest that a unique social network structure undergirds collaborative communities, and facilitate the development of trust and large scale cooperation.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
 
 
 \begin{frame}
@@ -664,26 +633,64 @@ Networks characterized by the presence of increasingly cohesive groups nested in
 
 \pause
 
-\vspace{0.2cm}
+\vspace{0.5cm}
 
-These two models are not mutually exclusive. The networks that fit in the intersection of both models exhibit consistent structural patterns.
-
-\begin{block}{Cohesive Small World Model}
-Network (structural) model for Collaborative Communities that help explain how trust, value congruence, and large scale cooperation are enabled and fostered.
-
-\begin{itemize}
-\item Local clusters connected by short paths.
-\item Increasingly cohesive groups nested inside each other.
-\end{itemize}
+\begin{block}{These two models are not mutually exclusive}
+The networks that fit in the intersection of both models exhibit consistent structural patterns, which provide the structural scaffolding for collaborative communities. 
 \end{block}
 
-These patterns provide the structural scaffolding for collaborative communities.
+%These two models are not mutually exclusive. The networks that fit in the intersection of both models exhibit consistent structural patterns.
+
+%\begin{block}{Cohesive Small World Model}
+%Network (structural) model for Collaborative Communities that help explain how trust, value congruence, and large scale cooperation are enabled and fostered.
+
+%\begin{itemize}
+%\item Local clusters connected by short paths.
+%\item Increasingly cohesive groups nested inside each other.
+%\end{itemize}
+%\end{block}
+
+%These patterns provide the structural scaffolding for collaborative communities.
 
 \note{On the one hand, the generation of trust and congruent values among heterogeneous individuals are fostered by structurally cohesive groups in the connectivity hierarchy of cooperation networks because individuals embedded in these structures are able to compare independent perspectives on each other through a variety of relations that flow through distinct sets of intermediaries, which provides multiple independent sources of information about each other. Thus, the perception of an individual embedded in such structures of the other members of the group to whom she is not directly linked is filtered by the perception of a variety of others whom she trusts because is directly linked to them. This mediated perception of the group generates trust at a global scale. On the other hand, the existence of dense local clusters connected between them by relative short paths allows successful cooperation among heterogeneous individuals with common interests and, at the same time, fosters the flow of information between these clusters preventing the local clusters to be trapped in echo chambers of like minded collaborators.}
 
 \end{frame}
 
 \subsection{Cohesive Small World Model}
+
+\begin{frame}
+\frametitle{The Cohesive Small World Model}
+
+\begin{block}{Cohesive Small World Model}
+Network (structural) model for Collaborative Communities that help explain how trust, value congruence, and large scale cooperation are enabled and fostered.
+
+\begin{itemize}
+\item Increasingly structurally cohesive groups nested inside each other.
+\begin{itemize}
+\item Individuals embedded in them are able to compare independent perspectives on each other through a variety of relations that flow through distinct sets of intermediaries, which provides multiple independent sources of information about each other.
+\item The perception of an individual of the other members of the group to whom she is not directly linked is filtered by the perception of a variety of others whom she trusts because is directly linked to them. 
+\item This mediated perception of the group generates trust at a global scale. 
+\end{itemize}
+
+\item Local clusters connected by short paths.
+\begin{itemize}
+\item Allows successful cooperation among heterogeneous individuals with common interests and, at the same time, fosters the flow of information between these clusters preventing the local clusters to be trapped in echo chambers of like minded collaborators.
+\end{itemize}
+
+\end{itemize}
+\end{block}
+
+
+%\begin{itemize}
+%\item Individuals embedded in structurally cohesive groups are able to compare independent perspectives on each other through a variety of relations that flow through distinct sets of intermediaries, which provides multiple independent sources of information about each other. Thus, the perception of an individual embedded in such structures of the other members of the group to whom she is not directly linked is filtered by the perception of a variety of others whom she trusts because is directly linked to them. This mediated perception of the group generates trust at a global scale. 
+%\item The existence of dense local clusters connected between them by relative short paths allows successful cooperation among heterogeneous individuals with common interests and, at the same time, fosters the flow of information between these clusters preventing the local clusters to be trapped in echo chambers of like minded collaborators.
+%\end{itemize}
+
+\note{On the one hand, the generation of trust and congruent values among heterogeneous individuals are fostered by structurally cohesive groups in the connectivity hierarchy of cooperation networks because individuals embedded in these structures are able to compare independent perspectives on each other through a variety of relations that flow through distinct sets of intermediaries, which provides multiple independent sources of information about each other. Thus, the perception of an individual embedded in such structures of the other members of the group to whom she is not directly linked is filtered by the perception of a variety of others whom she trusts because is directly linked to them. This mediated perception of the group generates trust at a global scale. On the other hand, the existence of dense local clusters connected between them by relative short paths allows successful cooperation among heterogeneous individuals with common interests and, at the same time, fosters the flow of information between these clusters preventing the local clusters to be trapped in echo chambers of like minded collaborators.}
+
+\end{frame}
+
+
 
 \begin{frame}
 \frametitle{Cohesive Small World}
@@ -763,11 +770,12 @@ Free Software, broadly defined, is computer software that allows users to run, c
 \end{column}
 \end{columns}
 
-\begin{block}{}
+\pause
+
+\begin{block}{The empirical analysis is a case study}
 \begin{itemize}
-\item 
-\item 
-\item 
+\item Its aim is to show that this two projects fit well the proposed Cohesive Small World model.
+\item This is not a empirical test of the model, it's rather an existence proof. 
 \end{itemize}
 \end{block}
 
@@ -805,90 +813,6 @@ My modeling strategy to capture the patterns of relations among developers in th
 
 \subsection{Cohesive Small World Model Analysis}
 
-
-\begin{frame}
-\frametitle{Small World Analysis}
-
-A network fits the small world model if it is more locally clustered ($CC$) than its random network counterpart but has approximately the same average distance ($L$) between nodes. 
-
-\begin{align}
-Q = \frac{CC_{ratio}}{L_{ratio}} \nonumber & \hspace{0.5cm} \textit{Where:} & 
-CC_{ratio}& = \frac{CC_{actual}}{CC_{random}} \nonumber &
-L_{ratio}& = \frac{L_{actual}}{L_{random}} \nonumber \\
-\end{align}
-
-If the Small World Index ($Q$) is greater than 1, then the network fits the model. 
-
-\pause
-
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
-\begin{block}{The Debian Project: 1999-2012}
-\begin{itemize}
-\item $CC_{actual} \gg CC_{random}$ for all years.
-\item $L_{actual} > L_{random}$ for all years.
-\item $Q \gg 1$ for all years (21.4 in 2011 to 97 in year 2000).
-\end{itemize}
-\end{block}
-\end{column}
-
-\begin{column}{0.5\textwidth}
-\begin{block}{The Python project: 1999-2014}
-\begin{itemize}
-\item $CC_{actual} > CC_{random}$ for all years.
-\item $L_{actual} \approx L_{random}$ for all years.
-\item $Q > 1$ for all years (ranging from 3 in 1999 to 1.3 in 2011).
-\end{itemize}
-\end{block}
-\end{column}
-\end{columns}
-
-\vspace{0.3cm}
-
-The low value of the Small World Index ($Q$) in the Python project, compared with the values of $Q$ in the Debian project, can be attributed to the lower modularity of Python as a programming language compared with the inherent modularity of the Debian project as an operating system.
-
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Structural Cohesion Analysis}
-
-Analyze the percentage of nodes in $k$-components in actual networks and in their random counterparts.
-
-For $k \leq 2$ the random null model is the upper bound of component size. Thus a network fits the model if it has more levels ($k$) than its random counterparts and the percentage of nodes for $k \leq 2$ is comparable. 
-
-\pause
-
-\begin{columns}[c]
-\begin{column}{0.5\textwidth}
-\begin{block}{The Debian Project: 1999-2012}
-\begin{itemize}
-\item For 1-components $|V_{actual}| < |V_{random}|$
-\item For 2-components $|V_{actual}| < |V_{random}|$
-\item Maximum $k$:\\ $3 \leq max(k_{actual}) \leq 5$ and\\ $2 \leq  max(k_{random}) \leq 3$, but always \\ $max(k_{actual}) > max(k_{random})$. 
-\end{itemize}
-\end{block}
-\end{column}
-
-\begin{column}{0.5\textwidth}
-\begin{block}{The Python project: 1999-2014}
-\begin{itemize}
-\item For 1-components $|V_{actual}| \approx |V_{random}|$
-\item For 2-components $|V_{actual}| \approx |V_{random}|$
-\item Maximum $k$:\\ $5 \leq max(k_{actual}) \leq 10$ and\\ $3 \leq  max(k_{random}) \leq 7$, but always\\ $max(k_{actual}) > max(k_{random})$. 
-\end{itemize}
-\end{block}
-\end{column}
-\end{columns}
-
-\vspace{0.3cm}
-
-The fact that cooperation networks in the Python project are more cohesive than the cooperation networks of the Debian project, can also be attributed in part to the lower modularity of Python as a programming language compared with the inherent modularity of the Debian project as an operating system.
-
-\end{frame}
-
-
-
 \begin{frame}
 \frametitle{Graphical Representation of the Structural Cohesion Analysis}
 
@@ -917,27 +841,19 @@ The fact that cooperation networks in the Python project are more cohesive than 
 \begin{frame}
 \frametitle{The Cohesive Small World Model}
 
-The cooperation networks of both Debian and Python projects can be modeled using the proposed Cohesive Small World model.
-
+The cooperation networks of both Debian and Python projects can be modeled using the proposed Cohesive Small World model; that is, they fit both the requirements of the Small World Model and the Structural Cohesion Model.
 
 \begin{columns}[c]
 \begin{column}{0.5\textwidth}
 \begin{block}{Small World Model}
-\begin{itemize}
-\item Fosters the flow of information through short paths.
-\item Dense local clusters connected between them by relative short paths allow successful cooperation among heterogeneous individuals with common interests.
-\end{itemize}
+A network fits the small world model if it is more locally clustered than its random network null model but has approximately the same average distance between nodes.
 \end{block}
 \end{column}
 
 \begin{column}{0.5\textwidth}
 
 \begin{block}{Structural Cohesion Model}
-\begin{itemize}
-\item Fosters trust and congruent values.
-\item Individuals embedded in cohesive groups can compare independent perspectives on other members through a variety of relations that flow through distinct intermediaries.
-\item Prevents the local clusters to be trapped in echo chambers of like minded       collaborators.
-\end{itemize}
+A network fits the structural cohesion model if it has more connectivity levels ($k$-components) than its random network null model and the percentage of nodes for $k \leq 2$ is comparable. 
 \end{block}
 \end{column}
 \end{columns}
@@ -971,6 +887,66 @@ But there are significative differences between Debian and Python.
 \end{columns}
 
 \end{frame}
+
+
+%\begin{frame}
+%\frametitle{The Cohesive Small World Model}
+%
+%The cooperation networks of both Debian and Python projects can be modeled using the proposed Cohesive Small World model.
+%
+%
+%\begin{columns}[c]
+%\begin{column}{0.5\textwidth}
+%\begin{block}{Small World Model}
+%\begin{itemize}
+%\item Fosters the flow of information through short paths.
+%\item Dense local clusters connected between them by relative short paths allow successful %cooperation among heterogeneous individuals with common interests.
+%\end{itemize}
+%\end{block}
+%\end{column}
+%
+%\begin{column}{0.5\textwidth}
+%
+%\begin{block}{Structural Cohesion Model}
+%\begin{itemize}
+%\item Fosters trust and congruent values.
+%\item Individuals embedded in cohesive groups can compare independent perspectives on other members through a variety of relations that flow through distinct intermediaries.
+%\item Prevents the local clusters to be trapped in echo chambers of like minded       collaborators.
+%\end{itemize}
+%\end{block}
+%\end{column}
+%\end{columns}
+%
+%\pause
+%
+%\vspace{0.2cm}
+%But there are significative differences between Debian and Python.
+
+%\begin{columns}[c]
+%\begin{column}{0.5\textwidth}
+%\begin{block}{Debian Cooperation Networks}
+%\begin{itemize}
+%\item Lean more towards the Small World Model.
+%\item Subgroups work more independently from each other.
+%\item High modularity.
+%\end{itemize}
+%\end{block}
+%\end{column}
+%
+%\begin{column}{0.5\textwidth}
+%
+%\begin{block}{Python Cooperation Networks}
+%\begin{itemize}
+%\item Lean more towards the Structural Cohesion Model. 
+%\item Sharper and steep connectivity hierarchy.
+%\item Less modularity.
+%\end{itemize}
+%\end{block}
+%\end{column}
+%\end{columns}
+%
+%\end{frame}
+
 
 
 \section{Connectivity Hierarchy and Individual Contributions}
@@ -1382,5 +1358,419 @@ where $d_i$ are the number of ``death events'' at time $t$ and $n_i$ is the numb
 \bibliography{../../thesis.bib}
 \end{tiny}
 \end{frame}
+
+\section{Appendices}
+
+\subsection{Appendix: Algorithms and Heuristics for computing $k$-components}
+
+\begin{frame}
+\frametitle{Appendix: Measures of structural cohesion}
+
+\begin{block}{Node connectivity $\kappa(G)$}
+\begin{description}
+\item[Local] given two nodes $u$ and $v$, $\kappa_{G}(u,v)$ is the minimum number of nodes that must be removed to destroy all paths that join $u$ and $v$.
+
+\item[Global] the minimum number of nodes that must be removed in order to disconnect a graph $G$.
+
+\begin{equation*}
+\kappa = min{\{\kappa_{G}(u,v):u,v \in V(G)\}}
+\end{equation*}
+
+\end{description}
+
+\end{block}
+
+\begin{block}{Average node connectivity $\bar{\kappa}(G)$}
+the sum of local node connectivity between all pairs of different nodes of $G$ divided by the number of distinct pairs of nodes. \citep*{beineke:2002}.
+
+\begin{equation*}
+\bar{\kappa}(G) = \frac{\sum_{u,v} \kappa_{G}(u,v)}{{n \choose 2}}
+\end{equation*}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Appendix: Components and $k$-components}
+
+\begin{block}{Component}
+A \emph{component} of a graph $G$ is a maximal connected subgraph, which means that there is at least one path between any two nodes in that subgraph.
+\end{block}
+
+\begin{block}{$k$-components}
+A $k$-component is a maximal subgraph that has, at least, node connectivity $k$: we need to remove at least $k$ nodes to break it into more components. 
+\end{block}
+
+\begin{columns}[c]
+\begin{column}{0.4\textwidth}
+\begin{center}
+\includegraphics[scale=0.25]{img/knum_colors}
+\end{center}
+\end{column}
+
+\begin{column}{0.6\textwidth}
+\begin{itemize}
+\item \textbf{Red Nodes} form a 4-component: we need to remove 4 nodes to disconnect it.
+\item \textbf{Purple Nodes} form a 3-component along with red nodes: we need to remove 3 nodes to disconnect it.
+\item \textbf{Blue Nodes} form a 2-component along with red and purple nodes: we need to remove 2 nodes to disconnect it. 
+\end{itemize}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Appendix: Exact Algorithm}
+
+\citet[appendix A]{moody:2003} provide an algorithm for identifying $k$-components in a network, which is based on the \citet{kanevsky:1993} algorithm for finding all minimum-size node cut-sets of a graph.
+
+\begin{enumerate}
+
+\item Identify the node connectivity, $k$, of the input graph.
+
+\item Identify all $k$-cutsets at the current level of connectivity.
+
+\item Generate new graph components based on the removal of these cutsets.
+
+\item If the graph is neither complete nor trivial, return to 1; otherwise end.
+
+\end{enumerate}
+
+
+\begin{columns}[c]
+\begin{column}{0.3\textwidth}
+\begin{scriptsize}
+\begin{lstlisting}
+import networkx as nx
+from networkx import convert_node_labels_to_integers as cnlti
+
+G = cnlti(nx.grid_2d_graph(5,5))
+list(nx.all_node_cuts(G))
+[{1, 9}, {22, 23}, {17, 18}, {3, 14}]
+# To compute k-components
+kcomponents = nx.k_components(G)
+\end{lstlisting}
+\end{scriptsize}
+
+\end{column}
+
+\begin{column}{0.7\textwidth}
+\begin{center}
+\includegraphics[scale=0.45]{img/grid}
+\end{center}
+
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Appendix: Heuristics}
+
+The heuristics I developed are based on:
+
+\begin{block}{Approximation to local node connectivity}
+\citet{white:2001b} fast approximation algorithm for finding good lower bounds of the number of node independent paths between two nodes.
+
+\begin{columns}[c]
+\begin{column}{0.1\textwidth}
+
+\end{column}
+
+\begin{column}{0.8\textwidth}
+\begin{scriptsize}
+\begin{lstlisting}
+import networkx as nx
+from networkx.algorithms import approximation as apxa
+# Exact computation of node connectivity
+exact = nx.node_connectivity(G)
+# Lower bound approximation
+aprox = apxa.node_connectivity(G)
+\end{lstlisting}
+\end{scriptsize}
+\end{column}
+
+\begin{column}{0.1\textwidth}
+
+\end{column}
+\end{columns}
+\end{block}
+
+\begin{block}{Whitney's theorem}
+inclusion relation among node connectivity $\kappa(G)$, edge connectivity $\lambda(G)$ and minimum degree $\delta(G)$ for any graph $G$:
+
+\begin{equation*}
+\kappa(G) \le \lambda(G) \le \delta(G)
+\end{equation*}
+
+``$k$-cores can be regarded as seedbeds, within which we can expect highly cohesive subsets to be found'' \citet[281]{seidman:1983}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Appendix: Heuristics}
+
+\begin{block}{Main logic of the heuristics}
+
+\begin{enumerate}
+
+\item repeatedly applying fast algorithms for $k$-cores \citep{batagelj:2011} and biconnected components \citep{tarjan:1972} in order to narrow down the number of pairs of different nodes over which we have to compute their local node connectivity.
+
+\item Build an auxiliary graph $H$ in which two nodes are linked if they have at least $k$ node independent paths connecting them.
+
+\item Complete subgraphs in $H$ have a one to one correspondence with subgraphs of $G$ in which each node is connected to every other node in the subgraph for at least $k$ node independent paths. That is, $k$-components.
+
+\end{enumerate}
+\end{block}
+
+\pause
+
+\begin{block}{Trade Accuracy for Speed}
+\begin{tiny}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+&\multicolumn{4}{|c|}{Bipartite}&\multicolumn{4}{|c|}{Unipartite}\\
+Network&\# nodes&\# edges&Av. degree&Time(s)&\# nodes&\# edges&Av. degree&Time(s)\\
+\hline
+Debian Lenny&13,121&20,220&3.08&1,105.2&1,383&5,216&7.54&204.7\\
+High Energy (theory)&26,590&37,566&2.81&3,105.7&9,767&19,331&3.97&7,136.0\\
+Nuclear Theory&10,371&15,969&3.08&1,205.2&4,827&14,488&6.00&3,934.1\\
+\hline
+\end{tabular}
+\end{tiny}
+\end{block}
+
+\end{frame}
+
+\subsection{Appendix: Computing Small World Metrics}
+
+\begin{frame}
+\frametitle{Small World Analysis}
+
+A network fits the small world model if it is more locally clustered ($CC$) than its random network counterpart but has approximately the same average distance ($L$) between nodes. 
+
+\begin{align}
+Q = \frac{CC_{ratio}}{L_{ratio}} \nonumber & \hspace{0.5cm} \textit{Where:} & 
+CC_{ratio}& = \frac{CC_{actual}}{CC_{random}} \nonumber &
+L_{ratio}& = \frac{L_{actual}}{L_{random}} \nonumber \\
+\end{align}
+
+If the Small World Index ($Q$) is greater than 1, then the network fits the model. 
+
+\pause
+
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{block}{The Debian Project: 1999-2012}
+\begin{itemize}
+\item $CC_{actual} \gg CC_{random}$ for all years.
+\item $L_{actual} > L_{random}$ for all years.
+\item $Q \gg 1$ for all years (21.4 in 2011 to 97 in year 2000).
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{block}{The Python project: 1999-2014}
+\begin{itemize}
+\item $CC_{actual} > CC_{random}$ for all years.
+\item $L_{actual} \approx L_{random}$ for all years.
+\item $Q > 1$ for all years (ranging from 3 in 1999 to 1.3 in 2011).
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+
+\vspace{0.3cm}
+
+The low value of the Small World Index ($Q$) in the Python project, compared with the values of $Q$ in the Debian project, can be attributed to the lower modularity of Python as a programming language compared with the inherent modularity of the Debian project as an operating system.
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Small world metrics for debian networks}
+\begin{table}[H]
+\begin{center}
+\begin{footnotesize}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+Years&Nodes&Developers&Packages&Edges&CC&random CC&APL&random APL&SWI ($Q$)\\
+\hline
+1999&3,259&392&2,867&3,253&0.128&0.002&9.4&8.6&73.8\\
+2000&3,593&524&3,069&3,501&0.134&0.001&9.4&8.9&97.0\\
+2001&5,943&777&5,166&6,241&0.049&0.002&8.4&7.8&28.1\\
+2002&6,857&858&5,999&7,215&0.081&0.001&9.2&7.8&47.6\\
+2003&7,276&914&6,362&7,892&0.101&0.001&9.1&7.6&57.9\\
+2004&7,984&995&6,989&9,543&0.158&0.002&8.0&6.5&52.6\\
+2005&8,328&1,048&7,280&10,373&0.166&0.003&7.5&6.2&43.5\\
+2006&9,599&1,162&8,437&13,081&0.171&0.005&6.7&5.6&30.4\\
+2007&9,471&1,181&8,290&13,023&0.148&0.005&6.8&5.6&26.2\\
+2008&10,662&1,269&9,393&14,531&0.187&0.005&7.2&5.6&31.8\\
+2009&11,336&1,343&9,993&15,842&0.227&0.006&7.0&5.3&28.6\\
+2010&10,515&1,387&9,128&14,063&0.277&0.005&7.7&5.5&40.0\\
+2011&12,362&1,430&10,932&16,265&0.143&0.005&7.5&5.5&21.4\\
+2012&11,904&1,435&10,469&15,356&0.190&0.004&7.6&5.6&31.4\\
+\hline
+\end{tabular}
+\caption{Small world metrics for debian networks.}
+\label{swi_debian}
+\end{footnotesize}
+\end{center}
+\end{table}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Small world metrics for python networks}
+\begin{table}[H]
+\begin{center}
+\begin{footnotesize}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+Years&Nodes&Developers&Files&Edges&CC&random CC&APL&random APL&SWI ($Q$)\\
+\hline
+1999&1,146&9&1,137&1,236&0.102&0.039&3.1&3.5&3.0\\
+2000&2,172&31&2,141&3,720&0.214&0.135&3.3&3.5&1.7\\
+2001&2,511&33&2,478&4,507&0.205&0.129&3.4&3.6&1.7\\
+2002&2,317&38&2,279&4,502&0.204&0.129&3.6&3.6&1.6\\
+2003&1,805&42&1,763&3,192&0.153&0.112&3.5&3.6&1.4\\
+2004&1,850&49&1,801&3,163&0.113&0.093&3.4&3.6&1.3\\
+2005&1,007&44&963&1,759&0.129&0.079&3.7&3.7&1.7\\
+2006&2,632&52&2,580&6,794&0.235&0.156&2.8&3.2&1.7\\
+2007&3,359&51&3,308&7,790&0.223&0.177&2.9&3.3&1.4\\
+2008&2,951&59&2,892&7,833&0.231&0.175&3.0&3.3&1.5\\
+2009&2,219&58&2,161&4,708&0.228&0.142&3.1&3.4&1.7\\
+2010&2,930&63&2,867&6,504&0.175&0.128&3.4&3.5&1.4\\
+2011&2,174&63&2,111&4,459&0.145&0.114&3.5&3.6&1.3\\
+2012&2,444&65&2,379&4,843&0.124&0.087&3.7&3.8&1.4\\
+2013&2,285&63&2,222&4,743&0.147&0.099&3.6&3.7&1.5\\
+2014&2,134&62&2,072&4,149&0.138&0.095&3.6&3.7&1.5\\
+\hline
+\end{tabular}
+\caption{Small world metrics for python networks.}
+\label{swi_python}
+\end{footnotesize}
+\end{center}
+\end{table}
+
+
+\end{frame}
+
+
+\subsection{Appendix: Computing Structural Cohesion Metrics}
+
+
+\begin{frame}
+\frametitle{Structural Cohesion Analysis}
+
+Analyze the percentage of nodes in $k$-components in actual networks and in their random counterparts.
+
+For $k \leq 2$ the random null model is the upper bound of component size. Thus a network fits the model if it has more levels ($k$) than its random counterparts and the percentage of nodes for $k \leq 2$ is comparable. 
+
+\pause
+
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\begin{block}{The Debian Project: 1999-2012}
+\begin{itemize}
+\item For 1-components $|V_{actual}| < |V_{random}|$
+\item For 2-components $|V_{actual}| < |V_{random}|$
+\item Maximum $k$:\\ $3 \leq max(k_{actual}) \leq 5$ and\\ $2 \leq  max(k_{random}) \leq 3$, but always \\ $max(k_{actual}) > max(k_{random})$. 
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{block}{The Python project: 1999-2014}
+\begin{itemize}
+\item For 1-components $|V_{actual}| \approx |V_{random}|$
+\item For 2-components $|V_{actual}| \approx |V_{random}|$
+\item Maximum $k$:\\ $5 \leq max(k_{actual}) \leq 10$ and\\ $3 \leq  max(k_{random}) \leq 7$, but always\\ $max(k_{actual}) > max(k_{random})$. 
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+
+\vspace{0.3cm}
+
+The fact that cooperation networks in the Python project are more cohesive than the cooperation networks of the Debian project, can also be attributed in part to the lower modularity of Python as a programming language compared with the inherent modularity of the Debian project as an operating system.
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Structural Cohesion metrics for debian networks}
+\begin{table}[H]
+\begin{center}
+\begin{footnotesize}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Years&Nodes&GC&Random GC&GBC&Random GBC&maximum $k$&Random max $k$\\
+\hline
+1999&3,259&66.6\%&83.4\%&9.4\%&11.4\%&3 (0.2\%)&2 (11.4\%)\\
+2000&3,593&52.5\%&77.8\%&7.0\%&10.7\%&3 (0.2\%)&2 (10.7\%)\\
+2001&5,943&71.6\%&86.4\%&13.9\%&17.5\%&3 (0.1\%)&2 (17.5\%)\\
+2002&6,857&72.4\%&88.1\%&12.7\%&17.0\%&4 (0.2\%)&2 (17.0\%)\\
+2003&7,276&75.6\%&89.5\%&14.8\%&20.2\%&5 (0.2\%)&2 (20.2\%)\\
+2004&7,984&78.4\%&94.4\%&22.1\%&27.7\%&5 (0.2\%)&2 (27.7\%)\\
+2005&8,328&83.8\%&94.4\%&26.1\%&31.3\%&4 (0.5\%)&3 (4.5\%)\\
+2006&9,599&84.2\%&96.7\%&33.7\%&39.0\%&4 (0.6\%)&3 (8.4\%)\\
+2007&9,471&86.5\%&96.1\%&35.6\%&40.7\%&4 (0.2\%)&3 (8.6\%)\\
+2008&10,662&87.2\%&96.4\%&34.3\%&40.3\%&4 (0.6\%)&3 (7.5\%)\\
+2009&11,336&89.4\%&96.1\%&35.7\%&42.3\%&5 (0.4\%)&3 (8.2\%)\\
+2010&10,515&86.9\%&95.5\%&32.7\%&39.8\%&5 (0.2\%)&3 (5.1\%)\\
+2011&12,362&87.7\%&95.0\%&30.6\%&36.0\%&5 (0.3\%)&3 (5.3\%)\\
+2012&11,904&87.1\%&95.0\%&31.0\%&36.7\%&4 (0.1\%)&3 (2.3\%)\\
+\hline
+\end{tabular}
+\caption{Structural Cohesion metrics for debian networks.}
+\label{str_cohesion_debian}
+\end{footnotesize}
+\end{center}
+\end{table}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Structural Cohesion metrics for python networks}
+\begin{table}[H]
+\begin{center}
+\begin{footnotesize}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+Years&Nodes&GC&Random GC&GBC&Random GBC&maximum $k$&Random max $k$\\
+\hline
+1999&1146&66.0\%&100.0\%&6.7\%&6.5\%&3 (1.0\%)&2 (6.5\%)\\
+2000&2172&96.5\%&100.0\%&33.4\%&31.4\%&8 (1.2\%)&5 (3.1\%)\\
+2001&2511&97.3\%&99.8\%&34.1\%&33.0\%&9 (1.2\%)&6 (2.4\%)\\
+2002&2317&100.0\%&99.8\%&38.1\%&36.9\%&9 (2.6\%)&7 (1.9\%)\\
+2003&1805&100.0\%&99.2\%&34.8\%&33.1\%&7 (3.3\%)&6 (2.4\%)\\
+2004&1850&99.8\%&100.0\%&39.7\%&37.1\%&7 (1.8\%)&5 (2.5\%)\\
+2005&1007&99.8\%&100.0\%&45.7\%&44.2\%&5 (5.8\%)&4 (7.6\%)\\
+2006&2632&100.0\%&100.0\%&74.2\%&69.8\%&9 (1.5\%)&6 (3.9\%)\\
+2007&3359&100.0\%&100.0\%&58.6\%&55.2\%&9 (2.0\%)&6 (2.2\%)\\
+2008&2951&100.0\%&99.9\%&64.5\%&61.7\%&10 (2.2\%)&7 (2.5\%)\\
+2009&2219&100.0\%&99.9\%&51.0\%&48.5\%&7 (2.8\%)&5 (5.6\%)\\
+2010&2930&100.0\%&99.9\%&48.7\%&47.0\%&9 (2.7\%)&7 (2.4\%)\\
+2011&2174&100.0\%&99.8\%&47.7\%&45.9\%&8 (2.9\%)&7 (1.7\%)\\
+2012&2444&99.8\%&99.8\%&41.1\%&40.3\%&8 (3.4\%)&7 (3.4\%)\\
+2013&2285&99.9\%&99.9\%&51.6\%&49.8\%&7 (4.2\%)&6 (4.0\%)\\
+2014&2134&100.0\%&99.8\%&44.6\%&43.4\%&7 (2.6\%)&6 (3.1\%)\\
+\hline
+\end{tabular}
+\caption{Structural Cohesion metrics for python networks.}
+\label{str_cohesion_python}
+\end{footnotesize}
+\end{center}
+\end{table}
+
+
+\end{frame}
+
+
 
 \end{document}
